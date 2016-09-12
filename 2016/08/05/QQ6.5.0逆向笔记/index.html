@@ -86,23 +86,29 @@
 
 
 
-<meta name="description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完……">
+<meta name="description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完，差点就真给跪了！！！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QQ6.5.0逆向笔记">
 <meta property="og:url" content="http://thearyong.com/2016/08/05/QQ6.5.0逆向笔记/index.html">
 <meta property="og:site_name" content="thearyong">
-<meta property="og:description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完……">
+<meta property="og:description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完，差点就真给跪了！！！">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-13-30-04-0010-0x1-2.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-14-11-14-0010-0x1-1.png!post">
+<meta property="og:image" content="http://img.thearyong.com/2016-09-08-18-19-03-0010-0x2-1.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-15-36-25-0010-0x3-1.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-15-37-22-0010-0x3-2.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-15-28-08-0010-0x3-3.png!post">
-<meta property="og:image" content="http://img.thearyong.com/2016-09-08-18-19-03-0010-0x3-4.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-15-45-24-0010-0x3-1.png!post">
-<meta property="og:updated_time" content="2016-09-11T02:44:30.000Z">
+<meta property="og:image" content="http://img.thearyong.com/2016-09-12-19-35-13-0010-0x4-1.png!post">
+<meta property="og:image" content="http://img.thearyong.com/2016-09-12-19-41-34-0010-0x4-2.png!post">
+<meta property="og:image" content="http://img.thearyong.com/2016-09-12-17-45-58-0100-0x1-1.png!post">
+<meta property="og:image" content="http://img.thearyong.com/2016-09-12-18-05-53-0100-0x1-2.png!post">
+<meta property="og:image" content="http://img.thearyong.com/2016-09-12-18-54-03-0100-0x2-1.png!post">
+<meta property="og:image" content="http://img.thearyong.com/2016-09-12-23-49-24-0100-0x4-1.png!post">
+<meta property="og:updated_time" content="2016-09-12T17:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QQ6.5.0逆向笔记">
-<meta name="twitter:description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完……">
+<meta name="twitter:description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完，差点就真给跪了！！！">
 <meta name="twitter:image" content="http://img.thearyong.com/2016-09-08-13-30-04-0010-0x1-2.png!post">
 
 
@@ -323,7 +329,7 @@
       
 
       
-        <p>刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完……</p>
+        <p>刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完，差点就真给跪了！！！</p>
 <a id="more"></a>
 <h2 id="0001-准备"><a href="#0001-准备" class="headerlink" title="0001 准备"></a>0001 准备</h2><h3 id="0x1-设备"><a href="#0x1-设备" class="headerlink" title="0x1 设备"></a>0x1 设备</h3><ul>
 <li>Nexus 6</li>
@@ -365,7 +371,7 @@
 <h2 id="0010-过程"><a href="#0010-过程" class="headerlink" title="0010 过程"></a>0010 过程</h2><h3 id="0x0-预览"><a href="#0x0-预览" class="headerlink" title="0x0 预览"></a>0x0 预览</h3><p>国际惯例，先用 classyshark 预览下，看下项目结构和 Androidmenifast.xml：</p>
 <p><img src="http://img.thearyong.com/2016-09-08-13-30-04-0010-0x1-2.png!post" alt="0010-0x1-2"></p>
 <p><img src="http://img.thearyong.com/2016-09-08-14-11-14-0010-0x1-1.png!post" alt="0010-0x1-1"></p>
-<p>从上面可以大致了解到工程的结构、规模、第三方库等，可以发现几乎大部分都是腾讯自实现的库。这里主要用来开始了解下 Androidmenifast.xml……<br>接下来操起 apktool 工具，开始反编译！</p>
+<p>从上面可以大致了解到工程的结构、规模、第三方库等，可以发现几乎大部分都是腾讯自实现的库。这里主要用来开始了解下 Androidmenifast.xml。接下来操起 apktool 工具，开始反编译！</p>
 <h3 id="0x1-反编译"><a href="#0x1-反编译" class="headerlink" title="0x1 反编译"></a>0x1 反编译</h3><p>官网下载最新版 QQ6.5.0,当前目录执行反编译命令：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apktool d com.tencent.mobileqq_6.<span class="number">5.0</span>_390.apk</div></pre></td></tr></table></figure></p>
 <p>apktool报错：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">I: Using Apktool <span class="number">2.1</span>.<span class="number">1</span> on com.tencent.mobileqq_6.<span class="number">5.0</span>_390.apk</div><div class="line">I: Loading resource table...</div><div class="line">Exception <span class="keyword">in</span> thread <span class="string">"main"</span> brut.androlib.AndrolibException: Multiple res specs: attr/name</div><div class="line">	at brut.androlib.res.data.ResTypeSpec.addResSpec(ResTypeSpec.java:<span class="number">78</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.readEntry(ARSCDecoder.java:<span class="number">256</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.readTableType(ARSCDecoder.java:<span class="number">217</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.readTableTypeSpec(ARSCDecoder.java:<span class="number">153</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.readTablePackage(ARSCDecoder.java:<span class="number">115</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.readTableHeader(ARSCDecoder.java:<span class="number">77</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.decode(ARSCDecoder.java:<span class="number">47</span>)</div><div class="line">	at brut.androlib.res.AndrolibResources.getResPackagesFromApk(AndrolibResources.java:<span class="number">555</span>)</div><div class="line">	at brut.androlib.res.AndrolibResources.loadMainPkg(AndrolibResources.java:<span class="number">72</span>)</div><div class="line">	at brut.androlib.res.AndrolibResources.getResTable(AndrolibResources.java:<span class="number">64</span>)</div><div class="line">	at brut.androlib.Androlib.getResTable(Androlib.java:<span class="number">64</span>)</div><div class="line">	at brut.androlib.ApkDecoder.setTargetSdkVersion(ApkDecoder.java:<span class="number">193</span>)</div><div class="line">	at brut.androlib.ApkDecoder.decode(ApkDecoder.java:<span class="number">102</span>)</div><div class="line">	at brut.apktool.Main.cmdDecode(Main.java:<span class="number">163</span>)</div><div class="line">	at brut.apktool.Main.main(Main.java:<span class="number">81</span>)</div></pre></td></tr></table></figure></p>
 <p>网上搜索，已经有很多解决方案。出现该错误的原因：</p>
@@ -384,18 +390,27 @@
 <p>beng shaka laka,反编译成功，感谢rover12421大神！(ps：上面-xn参数是因为资源混淆了，不修正的话，回编会找不到资源报错)</p>
 <h3 id="0x2-重打包"><a href="#0x2-重打包" class="headerlink" title="0x2 重打包"></a>0x2 重打包</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shakaapktool b com.tencent.mobileqq_6.<span class="number">5.0</span>_390</div></pre></td></tr></table></figure>
 <p>回编也成功了！但是重签名安装提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">thearyong:project$adb install -r /Users/thearyong/Desktop/study/project/com.tencent.mobileqq_6.5.0_390/dist/com.tencent.mobileqq_6.5.0_390_signed.apk</div><div class="line">[100%] /data/local/tmp/com.tencent.mobileqq_6.5.0_390_signed.apk</div><div class="line">	pkg: /data/local/tmp/com.tencent.mobileqq_6.5.0_390_signed.apk</div><div class="line">Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES]</div><div class="line">thearyong:project$d</div></pre></td></tr></table></figure></p>
-<p>是证书校验失败，不是没签名！安装时遇到的几个相关错误，<a href="http://www.wjdiankong.cn/android%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6%E4%B9%8B-%E7%AD%BE%E5%90%8D%E9%AA%8C%E8%AF%81%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3/" target="_blank" rel="external">可以参考这里</a></p>
+<p>注意是 <strong>证书校验失败，不是没签名</strong>！安装时遇到的几个相关错误，<a href="http://www.wjdiankong.cn/android%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6%E4%B9%8B-%E7%AD%BE%E5%90%8D%E9%AA%8C%E8%AF%81%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3/" target="_blank" rel="external">可以参考这里</a></p>
 <p>回到上面证书问题，花了点时间，找到症结所在：</p>
 <ul>
-<li>在反编译后的unknown目录中，依赖存在一个META-INF的目录。我们知道，apk签名后，会对所有的文件生成摘要信息并签名，会生成3个文件存储在META-INF目录中。不过当前目录中只有一个MANIFEST.MF文件，该文件保存的是所有apk中所有文件对应的摘要信息。</li>
-<li>我们回编的时候，修改了部分文件，并把原有包里的MANIFEST.MF打包进去了。在重签名的时候，不知为何竟然没有被替换掉，导致安装校验时报上述错误！<br>讲真，上面这个问题还没弄清楚，但不妨碍解决安装问题：</li>
-<li>删除反编译后的META-INF目录。</li>
-<li>同时删除apktool.yml文件中META-INF记录，不然回编提示找不到META-INF。<blockquote>
+<li><p>在反编译后的 unknown 目录中，依然存在一个 META-INF 的目录。我们知道 apk 签名后，会对所有的文件生成摘要信息并签名，会生成3个文件存储在META-INF目录中。不过当前 unknown 目录中只有一个 MANIFEST.MF 文件，该文件保存的是 apk 中所有文件对应的摘要信息。同时反编译后再 original 下生成 META-INF 目录！<br><img src="http://img.thearyong.com/2016-09-08-18-19-03-0010-0x2-1.png!post" alt="0010-0x2-1"></p>
+</li>
+<li><p>后面竟然发现是 shakaapktool 反编译遗留下来的，使用 apktool 不会有该文件生成！</p>
+</li>
+<li>我们回编的时候，修改了部分文件，并把原有包里的 MANIFEST.MF 打包进去了。在重签名的时候，不知为何竟然没有被替换掉，导致安装校验时报上述错误！</li>
+</ul>
+<p>讲真，上面这个问题还未搞的特别透彻，但不妨碍解决安装问题：</p>
+<ol>
+<li><p>删除反编译后的META-INF目录。</p>
+</li>
+<li><p>同时删除 apktool.yml 文件中 META-INF 记录，不然回编提示找不到 META-INF。</p>
+<blockquote>
 <p>I: Not found unkown file : META-INF/MANIFEST.MF</p>
 </blockquote>
 </li>
-</ul>
-<p>重新步骤0x3,打包成功，签名，安装成功！</p>
+<li><p>重复步骤0x2,打包，签名，安装成功！</p>
+</li>
+</ol>
 <h3 id="0x3-发现问题"><a href="#0x3-发现问题" class="headerlink" title="0x3 发现问题"></a>0x3 发现问题</h3><p>在上面过程中发现的一些问题，这里记录下：</p>
 <ol>
 <li><p>目前最新版本的 apktool 反编译 QQ6.5.0 的是直接报上述的错误。然后用 Android Killer + shakaapktool ,能反编译出来：</p>
@@ -404,7 +419,8 @@
 </li>
 <li><p>腾讯系列产品大多都没有使用自家乐固加固，可能是为了考虑设备兼容性。对比了手机 QQ 6.5、QQ 空间6.6.1、微信6.3.1,发现他们都使用了资源混淆，但是微信可以直接用 apktool 反编译出来，以后有机会再研究下微信。</p>
 </li>
-<li>手机 QQ 在4.2之前版本，资源是木有混淆的，xml 也没有插入非法字段防止反编译。所有想学习研究 QQ，找老点的版本试下水好捏些！（ ps :4.6.0版本在 android 6.0上有问题，测试机 nexus 6 ,直接闪退，恶心了好久才发现。略过~）</li>
+<li><p>手机 QQ 在4.2之前版本，资源是木有混淆的，xml 也没有插入非法字段防止反编译。所有想学习研究 QQ，找老点的版本试下水好捏些！（ ps :4.6.0版本在 android 6.0上有问题，测试机 nexus 6 ,直接闪退，恶心了好久才发现。略过~）</p>
+</li>
 <li><p><strong>资源混淆</strong>，直接用解压打开，看下未混淆和混淆过后的区别:</p>
 <p><img src="http://img.thearyong.com/2016-09-08-15-28-08-0010-0x3-3.png!post" alt="0010-0x3-3"></p>
 <ul>
@@ -416,28 +432,24 @@
 </li>
 <li><p>上面在回编时需要删除 META-INF 目录和 apktool.yml 中的记录，当时猜测是 apktool 根据该记录一条条的回编。如果这样的话有个问题：</p>
 <blockquote>
-<p>删除一个资源文件需要同时删除记录（不然很多其他链接，会提示找不到资源的），那增加一个文件，是不也要添加一条记录？但apktool显然不用，说明如果apktool.yml没有记录的，直接编译到apk中。</p>
+<p>删除一个资源文件需要同时删除记录（不然很多其他链接，会提示找不到资源的），那增加一个文件，是不也要添加一条记录？但apktool显然不用，说明如果apktool.yml没有记录的，直接编译到apk中。<br><strong>所以在重打包中，尽量不要去做删除操作，不然可能会引发一系列的头痛问题！</strong></p>
 </blockquote>
-<p><strong>所以在重打包中，尽量不要去做删除操作，不然可能会引发一系列的头痛问题！</strong></p>
-<p><img src="http://img.thearyong.com/2016-09-08-18-19-03-0010-0x3-4.png!post" alt="0010-0x3-4"></p>
 </li>
-<li><p>各个加固厂商防反编译手段不一，这里推荐看下<a href="http://www.wjdiankong.cn/android%E9%80%86%E5%90%91%E4%B9%8B%E6%97%85-%E5%8F%8D%E7%BC%96%E8%AF%91%E5%88%A9%E5%99%A8apktool%E5%92%8Cjadx%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%BB%A5%E5%8F%8A%E9%94%99%E8%AF%AF%E7%BA%A0/" target="_blank" rel="external">尼古拉斯·赵四</a>的分析，受益匪浅！<br>ps：对没错，又是<strong>尼古拉斯·赵四</strong> ！！！很牛逼的一个90后，刚开始逆向时无头苍蝇，毫无头绪，后来找到他的系列文章，整整花了看了一整天，犹如葫芦灌顶，非常值得收藏！</p>
+<li><p>各个加固厂商防反编译手段不一，这里推荐看下<a href="http://www.wjdiankong.cn/android%E9%80%86%E5%90%91%E4%B9%8B%E6%97%85-%E5%8F%8D%E7%BC%96%E8%AF%91%E5%88%A9%E5%99%A8apktool%E5%92%8Cjadx%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%BB%A5%E5%8F%8A%E9%94%99%E8%AF%AF%E7%BA%A0/" target="_blank" rel="external"><strong>尼古拉斯·赵四</strong></a>(对没错，又是ta ！！！很牛逼的一个90后，刚开始逆向时无头苍蝇，毫无头绪，后来找到他的系列文章，整整看了一整天，犹如葫芦灌顶，非常值得收藏！)的分析，受益匪浅！</p>
 </li>
 </ol>
-<h2 id="0011-修改-apk"><a href="#0011-修改-apk" class="headerlink" title="0011 修改 apk"></a>0011 修改 apk</h2><p>上面实现了反编译和重打包的流程，接下来修改下apk，比如修改apk名字、调试模式、包名。</p>
+<h2 id="0011-修改"><a href="#0011-修改" class="headerlink" title="0011 修改"></a>0011 修改</h2><p>上面实现了反编译和重打包的流程，接下来修改下apk，比如修改apk名字、调试模式、包名。</p>
 <h3 id="0x1-修改-app-名字"><a href="#0x1-修改-app-名字" class="headerlink" title="0x1 修改 app 名字"></a>0x1 修改 app 名字</h3><p>修改名字很简单，根据 Androidmenifast.xml 中 pplication 标签下的 label 引用的 id ,修改 string.xml 下 id 对应的内容，如：QQ–&gt;QQPro。</p>
 <h3 id="0x2-修改调试模式"><a href="#0x2-修改调试模式" class="headerlink" title="0x2 修改调试模式"></a>0x2 修改调试模式</h3><p>直接修改AndroidMenifast.xml中，application标签下:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:debuggable="true"</div></pre></td></tr></table></figure></p>
 <h3 id="0x3-修改包名"><a href="#0x3-修改包名" class="headerlink" title="0x3 修改包名"></a>0x3 修改包名</h3><p>大多数网上资料都是用搜索工具全局替换包名，这样替换有木有心里发慌呀，我表示有过，改的地方太多，哪里能保证有木有漏掉。</p>
-<p>心里就嘀咕着：<strong>有没有办法少修改点东西？</strong></p>
-<p>这里联想到，adroid studio 的 gradle 多打包策略，它是如何实现同时修改多个包名的？<br>网上找到一篇<a href="http://gnaix92.github.io/2016/04/11/APK%E5%A4%9A%E5%BC%80%E5%8E%9F%E7%90%86" target="_blank" rel="external">分析案例</a></p>
+<p>心里嘀咕着：<strong>有没有办法少修改点东西？</strong></p>
+<p>这里联想到，adroid studio 的 gradle 多打包策略，它是如何实现同时修改多个包名的？<br>网上找到一篇<a href="http://gnaix92.github.io/2016/04/11/APK%E5%A4%9A%E5%BC%80%E5%8E%9F%E7%90%86" target="_blank" rel="external">分析案例</a>。按上面思路分析：</p>
 <ul>
-<li><strong>AndroidMenifast.xml</strong><br>AndroidMenifast.xml中大多数写法都是直接声明:<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:name=".xxx.Activity"</div></pre></td></tr></table></figure>
+<li><p><strong>AndroidMenifast.xml</strong><br>  AndroidMenifast.xml中大多数写法都是直接声明:</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:name=".xxx.Activity"</div></pre></td></tr></table></figure>
+<p>  所以只要把.换成绝对类名就好了！其中provider的authorities,必须唯一，防止和原来的app冲突！所以也得改！</p>
 </li>
-</ul>
-<p>所以只要把.换成绝对类名就好了！<br>其中provider的authorities,必须唯一，防止和原来的app冲突！所以也得改！</p>
-<ul>
-<li><p><strong>smali</strong></p>
-<p>  我们知道，代码里跳转页面时，大多是这么写：</p>
+<li><p><strong>smali</strong><br>  我们知道，代码里跳转页面时，大多是这么写：</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">it.setClass(context,Activity.class);</div></pre></td></tr></table></figure>
 <p>  这种写法下，可以不用修改！</p>
 <p>  当然不排除有使用下面方式设置跳转:</p>
@@ -446,43 +458,101 @@
   <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">it.setComponent(<span class="keyword">new</span> ComponentName(<span class="string">"packagename"</span>,<span class="string">"xxx.yyy.Activity"</span>));</div></pre></td></tr></table></figure>
 <p>  这种情况那就要注意修改smali了！</p>
 </li>
-<li><p><strong>so</strong></p>
-<p>  在 java 通过 jni 调用 so 接口时，一般是没有用到包名的，只是类名而已。<br>  所以 so 在类名木有变得情况下可以不修改！</p>
+<li><p><strong>so</strong><br>  在 java 通过 jni 调用 so 接口时，一般是没有用到包名的，只是类名而已。<br>  所以 so 在类名木有变得情况下可以不修改！</p>
 </li>
-<li><p><strong>资源文件的命名空间</strong></p>
-<p>  有部分自定义属性的命名空间写法包含包名的，如：</p>
+<li><p><strong>资源文件的命名空间</strong><br>  有部分自定义属性的命名空间写法包含包名的，如：</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://schemas.android.com/apk/res/com.tencent.mobileqq</div></pre></td></tr></table></figure>
 <p>  所以也得改！</p>
 </li>
 </ul>
-<p>分析完注意事项后，可以稍微总结：</p>
+<p>分析完注意事项后，稍微总结：</p>
 <blockquote>
-<p>反编译后，一般情况下，如果要修改包名，只要修改androidfast.xml和layout.xml中的命名空间声明，dex层和so应该完全不用管！</p>
+<p>反编译后，一般情况下，如果要修改包名，只要修改androidfast.xml和layout.xml中的命名空间声明，dex层和so应该完全不用管！（上面特殊情况下除外！）</p>
 </blockquote>
 <p>按上面思路，试试：</p>
 <ol>
-<li>搜索当前 AndroidMenifast.xml 文件，替换所有的”.”为”com.tencent.mobileqq.pro.”</li>
-<li>搜索资源文件夹，修改自定义属性的命名空间为<a href="http://schemas.android.com/apk/res-auto" target="_blank" rel="external">http://schemas.android.com/apk/res-auto</a></li>
-<li><p>修改 provider 的 authorities，这个必须唯一，防止安装多开时，跟原版的一样。（这步很繁琐，还会附带要修改 permission，要很细心）<br><img src="http://img.thearyong.com/2016-09-08-15-45-24-0010-0x3-1.png!post" alt="Alt text"></p>
+<li><p>搜索当前 AndroidMenifast.xml 文件，替换所有的“<strong>.</strong>”为“<strong>com.tencent.mobileqq.pro.</strong>”</p>
+</li>
+<li><p>搜索资源文件夹，修改自定义属性的命名空间为<a href="http://schemas.android.com/apk/res-auto" target="_blank" rel="external">http://schemas.android.com/apk/res-auto</a></p>
+</li>
+<li><p>修改 provider 的 authorities，这个必须唯一，防止安装多开时，跟原版的一样。（这步很繁琐，还会附带要修改 permission，要很细心）<br><img src="http://img.thearyong.com/2016-09-08-15-45-24-0010-0x3-1.png!post" alt="0010-0x3-1"></p>
 </li>
 <li><p>按上面重打包运行后，因为有个原版的 QQ，会发现 QQPro 权限错误。回到第3步，把所有自定义的 permission 重新定义，只要有 android:protectionLevel 的加个 pro 就好了。</p>
 </li>
-<li>重打包运行，运行 ok。但登陆时，提示：<blockquote>
+</ol>
+<p><strong>思路小结</strong><br>实验过该方案是可行的，但是也是麻烦不断，尤其是修改 provider、权限的时候。相对来说要少修改smali部分文件，但也不排除要修改。<br>ps:修改包名，有点鸡肋，而且容易出错！如果只为多开的话，推荐一款平行空间app,可以同一个app多开。当然篡改app上架的话,那就另当别论，互相伤害吧！！！总之，不建议修改包名！</p>
+<h3 id="0x4-修改-Smali"><a href="#0x4-修改-Smali" class="headerlink" title="0x4 修改 Smali"></a>0x4 修改 Smali</h3><p>添加个 Toast 标记下成功修改！</p>
+<ol>
+<li><p>新建 smali 文件放在包名目录下，这样其他地方引用时，可以省去 import 包：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">.class <span class="keyword">public</span> LDeToast;</div><div class="line">.<span class="keyword">super</span> Ljava/lang/Object;</div><div class="line">.source <span class="string">"DeToast.java"</span></div><div class="line"></div><div class="line">.<span class="function">method <span class="keyword">public</span> <span class="keyword">static</span> <span class="title">toast</span><span class="params">(Landroid/content/Context;)</span>V</span></div><div class="line">    .locals 2</div><div class="line">    .prologue</div><div class="line"></div><div class="line">        <span class="keyword">const</span>-string v0, "welocome thearyong pro..."</div><div class="line"></div><div class="line">        <span class="keyword">const</span>/4 v1, 0x1</div><div class="line"></div><div class="line">        invoke-<span class="keyword">static</span> &#123;p0, v0, v1&#125;, Landroid/widget/Toast;-&gt;makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;</div><div class="line"></div><div class="line">        move-result-object v0</div><div class="line"></div><div class="line">        invoke-virtual &#123;v0&#125;, Landroid/widget/Toast;-&gt;show()V</div><div class="line"></div><div class="line">        <span class="keyword">return</span>-<span class="keyword">void</span></div><div class="line">.end method</div></pre></td></tr></table></figure>
+<p> <img src="http://img.thearyong.com/2016-09-12-19-35-13-0010-0x4-1.png!post" alt="0010-0x4-1"></p>
+</li>
+</ol>
+<p>2.找到主界面 smali_classes3/com/tencent/mobileqq/activity/MainFragment.smali,在 onCreateView 中添加 Toast 提示：<br>    <img src="http://img.thearyong.com/2016-09-12-19-41-34-0010-0x4-2.png!post" alt="0010-0x4-2"></p>
+<ol>
+<li>重打包运行成功。但登陆时，提示：<blockquote>
 <p>Appid is invalid!<br>QQ 通信时，有做校验。具体怎么校验的暂时不清楚，下面想办法绕过这个校验！</p>
 </blockquote>
 </li>
 </ol>
-<p><strong>思路小结</strong><br>实验过该方案是可行的，但是也是麻烦不断，尤其是修改 provider、权限的时候。相对来说要少修改smali部分文件，但也不排除要修改。<br>ps:修改包名的话，有点鸡肋的需求，而且容易出错！如果只为多开的话，推荐一款平行空间app,可以同一个app多开。当然篡改app上架的话,那就另当别论，互相伤害吧！！！总之，不建议修改包名！</p>
 <h2 id="0100-校验"><a href="#0100-校验" class="headerlink" title="0100 校验"></a>0100 校验</h2><h3 id="0x1-关键字"><a href="#0x1-关键字" class="headerlink" title="0x1 关键字"></a>0x1 关键字</h3><ol>
-<li>Android Killer 搜索登录时提示的关键字：“<strong>Appid is invalid!</strong> ”</li>
-<li></li>
+<li><p>Android Killer 搜索登录时提示的关键字：“<strong>Appid is invalid!</strong>”，找到 Toast 位置。<br><img src="http://img.thearyong.com/2016-09-12-17-45-58-0100-0x1-1.png!post" alt="0100-0x1-1"><br>可以看出，这个提示是在 MainService 内部类中的实现的 Runnable，猜测应该是 handler.post 类似主线程 Toast。</p>
+</li>
+<li><p>看到上面有注解代码：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.annotation system Ldalvik/annotation/EnclosingMethod;</div><div class="line">    value = Lmqq/app/MainService$<span class="number">3</span>;-&gt;onInvalidSign(Z)V</div><div class="line">.end annotation</div></pre></td></tr></table></figure>
+<p> 找到 MainService$3.smali，里面果真有该方法调用：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.<span class="function">method <span class="keyword">public</span> <span class="title">onInvalidSign</span><span class="params">(Z)</span>V</span></div><div class="line">    ...</div><div class="line">    .line 522</div><div class="line">    new-instance v1, Lmqq/app/MainService$3$1;</div><div class="line">    invoke-direct &#123; v1, p0 &#125;, Lmqq/app/MainService$<span class="number">3</span>$<span class="number">1</span>;-&gt;&lt;init&gt;(Lmqq/app/MainService$<span class="number">3</span>;)V</div><div class="line">    invoke-virtual &#123; v0, v1 &#125;, Lmqq/app/AppRuntime;-&gt;runOnUiThread(Ljava/lang/Runnable;)V</div><div class="line">    :L0</div><div class="line">    .line <span class="number">529</span></div><div class="line">    <span class="keyword">return</span>-<span class="keyword">void</span></div><div class="line">.end method</div></pre></td></tr></table></figure>
+<p> 实例化 MainService$3$1 赋值给 v1，并把 v1 传给 AppRuntime.runOnUiThread…</p>
+</li>
+<li><p>按此方法，继续根据关键字 <strong>onInvalidSign</strong> 搜索，最后大致定位到 CodecWarpper.smali：<br> <img src="http://img.thearyong.com/2016-09-12-18-05-53-0100-0x1-2.png!post" alt="0100-0x1-2"><br> 看上去校验是放在 so 中，巧的是 libcodecwrapperV2.so 也被咱无意中找到了！</p>
+</li>
+<li><p>本来想努力努力在就在 java 层修改 smali 达到绕过校验，结果对 smali 不熟，虽然大多认识，但放一起多少还是有点吃力！后面又发现看雪上有篇<a href="http://bbs.pediy.com/showthread.php?p=1408668#poststop" target="_blank" rel="external">实践</a>,但对于新手来说，IDA Pro 如此神器，小白门都木入，先自损一万血！但没招，人家修改哪个点都告诉了，不试下天理难容啊！硬着头皮上，IDA Pro 祭起！（<strong>引申阅读：</strong><a href="http://www.pd521.com/thread-1349-1-1.html" target="_blank" rel="external">IDA Pro 必备手册</a>）</p>
+</li>
 </ol>
-<h3 id="0x2-投石问路"><a href="#0x2-投石问路" class="headerlink" title="0x2 投石问路"></a>0x2 投石问路</h3><p>看雪上有篇<a href="http://bbs.pediy.com/showthread.php?p=1408668#poststop" target="_blank" rel="external">实践</a>,但对于新手来说，IDA Pro如此神器，小白门都木入，先自损一万血！但没招，硬着头皮上，IDA Pro祭起！<br><strong>引申阅读：</strong></p>
-<ul>
-<li><a href="http://www.pd521.com/thread-1349-1-1.html" target="_blank" rel="external">IDA Pro 必备手册</a></li>
-</ul>
-<p>按上面这篇帖子，找到反编译后的项目目录下的 assets/lib/armeabi/libcodecwrapperV2.so，用 IDA Pro 打开，找到函数</p>
-<h2 id="0101-总结"><a href="#0101-总结" class="headerlink" title="0101 总结"></a>0101 总结</h2><p>第一次实践，很多问题一脸懵逼。<br>前期，各种工具和查找道友的分享的资料和指教，侥幸能过，与有荣焉！过程中，一个个完全没接触过的技术：<strong>资源混淆、脱壳、smali、arm 汇编指令、hook、动态调试、IDA pro…</strong> 涉及方方面面，深不见底！<br>后期，上述的坑，需要一个一个跳下去，填！</p>
+<h3 id="0x2-IDA-Pro-分析-so"><a href="#0x2-IDA-Pro-分析-so" class="headerlink" title="0x2 IDA Pro 分析 so"></a>0x2 IDA Pro 分析 so</h3><ol>
+<li><p>按上面这篇帖子，找到反编译后的项目目录下的 assets/lib/armeabi/libcodecwrapperV2.so，用 IDA Pro 打开，找到函数 ParsePhSigCheck：<br><img src="http://img.thearyong.com/2016-09-12-18-54-03-0100-0x2-1.png!post" alt="0100-0x2-1"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">.text:0001B434                 ADDS    R3, #0x57</div><div class="line">.text:0001B436                 LDRB    R3, [R3]</div><div class="line">.text:0001B438                 CMP     R3, #0</div><div class="line">.text:0001B43A                 BEQ     loc_1B480</div><div class="line">.text:0001B43C                 LDR     R1, [SP,#0x68+var_5C]</div><div class="line">.text:0001B43E                 LDR     R2, [SP,#0x68+var_60]</div><div class="line">.text:0001B440                 LDR     R3, [SP,#0x68+var_40]</div><div class="line">.text:0001B442                 MOVS    R0, R1          ; this</div><div class="line">.text:0001B444                 MOVS    R1, R2          ; _JNIEnv *</div><div class="line">.text:0001B446                 MOVS    R2, R3          ; CSSOData *</div><div class="line">.text:0001B448                 BL      _ZN13CCodecWarpper15ParsePhSigCheckEP7_JNIEnvRK8CSSOData ; CCodecWarpper::ParsePhSigCheck(_JNIEnv *,CSSOData const&amp;)</div><div class="line">.text:0001B44C                 LDR     R3, [SP,#0x68+var_40]</div><div class="line">.text:0001B44E                 CMP     R3, #0</div><div class="line">.text:0001B450                 BEQ     loc_1B46A</div><div class="line">.text:0001B452                 LDR     R3, [SP,#0x68+var_40]</div><div class="line">.text:0001B454                 CMP     R3, #0</div><div class="line">.text:0001B456                 BEQ     loc_1B466</div><div class="line">.text:0001B458                 LDR     R3, [SP,#0x68+var_40]</div><div class="line">.text:0001B45A                 LDR     R3, [R3]</div><div class="line">.text:0001B45C                 ADDS    R3, #4</div><div class="line">.text:0001B45E                 LDR     R3, [R3]</div><div class="line">.text:0001B460                 LDR     R2, [SP,#0x68+var_40]</div><div class="line">.text:0001B462                 MOVS    R0, R2</div><div class="line">.text:0001B464                 BLX     R3</div></pre></td></tr></table></figure>
+</li>
+<li><p>F5 键查看伪代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ( v29 )</div><div class="line">&#123;</div><div class="line"> CCodecWarpper::ParsePhSigCheck(v12, v11, v19);</div><div class="line"> <span class="keyword">if</span> ( v19 )</div><div class="line">   (*(<span class="keyword">void</span> (<span class="number">__f</span>astcall **)(CSSOData *))(*(<span class="number">_</span>DWORD *)v19 + <span class="number">4</span>))(v19);</div><div class="line"> <span class="built_in">std</span>::<span class="built_in">string</span>::erase((CCodecWarpper *)((<span class="keyword">char</span> *)v12 + <span class="number">8</span>), <span class="number">0</span>, dest);</div><div class="line"> v2 = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">LABEL_77:</div><div class="line"> <span class="keyword">if</span> ( gIsDebug )</div><div class="line"> &#123;</div><div class="line">   v7 = <span class="built_in">std</span>::<span class="built_in">string</span>::c_str((CSSOData *)((<span class="keyword">char</span> *)v19 + <span class="number">44</span>));</div><div class="line">   v8 = <span class="built_in">std</span>::<span class="built_in">string</span>::c_str((CSSOData *)((<span class="keyword">char</span> *)v19 + <span class="number">120</span>));</div><div class="line">   <span class="number">_</span>android_log_print(<span class="number">4</span>, <span class="string">"libboot"</span>, <span class="string">"uin = %s, cmd = %s, recvSize = %d"</span>, v7, v8, dest);</div><div class="line"> &#125;</div><div class="line"> v9 = CCodecWarpper::getParseSuccReturnCode(v12, v17);</div><div class="line"> CCodecWarpper::ParseOtherResp(v12, v11, v9, v19, dest);</div><div class="line"> <span class="keyword">if</span> ( v19 )</div><div class="line">   (*(<span class="keyword">void</span> (<span class="number">__f</span>astcall **)(<span class="number">_</span>DWORD))(*(<span class="number">_</span>DWORD *)v19 + <span class="number">4</span>))(v19);</div><div class="line"> <span class="built_in">std</span>::<span class="built_in">string</span>::erase((CCodecWarpper *)((<span class="keyword">char</span> *)v12 + <span class="number">8</span>), <span class="number">0</span>, dest);</div><div class="line"> v2 = <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>v29应该就是前面的 BEQ，把它改成 BNE。</p>
+<h3 id="0x3-010-Editor-修改-so"><a href="#0x3-010-Editor-修改-so" class="headerlink" title="0x3 010 Editor 修改 so"></a>0x3 010 Editor 修改 so</h3><ol>
+<li><p>返回前面 Text View 界面，光标定位到 BEQ 这行，点击 Hex View，可以看到对应的二进制数据为 <strong>21 DO</strong>，对应的内存地址为 <strong>0001B43A</strong>。</p>
+</li>
+<li><p>怎么改？改成什么值呢？ 好捉急，要是有一份 arm 指令对应的二进制数值表，就完美了！但是真没找到，一些类似的倒是有。如<a href="http://rootkiter.com/2015/08/05/ARM%E6%8C%87%E4%BB%A4%E7%BB%93%E6%9E%84%E5%92%8Ccrack%E6%80%9D%E8%B7%AF.html" target="_blank" rel="external">ARM指令结构和crack思路</a>。但是人家说是 <strong>0A</strong> 表示 <strong>BEQ</strong>，为何咱这里是 <strong>D0</strong>，彻底风中凌乱了。不过好在又找到篇文章<a href="http://www.voidcn.com/blog/earbao/article/p-6001706.html" target="_blank" rel="external">ARM中的常用指令</a>指点迷津:</p>
+<blockquote>
+<p>4.ARM的机器码简单讲解 ARM机器码为32位，我们以跳转指令BL和BEQ为例讲解。其实我们只需要关注最高的8位，也就是24-31位。首先来看，28-31这四位，不同条件这四位有什么不同。然后在27-24这四位里，BL和BEQ都是1010.所以BL指令的二进制是11101010，即十六进制的EA；相同BEQ的十六进制就是0A。<br>5.SO里面的情况 当我们把SO里的汇编语言放到工具中去转换为HEX时，会发现和IDA中的HEX有时是完全不同的，这是因为IDA中有时反编译SO使用的不是ARM，而是16位的ARM，也就是Thumb指令，但有时却是ARM的32位指令。<br>6.修改汇编跳转指令 这种情况一般是Thumb指令，一般而言一行代码对应是2个HEX码。 例子：bne指令修改为beq指令 通过工具，我们发现bne跳转指令对应的HEX机器码是D1，beq对应的HEX机器码是D0，然后用WINHEX修改，再用IDA检测。<br>简直就是雪中送炭啊，有木有！豁然开朗！</p>
+</blockquote>
+</li>
+<li><p>举起 010 Editor 打开 libcodecwrapperV2.so 副本，搜索“<strong>21 D0 03 99 02 9A</strong>”，改成<br><strong>21 D1</strong>。</p>
+</li>
+<li><p>新开一个 IDA Pro窗口，打开修改后的 libcodecwrapperV2.so ，找到对应位置，F5 键查看伪代码，发现逻辑已经对调了。</p>
+</li>
+</ol>
+<h3 id="0x4-重打包验证"><a href="#0x4-重打包验证" class="headerlink" title="0x4 重打包验证"></a>0x4 重打包验证</h3><ol>
+<li><p>修改后的 so 放回原位置替换。重打包！</p>
+</li>
+<li><p>签名，安装，验证：依旧卡在登录界面，提示<strong>Appid is invalid</strong>!逻辑上已经替换了，</p>
+</li>
+</ol>
+<p>3.后面在逆向群里，有位道友也在逆向修改成功 QQ 最新版，请教之，很友好的指出：把 BL 指令清空就好。实践之，大赞！<br><img src="http://img.thearyong.com/2016-09-12-23-49-24-0100-0x4-1.png!post" alt="0100-0x4-1"></p>
+<ol>
+<li>demo <a href="https://pan.baidu.com/s/1hrUykNa" target="_blank" rel="external">下载地址</a></li>
+</ol>
+<h2 id="0101-总结"><a href="#0101-总结" class="headerlink" title="0101 总结"></a>0101 总结</h2><p>第一次实践，很多问题一脸懵逼，好在有 google。前期，各种工具和道友分享的资料，指教，侥幸能过，与有荣焉！过程中，一个个完全没接触过的技术：<strong>资源混淆、脱壳、smali、arm 汇编指令、hook、动态调试、IDA pro…</strong> 涉及方方面面，深不见底！后期，上述的坑需要一个一个跳下去填！</p>
+<p>上面一套打下来，耗时很久，中间多少次想放弃，隔段时间，再看竟柳暗花明。找不到的点，又偶尔跳出来在你眼前勾引下，浪里个浪！想那盖伦怕谁，血厚冲塔也能七进七出！最后躺着黑白，看对面水晶塔爆碎，露出浅浅的一笑：“还有谁！”</p>
+<h2 id="0110-TODO"><a href="#0110-TODO" class="headerlink" title="0110 TODO"></a>0110 TODO</h2><p>接下来，需要填的坑：</p>
+<ol>
+<li><strong>smali 语法熟悉</strong>（此案例 java 层修改的坑还未填）</li>
+<li><strong>IDA Pro 熟悉</strong></li>
+<li><strong>arm 汇编指令</strong></li>
+<li><strong>动态调试</strong></li>
+<li><strong>脱壳</strong></li>
+<li><strong>hook</strong></li>
+<li><strong>资源混淆</strong></li>
+</ol>
 
       
     </div>
@@ -654,7 +724,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -694,7 +764,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0001-准备"><span class="nav-number">1.</span> <span class="nav-text">0001 准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-设备"><span class="nav-number">1.1.</span> <span class="nav-text">0x1 设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-工具"><span class="nav-number">1.2.</span> <span class="nav-text">0x2 工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0010-过程"><span class="nav-number">2.</span> <span class="nav-text">0010 过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x0-预览"><span class="nav-number">2.1.</span> <span class="nav-text">0x0 预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-反编译"><span class="nav-number">2.2.</span> <span class="nav-text">0x1 反编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-重打包"><span class="nav-number">2.3.</span> <span class="nav-text">0x2 重打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x3-发现问题"><span class="nav-number">2.4.</span> <span class="nav-text">0x3 发现问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0011-修改-apk"><span class="nav-number">3.</span> <span class="nav-text">0011 修改 apk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-修改-app-名字"><span class="nav-number">3.1.</span> <span class="nav-text">0x1 修改 app 名字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-修改调试模式"><span class="nav-number">3.2.</span> <span class="nav-text">0x2 修改调试模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x3-修改包名"><span class="nav-number">3.3.</span> <span class="nav-text">0x3 修改包名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0100-校验"><span class="nav-number">4.</span> <span class="nav-text">0100 校验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-关键字"><span class="nav-number">4.1.</span> <span class="nav-text">0x1 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-投石问路"><span class="nav-number">4.2.</span> <span class="nav-text">0x2 投石问路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0101-总结"><span class="nav-number">5.</span> <span class="nav-text">0101 总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0001-准备"><span class="nav-number">1.</span> <span class="nav-text">0001 准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-设备"><span class="nav-number">1.1.</span> <span class="nav-text">0x1 设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-工具"><span class="nav-number">1.2.</span> <span class="nav-text">0x2 工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0010-过程"><span class="nav-number">2.</span> <span class="nav-text">0010 过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x0-预览"><span class="nav-number">2.1.</span> <span class="nav-text">0x0 预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-反编译"><span class="nav-number">2.2.</span> <span class="nav-text">0x1 反编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-重打包"><span class="nav-number">2.3.</span> <span class="nav-text">0x2 重打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x3-发现问题"><span class="nav-number">2.4.</span> <span class="nav-text">0x3 发现问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0011-修改"><span class="nav-number">3.</span> <span class="nav-text">0011 修改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-修改-app-名字"><span class="nav-number">3.1.</span> <span class="nav-text">0x1 修改 app 名字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-修改调试模式"><span class="nav-number">3.2.</span> <span class="nav-text">0x2 修改调试模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x3-修改包名"><span class="nav-number">3.3.</span> <span class="nav-text">0x3 修改包名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x4-修改-Smali"><span class="nav-number">3.4.</span> <span class="nav-text">0x4 修改 Smali</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0100-校验"><span class="nav-number">4.</span> <span class="nav-text">0100 校验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-关键字"><span class="nav-number">4.1.</span> <span class="nav-text">0x1 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-IDA-Pro-分析-so"><span class="nav-number">4.2.</span> <span class="nav-text">0x2 IDA Pro 分析 so</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x3-010-Editor-修改-so"><span class="nav-number">4.3.</span> <span class="nav-text">0x3 010 Editor 修改 so</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x4-重打包验证"><span class="nav-number">4.4.</span> <span class="nav-text">0x4 重打包验证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0101-总结"><span class="nav-number">5.</span> <span class="nav-text">0101 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0110-TODO"><span class="nav-number">6.</span> <span class="nav-text">0110 TODO</span></a></li></ol></div>
             
           </div>
         </section>
