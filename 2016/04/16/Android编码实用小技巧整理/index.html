@@ -70,7 +70,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="thearyong,方寸之间" />
+  <meta name="keywords" content="android,小技巧,编码," />
 
 
 
@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://thearyong.com/2016/04/16/Android编码实用小技巧整理/index.html">
 <meta property="og:site_name" content="thearyong">
 <meta property="og:description" content="之前在知乎上看到个帖子，“你见过哪些令你瞠目结舌的 Android 代码技巧?”在此，整理、补充……">
-<meta property="og:updated_time" content="2016-09-05T09:40:06.000Z">
+<meta property="og:updated_time" content="2016-09-19T01:55:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android编码实用小技巧整理">
 <meta name="twitter:description" content="之前在知乎上看到个帖子，“你见过哪些令你瞠目结舌的 Android 代码技巧?”在此，整理、补充……">
@@ -317,21 +317,21 @@
       
         <p>之前在知乎上看到个帖子，<a href="https://www.zhihu.com/question/37929529/answer/75538725?group_id=685920205397839872" target="_blank" rel="external">“你见过哪些令你瞠目结舌的 Android 代码技巧?”</a><br>在此，整理、补充……</p>
 <a id="more"></a>
-<h4 id="1-比较字符串"><a href="#1-比较字符串" class="headerlink" title="1. 比较字符串"></a>1. 比较字符串</h4><p>刚开始是这样写的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(response.getResult().equals(<span class="string">"xxx"</span>))&#123;&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="1-比较字符串"><a href="#1-比较字符串" class="headerlink" title="1. 比较字符串"></a>1. 比较字符串</h3><p>刚开始是这样写的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(response.getResult().equals(<span class="string">"xxx"</span>))&#123;&#125;</div></pre></td></tr></table></figure></p>
 <p>但这样也是最容易出错的，何不把它反过来：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="string">"xxx"</span>.equals(response.getResult()))&#123;&#125;</div></pre></td></tr></table></figure></p>
 <p>这样又兼容到坑爹的服务端数据，又省了try{}catch()处理，这是不是很实用的小技巧？</p>
-<h4 id="2-集合去重"><a href="#2-集合去重" class="headerlink" title="2. 集合去重"></a>2. 集合去重</h4><p>之前看到过这么个说法，普通程序员这样写：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;list.size();i++)&#123;&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="2-集合去重"><a href="#2-集合去重" class="headerlink" title="2. 集合去重"></a>2. 集合去重</h3><p>之前看到过这么个说法，普通程序员这样写：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;list.size();i++)&#123;&#125;</div></pre></td></tr></table></figure></p>
 <p>工程师这样写：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">list.removeAll();</div><div class="line">list.addAll();</div></pre></td></tr></table></figure></p>
 <p>虽然实现逻辑一样，但这云泥之别不就立即体现出来了么？</p>
-<h4 id="3-findViewById时的技巧："><a href="#3-findViewById时的技巧：" class="headerlink" title="3. findViewById时的技巧："></a>3. findViewById时的技巧：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> &lt;T extends View&gt; T $(<span class="keyword">int</span> id) &#123;</div><div class="line">    <span class="keyword">return</span> (T) <span class="keyword">super</span>.findViewById(id);</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> &lt;T extends View&gt; T $(View view, <span class="keyword">int</span> id) &#123;</div><div class="line">    <span class="keyword">return</span> (T) view.findViewById(id);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-findViewById时的技巧："><a href="#3-findViewById时的技巧：" class="headerlink" title="3. findViewById时的技巧："></a>3. findViewById时的技巧：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> &lt;T extends View&gt; T $(<span class="keyword">int</span> id) &#123;</div><div class="line">    <span class="keyword">return</span> (T) <span class="keyword">super</span>.findViewById(id);</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> &lt;T extends View&gt; T $(View view, <span class="keyword">int</span> id) &#123;</div><div class="line">    <span class="keyword">return</span> (T) view.findViewById(id);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>省去了强制转换的代码，非常实用，你第一次看到时，觉得会有瞠目结舌之感，泛型能这么用。熟悉泛型绝对是菜鸟到进阶的必经之路。</p>
-<h4 id="4-实现类放空接口减少代码量"><a href="#4-实现类放空接口减少代码量" class="headerlink" title="4.实现类放空接口减少代码量"></a>4.实现类放空接口减少代码量</h4><p>定义的接口方法有好几个，但实现时可能只处理其中的一个回调。比如android中的默认动画监听：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">animation.setAnimationListener(<span class="keyword">new</span> Animation.AnimationListener() &#123;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(Animation animation)</span> </span>&#123;&#125;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animation animation)</span> </span>&#123;&#125;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationRepeat</span><span class="params">(Animation animation)</span> </span>&#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="4-实现类放空接口减少代码量"><a href="#4-实现类放空接口减少代码量" class="headerlink" title="4.实现类放空接口减少代码量"></a>4.实现类放空接口减少代码量</h3><p>定义的接口方法有好几个，但实现时可能只处理其中的一个回调。比如android中的默认动画监听：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">animation.setAnimationListener(<span class="keyword">new</span> Animation.AnimationListener() &#123;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(Animation animation)</span> </span>&#123;&#125;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animation animation)</span> </span>&#123;&#125;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationRepeat</span><span class="params">(Animation animation)</span> </span>&#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>嫌篇幅过长，定义个实现类AnimListener实现AnimationListener,调用时只要实现需要处理的回调方法即可:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">animation.setAnimationListener(<span class="keyword">new</span> AnimListener() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animation animation)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onAnimationEnd(animation);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>控件动画过多的情况下，用上这个小技巧，是不立马清新脱俗了很多？(我不会告诉你们这是在开源项目—com.nineoldandroids(动画兼容)中学到的)</p>
-<h4 id="5-字符串格式化"><a href="#5-字符串格式化" class="headerlink" title="5.字符串格式化"></a>5.字符串格式化</h4><p>虽然大家可能都会用，但第一次看到，确实是有瞠目结舌之感。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String str = String.format(<span class="string">"来自%s～"</span>,<span class="string">"thearyong"</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="5-字符串格式化"><a href="#5-字符串格式化" class="headerlink" title="5.字符串格式化"></a>5.字符串格式化</h3><p>虽然大家可能都会用，但第一次看到，确实是有瞠目结舌之感。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String str = String.format(<span class="string">"来自%s～"</span>,<span class="string">"thearyong"</span>);</div></pre></td></tr></table></figure></p>
 <p>%s、%d等看着眼熟吧？初学编程时，c语言的打印，有木有印象～～<br>在strings.xml中这样声明，多个地方引用时，多么的明智。谁用谁知道！！！</p>
-<h4 id="6-BuildConfig字段"><a href="#6-BuildConfig字段" class="headerlink" title="6.BuildConfig字段"></a>6.BuildConfig字段</h4><p>BuildConfig.DEBUG，区别debug和release版本字段，可用来开关打印。虽不至于特别出奇，但也算很实用。还有其他,比如包名、版本号都可以直接用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">boolean</span> LOG_DEBUG = BuildConfig.DEBUG;</div></pre></td></tr></table></figure></p>
-<h4 id="7-神奇的与或运算"><a href="#7-神奇的与或运算" class="headerlink" title="7.神奇的与或运算"></a>7.神奇的与或运算</h4><p>在针对多个条件多个操作时，为了避免长篇累牍的switch/if-else,与或运算粉墨登场（ps:c代码写多的码友可以直接跳过）。如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *  控制3个按钮的显示隐藏，避免长篇大幅.如果有2个以上显示，对应的值相或，如：1|2|4</div><div class="line"> *	tv1:0x1</div><div class="line"> *	tv2:0x2</div><div class="line"> *	tv3:0x4</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">magicAndOrOperation</span><span class="params">(<span class="keyword">int</span> mask)</span> </span>&#123;</div><div class="line">  tv_1.setVisibility((mask &amp; <span class="number">0x1</span>) == <span class="number">0x1</span> ? View.VISIBLE : View.GONE);</div><div class="line">  tv_2.setVisibility((mask &amp; <span class="number">0x2</span>) == <span class="number">0x2</span> ? View.VISIBLE : View.GONE);</div><div class="line">  tv_3.setVisibility((mask &amp; <span class="number">0x4</span>) == <span class="number">0x4</span> ? View.VISIBLE : View.GONE);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="6-BuildConfig字段"><a href="#6-BuildConfig字段" class="headerlink" title="6.BuildConfig字段"></a>6.BuildConfig字段</h3><p>BuildConfig.DEBUG，区别debug和release版本字段，可用来开关打印。虽不至于特别出奇，但也算很实用。还有其他,比如包名、版本号都可以直接用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">boolean</span> LOG_DEBUG = BuildConfig.DEBUG;</div></pre></td></tr></table></figure></p>
+<h3 id="7-神奇的与或运算"><a href="#7-神奇的与或运算" class="headerlink" title="7.神奇的与或运算"></a>7.神奇的与或运算</h3><p>在针对多个条件多个操作时，为了避免长篇累牍的switch/if-else,与或运算粉墨登场（ps:c代码写多的码友可以直接跳过）。如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *  控制3个按钮的显示隐藏，避免长篇大幅.如果有2个以上显示，对应的值相或，如：1|2|4</div><div class="line"> *	tv1:0x1</div><div class="line"> *	tv2:0x2</div><div class="line"> *	tv3:0x4</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">magicAndOrOperation</span><span class="params">(<span class="keyword">int</span> mask)</span> </span>&#123;</div><div class="line">  tv_1.setVisibility((mask &amp; <span class="number">0x1</span>) == <span class="number">0x1</span> ? View.VISIBLE : View.GONE);</div><div class="line">  tv_2.setVisibility((mask &amp; <span class="number">0x2</span>) == <span class="number">0x2</span> ? View.VISIBLE : View.GONE);</div><div class="line">  tv_3.setVisibility((mask &amp; <span class="number">0x4</span>) == <span class="number">0x4</span> ? View.VISIBLE : View.GONE);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>实际调用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">case</span> OrderState.STATE_RETURN:</div><div class="line">    magicAndOrOperation(<span class="number">2</span>|<span class="number">4</span>);</div><div class="line">    <span class="comment">//下面是对应之前的写法，上面还有N多状态，对应不同的按钮显示、隐藏</span></div><div class="line">    <span class="comment">//tv_1.setVisibility(View.GONE);</span></div><div class="line">    <span class="comment">//tv_2.setVisibility(View.VISIBLE);</span></div><div class="line">    <span class="comment">//tv_3.setVisibility(View.VISIBLE);</span></div><div class="line">    <span class="keyword">break</span>;</div></pre></td></tr></table></figure></p>
 <p>上面孰优孰劣，一看便知。</p>
 <h3 id="待补充……"><a href="#待补充……" class="headerlink" title="待补充……"></a>待补充……</h3>
@@ -380,13 +380,23 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag">#android</a>
+          
+            <a href="/tags/小技巧/" rel="tag">#小技巧</a>
+          
+            <a href="/tags/编码/" rel="tag">#编码</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/15/android自定义dialog位置问题/" rel="next" title="android自定义dialog位置问题">
-                <i class="fa fa-chevron-left"></i> android自定义dialog位置问题
+              <a href="/2015/08/15/android自定义dialog位置问题/" rel="next" title="android自定义dialog显示问题">
+                <i class="fa fa-chevron-left"></i> android自定义dialog显示问题
               </a>
             
           </div>
@@ -409,25 +419,6 @@
 
 
     <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2016/04/16/Android编码实用小技巧整理/"
-     data-title="Android编码实用小技巧整理"
-     data-content=""
-     data-url="http://thearyong.com/2016/04/16/Android编码实用小技巧整理/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
       
     </div>
   </div>
@@ -499,7 +490,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -539,7 +530,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-比较字符串"><span class="nav-number">1.</span> <span class="nav-text">1. 比较字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-集合去重"><span class="nav-number">2.</span> <span class="nav-text">2. 集合去重</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-findViewById时的技巧："><span class="nav-number">3.</span> <span class="nav-text">3. findViewById时的技巧：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-实现类放空接口减少代码量"><span class="nav-number">4.</span> <span class="nav-text">4.实现类放空接口减少代码量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-字符串格式化"><span class="nav-number">5.</span> <span class="nav-text">5.字符串格式化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-BuildConfig字段"><span class="nav-number">6.</span> <span class="nav-text">6.BuildConfig字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-神奇的与或运算"><span class="nav-number">7.</span> <span class="nav-text">7.神奇的与或运算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待补充……"><span class="nav-number"></span> <span class="nav-text">待补充……</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-比较字符串"><span class="nav-number">1.</span> <span class="nav-text">1. 比较字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-集合去重"><span class="nav-number">2.</span> <span class="nav-text">2. 集合去重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-findViewById时的技巧："><span class="nav-number">3.</span> <span class="nav-text">3. findViewById时的技巧：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-实现类放空接口减少代码量"><span class="nav-number">4.</span> <span class="nav-text">4.实现类放空接口减少代码量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-字符串格式化"><span class="nav-number">5.</span> <span class="nav-text">5.字符串格式化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-BuildConfig字段"><span class="nav-number">6.</span> <span class="nav-text">6.BuildConfig字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-神奇的与或运算"><span class="nav-number">7.</span> <span class="nav-text">7.神奇的与或运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待补充……"><span class="nav-number">8.</span> <span class="nav-text">待补充……</span></a></li></ol></div>
             
           </div>
         </section>
