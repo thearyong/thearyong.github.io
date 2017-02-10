@@ -96,6 +96,7 @@
 <meta property="og:description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完，差点就真给跪了！！！">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-13-30-04-0010-0x1-2.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-14-11-14-0010-0x1-1.png!post">
+<meta property="og:image" content="http://img.thearyong.com/2016-10-28-00-13-04-0010-0x1-3.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-18-19-03-0010-0x2-1.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-15-36-25-0010-0x3-1.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-15-37-22-0010-0x3-2.png!post">
@@ -107,7 +108,7 @@
 <meta property="og:image" content="http://img.thearyong.com/2016-09-12-18-05-53-0100-0x1-2.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-12-18-54-03-0100-0x2-1.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-12-23-49-24-0100-0x4-1.png!post">
-<meta property="og:updated_time" content="2016-09-13T03:14:21.000Z">
+<meta property="og:updated_time" content="2016-12-06T07:20:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QQ6.5.0逆向笔记">
 <meta name="twitter:description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完，差点就真给跪了！！！">
@@ -355,7 +356,7 @@
 <li>说明：可显示中文的 apktool,Android Killer 默认反编译工具</li>
 <li>地址：<a href="https://github.com/rover12421/ShakaApktool" target="_blank" rel="external">https://github.com/rover12421/ShakaApktool</a></li>
 </ul>
-<p><strong>jadx</strong></p>
+<p><strong>jadx0.6.0</strong></p>
 <ul>
 <li>说明：比 jd_gui 更强大的一款逆向工具，直接打开apk，支持全局搜索</li>
 <li>地址：<a href="https://github.com/skylot/jadx" target="_blank" rel="external">https://github.com/skylot/jadx</a></li>
@@ -384,28 +385,26 @@
 <p><img src="http://img.thearyong.com/2016-09-08-13-30-04-0010-0x1-2.png!post" alt="0010-0x1-2"></p>
 <p><img src="http://img.thearyong.com/2016-09-08-14-11-14-0010-0x1-1.png!post" alt="0010-0x1-1"></p>
 <p>从上面可以大致了解到工程的结构、规模、第三方库等，可以发现几乎大部分都是腾讯自实现的库。这里主要用来开始了解下 Androidmenifast.xml。接下来操起 apktool 工具，开始反编译！</p>
+<p>注：android studio 2.2版本已经支持直接预览 apk 了，直接拖入窗口，查看 apk 结构、反编译代码和统计方法数等。</p>
+<p><img src="http://img.thearyong.com/2016-10-28-00-13-04-0010-0x1-3.png!post" alt="0010-0x1-3"></p>
 <h3 id="0x1-反编译"><a href="#0x1-反编译" class="headerlink" title="0x1 反编译"></a>0x1 反编译</h3><p>官网下载最新版 QQ6.5.0,当前目录执行反编译命令：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apktool d com.tencent.mobileqq_6.<span class="number">5.0</span>_390.apk</div></pre></td></tr></table></figure></p>
 <p>apktool报错：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">I: Using Apktool <span class="number">2.1</span>.<span class="number">1</span> on com.tencent.mobileqq_6.<span class="number">5.0</span>_390.apk</div><div class="line">I: Loading resource table...</div><div class="line">Exception <span class="keyword">in</span> thread <span class="string">"main"</span> brut.androlib.AndrolibException: Multiple res specs: attr/name</div><div class="line">	at brut.androlib.res.data.ResTypeSpec.addResSpec(ResTypeSpec.java:<span class="number">78</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.readEntry(ARSCDecoder.java:<span class="number">256</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.readTableType(ARSCDecoder.java:<span class="number">217</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.readTableTypeSpec(ARSCDecoder.java:<span class="number">153</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.readTablePackage(ARSCDecoder.java:<span class="number">115</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.readTableHeader(ARSCDecoder.java:<span class="number">77</span>)</div><div class="line">	at brut.androlib.res.decoder.ARSCDecoder.decode(ARSCDecoder.java:<span class="number">47</span>)</div><div class="line">	at brut.androlib.res.AndrolibResources.getResPackagesFromApk(AndrolibResources.java:<span class="number">555</span>)</div><div class="line">	at brut.androlib.res.AndrolibResources.loadMainPkg(AndrolibResources.java:<span class="number">72</span>)</div><div class="line">	at brut.androlib.res.AndrolibResources.getResTable(AndrolibResources.java:<span class="number">64</span>)</div><div class="line">	at brut.androlib.Androlib.getResTable(Androlib.java:<span class="number">64</span>)</div><div class="line">	at brut.androlib.ApkDecoder.setTargetSdkVersion(ApkDecoder.java:<span class="number">193</span>)</div><div class="line">	at brut.androlib.ApkDecoder.decode(ApkDecoder.java:<span class="number">102</span>)</div><div class="line">	at brut.apktool.Main.cmdDecode(Main.java:<span class="number">163</span>)</div><div class="line">	at brut.apktool.Main.main(Main.java:<span class="number">81</span>)</div></pre></td></tr></table></figure></p>
-<p>网上搜索，已经有很多解决方案。出现该错误的原因：</p>
-<ul>
-<li>所谓道高一尺，魔高一丈，攻防无处不在。为了提高反编译难度，他们也针对这apktool开源工具研究，搞点小破坏，恶心下人，这也可以把很大一部分人拒之门外，当初作者也在门前踌躇，被郁闷了很久！！</li>
-<li><p>具体原理：<br>再次引用抽抽大神文章里的一段话:</p>
-<blockquote>
-<p>Android系统在解析AXML的属性的时候，是通过该属性的res id号而非属性名定位的。所谓的AXML就是AndroidManifest.xml对应的二进制文件，APK包中存储的就是AXML。比如属性：</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">public</span> <span class="attr">type</span>=<span class="string">"attr"</span><span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">id</span>=<span class="string">"0x01010003"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>它的属性名为name，id号为0x01010003。<br>  所以fasten这个字符串可以随意改，关键还是ResID的值，TX加固对AndroidManifest.xml处理,是插入一下非法的属性ID  (在Android的attr里没有一个ID为0x01017FFF)，因为是非法的属性ID，Android是不会去解析，但ApkTool却会去解析，所以导致反编译出错了。</p>
-</blockquote>
-<p>  <a href="http://bbs.pediy.com/showthread.php?p=1353353" target="_blank" rel="external">原文参考戳这里。</a></p>
-</li>
-</ul>
-<p>除上面参考文章中提的方案，还有一种：fork一份apktool源码，找到抛异常的代码，修改源码绕过。当然已经有大神已经做了，而且一直在维护，我们再去班门弄斧，太献丑了。这里祭起ShakaApktool,使用方法跟apktool一样：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shakaapktool d -xn com.tencent.mobileqq_6.<span class="number">5.0</span>_390.apk</div></pre></td></tr></table></figure></p>
+<p>网上搜索，已经有很多解决方案。所谓道高一尺，魔高一丈，攻防无处不在。为了提高反编译难度，他们也针对这apktool开源工具研究，搞点小破坏，恶心下人，这也可以把很大一部分人拒之门外，当初作者也在门前踌躇，被郁闷了很久！！出现该错误的原因：</p>
+<pre><code>&gt;Android系统在解析AXML的属性的时候，是通过该属性的res id号而非属性名定位的。所谓的AXML就是AndroidManifest.xml对应的二进制文件，APK包中存储的就是AXML。比如属性：
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">public</span> <span class="attr">type</span>=<span class="string">"attr"</span><span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">id</span>=<span class="string">"0x01010003"</span>&gt;</span></div></pre></td></tr></table></figure>
+
+&gt;它的属性名为name，id号为0x01010003。
+所以fasten这个字符串可以随意改，关键还是ResID的值，TX加固对AndroidManifest.xml处理,是插入一下非法的属性ID  (在Android的attr里没有一个ID为0x01017FFF)，因为是非法的属性ID，Android是不会去解析，但ApkTool却会去解析，所以导致反编译出错了。
+
+[原文参考戳这里。](http://bbs.pediy.com/showthread.php?p=1353353)
+</code></pre><p>除上面参考文章中提的方案，还有一种：fork一份apktool源码，找到抛异常的代码，修改源码绕过。当然已经有大神已经做了，而且一直在维护，我们再去班门弄斧，太献丑了。这里祭起ShakaApktool,使用方法跟apktool一样：<br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shakaapktool d -xn com.tencent.mobileqq_6.<span class="number">5.0</span>_390.apk</div></pre></td></tr></table></figure></p>
 <p>beng shaka laka,反编译成功，感谢rover12421大神！(ps：上面-xn参数是因为资源混淆了，不修正的话，回编会找不到资源报错)</p>
 <h3 id="0x2-重打包"><a href="#0x2-重打包" class="headerlink" title="0x2 重打包"></a>0x2 重打包</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shakaapktool b com.tencent.mobileqq_6.<span class="number">5.0</span>_390</div></pre></td></tr></table></figure>
 <p>回编也成功了！但是重签名安装提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">thearyong:project$adb install -r /Users/thearyong/Desktop/study/project/com.tencent.mobileqq_6.5.0_390/dist/com.tencent.mobileqq_6.5.0_390_signed.apk</div><div class="line">[100%] /data/local/tmp/com.tencent.mobileqq_6.5.0_390_signed.apk</div><div class="line">	pkg: /data/local/tmp/com.tencent.mobileqq_6.5.0_390_signed.apk</div><div class="line">Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES]</div><div class="line">thearyong:project$d</div></pre></td></tr></table></figure></p>
 <p>注意是 <strong>证书校验失败，不是没签名</strong>！安装时遇到的几个相关错误，<a href="http://www.wjdiankong.cn/android%E7%AD%BE%E5%90%8D%E6%9C%BA%E5%88%B6%E4%B9%8B-%E7%AD%BE%E5%90%8D%E9%AA%8C%E8%AF%81%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3/" target="_blank" rel="external">可以参考这里</a></p>
 <p>回到上面证书问题，花了点时间，找到症结所在：</p>
 <ul>
-<li><p>在反编译后的 unknown 目录中，依然存在一个 META-INF 的目录。我们知道 apk 签名后，会对所有的文件生成摘要信息并签名，会生成3个文件存储在META-INF目录中。不过当前 unknown 目录中只有一个 MANIFEST.MF 文件，该文件保存的是 apk 中所有文件对应的摘要信息。同时反编译后再 original 下生成 META-INF 目录！<br><img src="http://img.thearyong.com/2016-09-08-18-19-03-0010-0x2-1.png!post" alt="0010-0x2-1"></p>
+<li><p>在反编译后的 unknown 目录中，依然存在一个 META-INF 的目录。我们知道 apk 签名后，会对所有的文件生成摘要信息并签名，会生成 3 个文件存储在 META-INF 目录中。不过当前 unknown 目录中只有一个 MANIFEST.MF 文件，该文件保存的是 apk 中所有文件对应的摘要信息。同时反编译后在 original 下生成 META-INF 目录！<br><img src="http://img.thearyong.com/2016-09-08-18-19-03-0010-0x2-1.png!post" alt="0010-0x2-1"></p>
 </li>
 <li><p>后面竟然发现是 shakaapktool 反编译遗留下来的，使用 apktool 不会有该文件生成！</p>
 </li>
@@ -453,13 +452,23 @@
 <h2 id="0011-修改"><a href="#0011-修改" class="headerlink" title="0011 修改"></a>0011 修改</h2><p>上面实现了反编译和重打包的流程，接下来修改下apk，比如修改apk名字、调试模式、包名。</p>
 <h3 id="0x1-修改-app-名字"><a href="#0x1-修改-app-名字" class="headerlink" title="0x1 修改 app 名字"></a>0x1 修改 app 名字</h3><p>修改名字很简单，根据 Androidmenifast.xml 中 pplication 标签下的 label 引用的 id ,修改 string.xml 下 id 对应的内容，如：QQ–&gt;QQPro。</p>
 <h3 id="0x2-修改调试模式"><a href="#0x2-修改调试模式" class="headerlink" title="0x2 修改调试模式"></a>0x2 修改调试模式</h3><p>直接修改AndroidMenifast.xml中，application标签下:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:debuggable="true"</div></pre></td></tr></table></figure></p>
-<h3 id="0x3-修改包名"><a href="#0x3-修改包名" class="headerlink" title="0x3 修改包名"></a>0x3 修改包名</h3><p>大多数网上资料都是用搜索工具全局替换包名，这样替换有木有心里发慌呀，我表示有过，改的地方太多，哪里能保证有木有漏掉。</p>
+<h3 id="0x3-修改包名"><a href="#0x3-修改包名" class="headerlink" title="0x3 修改包名"></a>0x3 修改包名</h3><p>大多数网上资料都是用搜索工具全局替换包名，这样替换有木有心里发慌呀，我表示有过，改的地方太多，哪里能保证搜有的步骤没有漏掉呢？</p>
 <p>心里嘀咕着：<strong>有没有办法少修改点东西？</strong></p>
-<p>这里联想到，adroid studio 的 gradle 多打包策略，它是如何实现同时修改多个包名的？<br>网上找到一篇<a href="http://gnaix92.github.io/2016/04/11/APK%E5%A4%9A%E5%BC%80%E5%8E%9F%E7%90%86" target="_blank" rel="external">分析案例</a>。按上面思路分析：</p>
+<p>这里可以联想到，adroid studio 的 gradle 多打包策略，它是如何实现同时修改多个包名的？<br>网上找到一篇<a href="http://gnaix92.github.io/2016/04/11/APK%E5%A4%9A%E5%BC%80%E5%8E%9F%E7%90%86" target="_blank" rel="external">分析案例</a>。<br>apk 的包名有2个含义比较容易混淆：</p>
+<ol>
+<li>应用商店和程序进程的唯一标示</li>
+<li>项目的包名或类名（java 文件的路径）<br><a href="https://developer.android.com/studio/build/application-id.html" target="_blank" rel="external">参考</a><br>我们要改的其实只是 1 ，而全局搜索替换的话，连 2 也一起改了。工作量大不说，很容易漏改，如”.”，jni 里是”/“等……</li>
+</ol>
+<p>按上面思路，还有很多不可预测的问题。这里来继续分析下，唯一标示关联到那些东西：</p>
 <ul>
 <li><p><strong>AndroidMenifast.xml</strong><br>  AndroidMenifast.xml中大多数写法都是直接声明:</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:name=".xxx.Activity"</div></pre></td></tr></table></figure>
-<p>  所以只要把.换成绝对类名就好了！其中provider的authorities,必须唯一，防止和原来的app冲突！所以也得改！</p>
+<p>  所以:</p>
+<ol>
+<li>只要把”<strong>.</strong>“换成绝对类名就好了！</li>
+<li>provider 标签的 authorities 必须唯一，防止和原来的app冲突！而且数据库的 URI 也是根据包名唯一标示来找的，所以也得随新包名改！</li>
+<li>provider 和 一些属性会涉及到自定义的permission，也需要改！</li>
+</ol>
 </li>
 <li><p><strong>smali</strong><br>  我们知道，代码里跳转页面时，大多是这么写：</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">it.setClass(context,Activity.class);</div></pre></td></tr></table></figure>
@@ -468,22 +477,26 @@
   <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">it.setClassName(<span class="string">"packagename"</span>,<span class="string">"xxx.yyy.Activity"</span>);</div></pre></td></tr></table></figure>
 <p>  或</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">it.setComponent(<span class="keyword">new</span> ComponentName(<span class="string">"packagename"</span>,<span class="string">"xxx.yyy.Activity"</span>));</div></pre></td></tr></table></figure>
-<p>  这种情况那就要注意修改smali了！</p>
+<p>  这种情况那就要注意修改对应的smali了！</p>
 </li>
-<li><p><strong>so</strong><br>  在 java 通过 jni 调用 so 接口时，一般是没有用到包名的，只是类名而已。<br>  所以 so 在类名木有变得情况下可以不修改！</p>
+<li><p><strong>so</strong><br>  在 java 通过 jni 调用 so 接口时，映射的是对应的 java 文件的类名。如：</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span> *classPathName = <span class="string">"com/utils/PermissionNative"</span>; <span class="comment">//此处类名视java层native类名而定</span></div></pre></td></tr></table></figure>
+<p>  所以 so 可以不修改！</p>
 </li>
 <li><p><strong>资源文件的命名空间</strong><br>  有部分自定义属性的命名空间写法包含包名的，如：</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://schemas.android.com/apk/res/com.tencent.mobileqq</div></pre></td></tr></table></figure>
-<p>  所以也得改！</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xmlns:app="http://schemas.android.com/apk/res/com.tencent.mobileqq"</div></pre></td></tr></table></figure>
+<p>  其实现在这种写法之前 eclipse 时期比较多，android studio 默认都会是：</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xmlns:app="http://schemas.android.com/apk/res-auto"</div></pre></td></tr></table></figure>
+<p>  所以还是得排查下，有的话也得改！</p>
 </li>
 </ul>
-<p>分析完注意事项后，稍微总结：</p>
+<p>分析完注意事项后，稍微理下：</p>
 <blockquote>
 <p>反编译后，一般情况下，如果要修改包名，只要修改androidfast.xml和layout.xml中的命名空间声明，dex层和so应该完全不用管！（上面特殊情况下除外！）</p>
 </blockquote>
-<p>按上面思路，试试：</p>
+<p>按上面思路，实操试试：</p>
 <ol>
-<li><p>搜索当前 AndroidMenifast.xml 文件，替换所有的“<strong>.</strong>”为“<strong>com.tencent.mobileqq.pro.</strong>”</p>
+<li><p>搜索当前 AndroidMenifast.xml 文件，替换所有的“<strong>.</strong>”为原包名“<strong>com.tencent.mobileqq.</strong>”</p>
 </li>
 <li><p>搜索资源文件夹，修改自定义属性的命名空间为<a href="http://schemas.android.com/apk/res-auto" target="_blank" rel="external">http://schemas.android.com/apk/res-auto</a></p>
 </li>
@@ -492,7 +505,7 @@
 <li><p>按上面重打包运行后，因为有个原版的 QQ，会发现 QQPro 权限错误。回到第3步，把所有自定义的 permission 重新定义，只要有 android:protectionLevel 的加个 pro 就好了。</p>
 </li>
 </ol>
-<p><strong>思路小结</strong><br>实验过该方案是可行的，但是也是麻烦不断，尤其是修改 provider、权限的时候。相对来说要少修改smali部分文件，但也不排除要修改。<br>ps:修改包名，有点鸡肋，而且容易出错！如果只为多开的话，推荐一款平行空间app,可以同一个app多开。当然篡改app上架的话,那就另当别论，互相伤害吧！！！总之，不建议修改包名！</p>
+<p><strong>方案小结</strong><br>实验过该方案是可行的，但是也是麻烦不断，尤其是修改 provider、权限的时候，相对来说要少修改很多东西。<br>ps:不建议修改包名，而且容易出错！如果只为多开的话，推荐一款平行空间app,可以同一个app同开2个。当然篡改app上架的话,那就另当别论，互相伤害吧！！！</p>
 <h3 id="0x4-修改-Smali"><a href="#0x4-修改-Smali" class="headerlink" title="0x4 修改 Smali"></a>0x4 修改 Smali</h3><p>添加个 Toast 标记下成功修改！</p>
 <ol>
 <li><p>新建 smali 文件放在包名目录下，这样其他地方引用时，可以省去 import 包：</p>
@@ -536,7 +549,9 @@
 </li>
 <li><p>怎么改？改成什么值呢？ 好捉急，要是有一份 arm 指令对应的二进制数值表，就完美了！但是真没找到，一些类似的倒是有。如<a href="http://rootkiter.com/2015/08/05/ARM%E6%8C%87%E4%BB%A4%E7%BB%93%E6%9E%84%E5%92%8Ccrack%E6%80%9D%E8%B7%AF.html" target="_blank" rel="external">ARM指令结构和crack思路</a>。然而上面说 <strong>0A</strong> 表示 <strong>BEQ</strong>，为何咱这里是 <strong>D0</strong>，风中彻底凌乱了。不过好在又找到篇文章<a href="http://www.voidcn.com/blog/earbao/article/p-6001706.html" target="_blank" rel="external">ARM中的常用指令</a>指点迷津:</p>
 <blockquote>
-<p>4.ARM的机器码简单讲解 ARM机器码为32位，我们以跳转指令BL和BEQ为例讲解。其实我们只需要关注最高的8位，也就是24-31位。首先来看，28-31这四位，不同条件这四位有什么不同。然后在27-24这四位里，BL和BEQ都是1010.所以BL指令的二进制是11101010，即十六进制的EA；相同BEQ的十六进制就是0A。<br>5.SO里面的情况 当我们把SO里的汇编语言放到工具中去转换为HEX时，会发现和IDA中的HEX有时是完全不同的，这是因为IDA中有时反编译SO使用的不是ARM，而是16位的ARM，也就是Thumb指令，但有时却是ARM的32位指令。<br>6.修改汇编跳转指令 这种情况一般是Thumb指令，一般而言一行代码对应是2个HEX码。 例子：bne指令修改为beq指令 通过工具，我们发现bne跳转指令对应的HEX机器码是D1，beq对应的HEX机器码是D0，然后用WINHEX修改，再用IDA检测。</p>
+<p>4.ARM的机器码简单讲解 ARM机器码为32位，我们以跳转指令BL和BEQ为例讲解。其实我们只需要关注最高的8位，也就是24-31位。首先来看，28-31这四位，不同条件这四位有什么不同。然后在27-24这四位里，BL和BEQ都是1010.所以BL指令的二进制是11101010，即十六进制的EA；相同BEQ的十六进制就是0A。</p>
+<p>5.SO里面的情况 当我们把SO里的汇编语言放到工具中去转换为HEX时，会发现和IDA中的HEX有时是完全不同的，这是因为IDA中有时反编译SO使用的不是ARM，而是16位的ARM，也就是Thumb指令，但有时却是ARM的32位指令。</p>
+<p>6.修改汇编跳转指令 这种情况一般是Thumb指令，一般而言一行代码对应是2个HEX码。 例子：bne指令修改为beq指令 通过工具，我们发现bne跳转指令对应的HEX机器码是D1，beq对应的HEX机器码是D0，然后用WINHEX修改，再用IDA检测。</p>
 </blockquote>
 <p> 简直雪中送炭啊，有木有！豁然开朗！</p>
 </li>
@@ -565,7 +580,7 @@
 </ol>
 <p>6.上面夜间主题没有完全适配，应该是资源链接有问题！这里不继续深究了~</p>
 <h2 id="0101-总结"><a href="#0101-总结" class="headerlink" title="0101 总结"></a>0101 总结</h2><p>第一次实践，很多问题一脸懵逼，好在有 google。前期，各种工具和道友分享的资料，指教，侥幸能过，与有荣焉！过程中，一个个完全没接触过的技术：<strong>资源混淆、脱壳、smali、arm 汇编指令、hook、动态调试、IDA pro…</strong> 涉及方方面面，深不见底！后期，上述的坑需要一个一个跳下去填！</p>
-<p>上面一套打下来，耗时很久，中间多少次想放弃，隔段时间，再看竟柳暗花明。找不到的点，又偶尔跳出来在你眼前勾引下，浪里个浪！想那盖伦怕谁，血厚冲塔也能七进七出！最后躺着黑白，看对面水晶塔爆碎，露出浅浅的一笑：“还有谁！”</p>
+<p>上面一套打下来，耗时很久，中间多少次想放弃，隔段时间，再看竟柳暗花明。找不到的点，又偶尔跳出来在你眼前勾引下，浪里个浪！想那盖伦怕谁，血厚冲塔也能七进七出！最后躺着黑白，看对面水晶塔被爆，露出浅浅的一笑：“还有谁！”</p>
 <h2 id="0110-TODO"><a href="#0110-TODO" class="headerlink" title="0110 TODO"></a>0110 TODO</h2><p>接下来，需要填的坑：</p>
 <ol>
 <li><strong>smali 语法熟悉</strong>（此案例 java 层修改的坑还未填）</li>
@@ -728,7 +743,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -787,7 +802,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="author" itemprop="copyrightHolder">thearyong</span>
   &nbsp;|&nbsp;<a class="theme-link" href="http://www.miitbeian.gov.cn/">
     粤ICP备16077052号
