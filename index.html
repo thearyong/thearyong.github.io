@@ -670,24 +670,15 @@
 
       
         
-          
-            <p>搭建博客配置域名时，添加 CNAME 记录到 thearyong.github.io，一直提示：</p>
+          <p>搭建博客配置域名时，添加 CNAME 记录到 thearyong.github.io，一直提示：</p>
 <blockquote>
-<p>与其他记录冲突，不能添加<br>仔细查看发现，是跟 MX 记录冲突。MX 记录是之前配置域名邮箱添加的，不能删除。<br>MX 与 CNAME 不能共存的原因，是因为：<br>CNAME会影响MX的值，进而影响您域名邮箱的邮件收发。所以各大提供商控制后台都做了限制</p>
+<p>与其他记录冲突，不能添加</p>
 </blockquote>
-<p>所以 MX 和 CNAME 的 @ 记录是不能共存的。</p>
-<p>那有没有其他办法？我只想要博客能正常访问，邮箱正常收发。</p>
-<p>首先想到的方案是，@ 改成 A 记录。但是这样有个问题，如果 thearyong.github.io 后面 ip 变化了，A 记录需要重新配置。</p>
-<p>后来发现github帮助中，有这样的描述：<br><img src="http://img.thearyong.com/2015-06-02-19-13-46-1.png" alt="0001"></p>
-<p>之前在 thearyong.github.io—&gt;settings 中配置的自定义域名是 thearyong.com，我们是不可以配置成 www.thearyong.com，<br>只要在域名解析配置 www 的即可。当输入 thearyong.com，github 帮我们重定向到 www.thearyong.com。</p>
-<p>验证：</p>
-<ol>
-<li>thearyong.github.io 配置 www.thearyong.com 域名</li>
-<li>域名解析后台 配置 CNAME www 记录 到 thearyong.github.io ，CNAME @ 记录不需要</li>
-</ol>
-<p>最后，完美解决了邮箱收发和博客域名解析问题。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/06/03/github-page域名配置CNAME和MX记录冲突问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
