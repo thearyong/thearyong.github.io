@@ -12,12 +12,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-<script language="JavaScript" type="text/javascript">
-
-if(window.location.host != "www.thearyong.com"){
-window.location.href = "http://www.thearyong.com" + window.location.pathname;
-}
-</script>
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -102,7 +96,7 @@ window.location.href = "http://www.thearyong.com" + window.location.pathname;
 <meta property="og:url" content="http://thearyong.com/2016/04/16/Android编码实用小技巧整理/index.html">
 <meta property="og:site_name" content="thearyong">
 <meta property="og:description" content="之前在知乎上看到个帖子，“你见过哪些令你瞠目结舌的 Android 代码技巧?”在此，整理、补充……">
-<meta property="og:updated_time" content="2017-02-13T08:23:37.000Z">
+<meta property="og:updated_time" content="2017-10-08T03:05:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android编码实用小技巧整理">
 <meta name="twitter:description" content="之前在知乎上看到个帖子，“你见过哪些令你瞠目结舌的 Android 代码技巧?”在此，整理、补充……">
@@ -359,10 +353,10 @@ window.location.href = "http://www.thearyong.com" + window.location.pathname;
 <p>上面孰优孰劣，一看便知。</p>
 <h3 id="BuildConfig字段"><a href="#BuildConfig字段" class="headerlink" title="BuildConfig字段"></a>BuildConfig字段</h3><p>在 ADT(r17)后，构建器增加了 BuildConfig。android studio 中的 gradle也自带功能。有什么呢？<br>BuildConfig.DEBUG，区别debug和release版本字段，可用来开关打印。虽然不至于特别出奇，但也算很实用。还支持自定义字段，比如区分线上线下环境的 api_url等，使用很简单：</p>
 <blockquote>
-<p>buildConfigField ‘String’,’HOST_URL’,’”<a href="http://thearyong.com/api/">http://thearyong.com/api/</a>“‘<br>或<br>buildConfigField(‘String’,’HOST_URL’,’”<a href="http://thearyong.com/api/">http://thearyong.com/api/</a>“‘)<br>第一个参数类型，第二个参数字段名，第三个参数字段值。<br>android studio 中 gradle build 是会在项目的 build/generated/source/自动生生成一个 BuildConfig.java 文件，里面其实就是定义的一些静态字段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">BuildConfig</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> DEBUG = Boolean.parseBoolean(<span class="string">"true"</span>);</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String BUILD_TYPE = <span class="string">"debug"</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String FLAVOR = <span class="string">""</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> VERSION_CODE = <span class="number">1</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String VERSION_NAME = <span class="string">"1.0"</span>;</div><div class="line">  <span class="comment">// Fields from default config.</span></div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String HOST_URL = <span class="string">"http://thearyong.com/api/"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>buildConfigField ‘String’,’HOST_URL’,’”<a href="http://thearyong.com/api/">http://thearyong.com/api/</a>“‘<br>第一个参数类型，第二个参数字段名，第三个参数字段值。<br>android studio 中 gradle build 是会在项目的 build/generated/source/自动生生成一个 BuildConfig.java 文件，里面其实就是定义的一些静态字段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">BuildConfig</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> DEBUG = Boolean.parseBoolean(<span class="string">"true"</span>);</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String BUILD_TYPE = <span class="string">"debug"</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String FLAVOR = <span class="string">""</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> VERSION_CODE = <span class="number">1</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String VERSION_NAME = <span class="string">"1.0"</span>;</div><div class="line">  <span class="comment">// Fields from default config.</span></div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String HOST_URL = <span class="string">"http://thearyong.com/api/"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">defaultConfig &#123;</div><div class="line">    buildConfigField <span class="string">'String'</span>,<span class="string">'HOST_URL'</span>,<span class="string">'"http://thearyong.com/api/"'</span></div><div class="line">&#125;</div><div class="line">buildTypes &#123;</div><div class="line">       release &#123;</div><div class="line">           buildConfigField <span class="string">'String'</span>,<span class="string">'HOST_URL'</span>,<span class="string">'"http://thearyong.com/api/"'</span></div><div class="line">       &#125;</div><div class="line">       debug &#123;</div><div class="line">           buildConfigField <span class="string">'String'</span>,<span class="string">'HOST_URL'</span>,<span class="string">'"http://192.168.1.110/api/"'</span></div><div class="line">       &#125;</div></pre></td></tr></table></figure>
-<p>第一次见到的时候，很震惊，省时省力！想懒一点的就偷偷用上。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">buildTypes &#123;</div><div class="line">       release &#123;</div><div class="line">           buildConfigField <span class="string">'String'</span>,<span class="string">'HOST_URL'</span>,<span class="string">'"http://thearyong.com/api/"'</span></div><div class="line">       &#125;</div><div class="line">       debug &#123;</div><div class="line">           buildConfigField <span class="string">'String'</span>,<span class="string">'HOST_URL'</span>,<span class="string">'"http://192.168.1.110/api/"'</span></div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<p>第一次发现时尝试，确实省时省力！想懒一点的就偷偷用上。</p>
 <h3 id="待补充……"><a href="#待补充……" class="headerlink" title="待补充……"></a>待补充……</h3>
       
     </div>
@@ -432,7 +426,7 @@ window.location.href = "http://www.thearyong.com" + window.location.pathname;
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/15/Android自定义dialog位置问题/" rel="prev" title="Android自定义dialog显示问题">
+              <a href="/2015/08/15/Android自定义dialog显示问题/" rel="prev" title="Android自定义dialog显示问题">
                 Android自定义dialog显示问题 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -519,7 +513,7 @@ window.location.href = "http://www.thearyong.com" + window.location.pathname;
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
