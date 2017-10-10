@@ -677,6 +677,7 @@
 </blockquote>
 <p>所以 MX 和 CNAME 的 @ 记录是不能共存的。</p>
 <p>那有没有其他办法？我只想要博客能正常访问，邮箱正常收发。</p>
+<p>首先想到的方案是，@ 改成 A 记录。但是这样有个问题，如果 thearyong.github.io 后面 ip 变化了，A 记录需要重新配置。</p>
 <p>后来发现github帮助中，有这样的描述：<br><img src="http://img.thearyong.com/2015-06-02-19-13-46-1.png" alt="0001"></p>
 <p>之前在 thearyong.github.io—&gt;settings 中配置的自定义域名是 thearyong.com，我们是不可以配置成 www.thearyong.com，<br>只要在域名解析配置 www 的即可。当输入 thearyong.com，github 帮我们重定向到 www.thearyong.com。</p>
 <p>验证：</p>

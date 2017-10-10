@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="thearyong">
 <meta property="og:description" content="搭建博客配置域名时，添加 CNAME 记录到 thearyong.github.io，一直提示：  与其他记录冲突，不能添加仔细查看发现，是跟 MX 记录冲突。MX 记录是之前配置域名邮箱添加的，不能删除。MX 与 CNAME 不能共存的原因，是因为：CNAME会影响MX的值，进而影响您域名邮箱的邮件收发。所以各大提供商控制后台都做了限制  所以 MX 和 CNAME 的 @ 记录是不能共存的。">
 <meta property="og:image" content="http://img.thearyong.com/2015-06-02-19-13-46-1.png">
-<meta property="og:updated_time" content="2017-10-10T11:29:17.000Z">
+<meta property="og:updated_time" content="2017-10-10T11:36:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github-page域名配置CNAME和MX记录冲突问题">
 <meta name="twitter:description" content="搭建博客配置域名时，添加 CNAME 记录到 thearyong.github.io，一直提示：  与其他记录冲突，不能添加仔细查看发现，是跟 MX 记录冲突。MX 记录是之前配置域名邮箱添加的，不能删除。MX 与 CNAME 不能共存的原因，是因为：CNAME会影响MX的值，进而影响您域名邮箱的邮件收发。所以各大提供商控制后台都做了限制  所以 MX 和 CNAME 的 @ 记录是不能共存的。">
@@ -338,6 +338,7 @@
 </blockquote>
 <p>所以 MX 和 CNAME 的 @ 记录是不能共存的。</p>
 <p>那有没有其他办法？我只想要博客能正常访问，邮箱正常收发。</p>
+<p>首先想到的方案是，@ 改成 A 记录。但是这样有个问题，如果 thearyong.github.io 后面 ip 变化了，A 记录需要重新配置。</p>
 <p>后来发现github帮助中，有这样的描述：<br><img src="http://img.thearyong.com/2015-06-02-19-13-46-1.png" alt="0001"></p>
 <p>之前在 thearyong.github.io—&gt;settings 中配置的自定义域名是 thearyong.com，我们是不可以配置成 www.thearyong.com，<br>只要在域名解析配置 www 的即可。当输入 thearyong.com，github 帮我们重定向到 www.thearyong.com。</p>
 <p>验证：</p>
