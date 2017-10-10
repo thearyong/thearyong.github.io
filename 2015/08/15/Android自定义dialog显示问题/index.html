@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://img.thearyong.com/2016-09-18-01-08-38-0x2-3.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-18-01-11-36-0x3-1.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-18-01-15-35-0x3-2.png!post">
-<meta property="og:updated_time" content="2017-10-10T09:31:59.000Z">
+<meta property="og:updated_time" content="2017-10-10T10:49:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android自定义dialog显示问题">
 <meta name="twitter:description" content="0x0 前言之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。">
@@ -362,7 +362,7 @@
 <p>在 android 源码中，Window是一个抽象类，其中包含了一个 WindowManager 引用，上面 activity 中的 mWindowManager 就是该引用。</p>
 <p>回到上面的 WindowManager，该类是一个继承 ViewManager 的接口，具体实现于 WindowManagerImpl。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ViewManager</span></span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addView</span><span class="params">(View view, ViewGroup.LayoutParams params)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateViewLayout</span><span class="params">(View view, ViewGroup.LayoutParams params)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeView</span><span class="params">(View view)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>看到上面3个方法，有没有一种似曾相识的感觉？<br>嗯，没感觉错，在外面实现悬浮窗效果的时候，显示、更新位置，调用的就是这3个方法。</p>
+<p>看到上面3个方法，有没有一种似曾相识的感觉？<br>嗯，没感觉错，在我们实现悬浮窗效果的时候，显示、更新位置，调用的就是这3个方法。</p>
 <p>WindowManager 中，有定义很多常量：</p>
 <ul>
 <li>TYPE_BASE_APPLICATION = 1</li>
@@ -469,8 +469,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/02/为何写博客/" rel="prev" title="为何写博客">
-                为何写博客 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/06/03/github-page域名配置CNAME和MX记录冲突问题/" rel="prev" title="github-page域名配置CNAME和MX记录冲突问题">
+                github-page域名配置CNAME和MX记录冲突问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -546,7 +546,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -556,7 +556,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
