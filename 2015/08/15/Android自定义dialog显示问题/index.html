@@ -87,20 +87,21 @@
 
 
 
-<meta name="description" content="0x0 前言之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。">
+<meta name="description" content="之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。">
 <meta name="keywords" content="android,自定义dialog,Window,WindowManager">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android自定义dialog显示问题">
 <meta property="og:url" content="http://www.thearyong.com/2015/08/15/Android自定义dialog显示问题/index.html">
 <meta property="og:site_name" content="thearyong">
-<meta property="og:description" content="0x0 前言之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。">
+<meta property="og:description" content="之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-18-01-08-38-0x2-3.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-18-01-11-36-0x3-1.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-18-01-15-35-0x3-2.png!post">
-<meta property="og:updated_time" content="2017-10-10T10:49:21.000Z">
+<meta property="og:image" content="http://img.thearyong.com/2017-10-17-22-31-14-3.png!post">
+<meta property="og:updated_time" content="2017-10-17T14:53:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android自定义dialog显示问题">
-<meta name="twitter:description" content="0x0 前言之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。">
+<meta name="twitter:description" content="之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。">
 <meta name="twitter:image" content="http://img.thearyong.com/2016-09-18-01-08-38-0x2-3.png!post">
 
 
@@ -366,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,537
+                  1,900
                 </span>
               
 
@@ -391,12 +392,17 @@
       
 
       
-        <h2 id="0x0-前言"><a href="#0x0-前言" class="headerlink" title="0x0 前言"></a>0x0 前言</h2><p>之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。<br><a id="more"></a></p>
-<h2 id="0x1-案例"><a href="#0x1-案例" class="headerlink" title="0x1 案例"></a>0x1 案例</h2><h3 id="0001-需求"><a href="#0001-需求" class="headerlink" title="0001 需求"></a>0001 需求</h3><p><strong>长按控件，弹出选择菜单。</strong></p>
+        <p>之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。<br><a id="more"></a></p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><ol>
+<li>弹窗显示位置不对问题</li>
+<li>了解 Window</li>
+</ol>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>先从一个案例开始吧。</p>
+<h3 id="0001-需求"><a href="#0001-需求" class="headerlink" title="0001 需求"></a>0001 需求</h3><p><strong>长按控件，弹出选择菜单。</strong></p>
 <h3 id="0010-实现"><a href="#0010-实现" class="headerlink" title="0010 实现"></a>0010 实现</h3><p>实现长按弹出框类似效果，首先想到的是用 ContextMenu 来实现，但是不够灵活，界面上和 app 不够协调。然后想到的是 Popwindow 和 Dialog ，最后选择 dialog 是因为它自带黑色半透明阴影效果。</p>
 <p><strong>显示代码：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(List&lt;String&gt; items, <span class="keyword">final</span> PopDialogListener listener)</span> </span>&#123;</div><div class="line">    LinearLayout linearLayout = <span class="keyword">new</span> LinearLayout(getContext());</div><div class="line">    linearLayout.setOrientation(LinearLayout.VERTICAL);</div><div class="line">    FrameLayout.LayoutParams layoutParams=<span class="keyword">new</span> FrameLayout.LayoutParams(-<span class="number">1</span>,-<span class="number">2</span>);</div><div class="line">    layoutParams.gravity = Gravity.Bottom | Gravity.CENTER_HORIZONTAL;    linearLayout.setLayoutParams(layoutParams); setContentView(linearLayout);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; items.size(); i++) &#123;</div><div class="line">        View itemView = LayoutInflater.from(getContext()).inflate(R.layout.pop_view, <span class="keyword">null</span>);</div><div class="line">        linearLayout.addView(itemView, <span class="keyword">new</span> LinearLayout.LayoutParams(-<span class="number">1</span>, -<span class="number">2</span>));</div><div class="line">        TextView tvInfo = (TextView) itemView.findViewById(R.id.tv_info);</div><div class="line">        tvInfo.setText(items.get(i));</div><div class="line">        <span class="keyword">final</span> <span class="keyword">int</span> pos = i;</div><div class="line">        itemView.setClickable(<span class="keyword">true</span>);</div><div class="line">        itemView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                dismiss();</div><div class="line">                <span class="keyword">if</span> (listener != <span class="keyword">null</span>)</div><div class="line">                    listener.onItemClick(pos);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">if</span> (i == <span class="number">0</span>)&#123;<span class="comment">//特殊处理第一行，兼容标题（是否可点击、文字样式）</span></div><div class="line">            <span class="keyword">if</span>(firstItemTextColor != -<span class="number">1</span>)</div><div class="line">                tvInfo.setTextColor(firstItemTextColor);</div><div class="line">            <span class="keyword">if</span>(firstItemTextSize &gt; <span class="number">0</span>)</div><div class="line">                tvInfo.setTextSize(firstItemTextSize);</div><div class="line">            <span class="keyword">if</span>(!firstItemClickAble)</div><div class="line">                itemView.setClickable(<span class="keyword">false</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    setCancelable(<span class="keyword">true</span>);</div><div class="line">    setCanceledOnTouchOutside(<span class="keyword">true</span>);</div><div class="line">    show();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="0011-运行结果"><a href="#0011-运行结果" class="headerlink" title="0011 运行结果"></a>0011 运行结果</h3><p><img src="http://img.thearyong.com/2016-09-18-01-08-38-0x2-3.png!post" alt="0x2-3"></p>
-<h3 id="0100-分析"><a href="#0100-分析" class="headerlink" title="0100 分析"></a>0100 分析</h3><p><strong>疑问：上面红色部分代码在setContentView时已经设置了填充屏幕宽和居下显示，为什么不起作用？</strong></p>
+<h3 id="0100-提出问题"><a href="#0100-提出问题" class="headerlink" title="0100 提出问题"></a>0100 提出问题</h3><p><strong>疑问：上面红色部分代码在setContentView时已经设置了填充屏幕宽和居下显示，为什么不起作用？</strong></p>
 <p>打开Andriod Device Monitor,如下图：</p>
 <p><img src="http://img.thearyong.com/2016-09-18-01-11-36-0x3-1.png!post" alt="0x3-1"></p>
 <p>之前一直认为是在 activity 的根布局上盖了一层，共用一个 window。结果当然大相庭径，发现 Dialog 布局是独立于 activity 所在的 window。所以多翻翻源码才是实际，所谓大胆假设，小心求证，正式如此！<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Dialog(Context context, <span class="keyword">int</span> theme, <span class="keyword">boolean</span> createContextThemeWrapper) &#123;</div><div class="line">        <span class="keyword">if</span> (createContextThemeWrapper) &#123;</div><div class="line">            <span class="keyword">if</span> (theme == <span class="number">0</span>) &#123;</div><div class="line">                TypedValue outValue = <span class="keyword">new</span> TypedValue();</div><div class="line"> context.getTheme().resolveAttribute(com.android.internal.R.attr.dialogTheme,outValue, <span class="keyword">true</span>);</div><div class="line">                theme = outValue.resourceId;</div><div class="line">            &#125;</div><div class="line">            mContext = <span class="keyword">new</span> ContextThemeWrapper(context, theme);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            mContext = context;</div><div class="line">        &#125;</div><div class="line">        mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">        Window w = PolicyManager.makeNewWindow(mContext);</div><div class="line">        mWindow = w;</div><div class="line">        w.setCallback(<span class="keyword">this</span>);</div><div class="line">        w.setOnWindowDismissedCallback(<span class="keyword">this</span>);</div><div class="line">        w.setWindowManager(mWindowManager, <span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">        w.setGravity(Gravity.CENTER);</div><div class="line">        mListenersHandler = <span class="keyword">new</span> ListenersHandler(<span class="keyword">this</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
@@ -435,27 +441,38 @@
 <li>子窗口<br> 需要依赖其他窗口，比如 PopWindow</li>
 <li>系统窗口<br> toast、系统弹窗等，部分需要权限，更多相关信息，可以参考网上实现悬浮球</li>
 </ol>
-<p>大致了解后，继续看如何创建 WindowManager：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWindowManager</span><span class="params">(WindowManager wm, IBinder appToken, String appName,</span></span></div><div class="line">            <span class="keyword">boolean</span> hardwareAccelerated) &#123;</div><div class="line">        mAppToken = appToken;</div><div class="line">        mAppName = appName;</div><div class="line">        mHardwareAccelerated = hardwareAccelerated</div><div class="line">                || SystemProperties.getBoolean(PROPERTY_HARDWARE_UI, <span class="keyword">false</span>);</div><div class="line">        <span class="keyword">if</span> (wm == <span class="keyword">null</span>) &#123;</div><div class="line">            wm = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">        &#125;</div><div class="line">        mWindowManager = ((WindowManagerImpl)wm).createLocalWindowManager(<span class="keyword">this</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>通过 mContext.getSystemService 获取设备屏幕的 wm 窗口，然后重新创建 mWindowManager 引用。</p>
-<p>这里可能会有疑问，<strong>为什么要重新创建，wm 和 mWindowManager 有什么区别么？</strong><br>关于这个问题，目前我也不是特别明确，看到 WindowManagerImpl 描述：</p>
+<p>大致了解后，继续看如何创建 Window 的。</p>
+<p>跟踪 Activity 源码 attach 时，初始化 window:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">mWindow = <span class="keyword">new</span> PhoneWindow(<span class="keyword">this</span>, window, activityConfigCallback);</div><div class="line">...</div><div class="line">mWindow.setWindowManager(</div><div class="line">       (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),</div><div class="line">       mToken, mComponent.flattenToString(),</div><div class="line">       (info.flags &amp; ActivityInfo.FLAG_HARDWARE_ACCELERATED) != <span class="number">0</span>);</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>PhoneWindow 是 Window 的子类，并且设置 WindowManager。<br>这里可以得出，<strong>每个 Activity 都有对应的一个 window</strong>。</p>
+<p>接下来继续跟进 PhoneWindow，可以看到 DecorView：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// This is the top-level view of the window, containing the window decor.</span></div><div class="line">    <span class="keyword">private</span> DecorView mDecor;</div></pre></td></tr></table></figure></p>
+<p>DecorView 就是我们平时经常在 activity 中 getWindow().getDecorView()的实例，它是继承 FrameLayout 的顶级视图。它包含 contentView、actionBar、statusBar 等视图。所以可以得出如下结构：<br><img src="http://img.thearyong.com/2017-10-17-22-31-14-3.png!post" alt="0x3-3"></p>
+<p>从上图中，我们回答之前的疑问，<strong>Activity 至少有4层以上的布局</strong>。</p>
+<p>接下来继续跟进 Activity 中 attach 调用 Window 的setWindowManager 方法：<br>Manager：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWindowManager</span><span class="params">(WindowManager wm, IBinder appToken, String appName,</span></span></div><div class="line">            <span class="keyword">boolean</span> hardwareAccelerated) &#123;</div><div class="line">        mAppToken = appToken;</div><div class="line">        mAppName = appName;</div><div class="line">        mHardwareAccelerated = hardwareAccelerated</div><div class="line">                || SystemProperties.getBoolean(PROPERTY_HARDWARE_UI, <span class="keyword">false</span>);</div><div class="line">        <span class="keyword">if</span> (wm == <span class="keyword">null</span>) &#123;</div><div class="line">            wm = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">        &#125;</div><div class="line">        mWindowManager = ((WindowManagerImpl)wm).createLocalWindowManager(<span class="keyword">this</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>通过 mContext.getSystemService 获取设备 wm ，然后重新创建 mWindowManager 引用。我们知道所有的窗口管理都是由一个 WindowManagerService，简称 WMS。最终的添加删除都在此类进行，它在开机启动时，就已经 SystemServer 中注册运行。所以 wm 是一个全局的引用。</p>
+<p>接下来继续看 createLocalWindowManager：</p>
+<p>这里可能会有疑问，<strong>不是已经得到了 wm 么？为什么要重新创建，wm 和 mWindowManager 有什么区别么？</strong><br>关于这个问题，目前我也不是特别明确，看到 WindowManagerImpl 描述：</p>
 <blockquote>
 <p>Provides low-level communication with the system window manager for<br>operations that are bound to a particular context, display or parent window.<br>Instances of this object are sensitive to the compatibility info associated<br>with the running application.</p>
 <p>Applications will not normally use WindowManager directly, instead relying<br>on the higher-level facilities in {@link android.app.Activity} and<br>{@link android.app.Dialog}.</p>
 </blockquote>
 <p>WindowManager 通常不会直接使用，实例是非常敏感的。要是用同一个引用，如果后台有多个程序，会不会影响到其他程序呢，所以才重新创建。<br>这仅是个人的理解，猜测，如有不正，欢迎斧正。</p>
+<p>WindowManagerImpl 是WindowManager的实现类，包含一个 WindowManagerGlobal 单例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> WindowManagerGlobal mGlobal = WindowManagerGlobal.getInstance();</div></pre></td></tr></table></figure></p>
+<p>window 的 add,remove,update 都是调用 mGlobal 的实现。因此最后我们可知：</p>
+<blockquote>
+<p><strong>一个应用中，每个 Activity 都对应一个 window， 每个的 window 都有一个 WindowManagerImpl 实例，但其最终指向同一个 WindowManagerGlobal 单例。</strong></p>
+</blockquote>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
 <li>理解 dialog 和 activity 的区别，布局上、实现上的不同。</li>
 <li>明白为什么 dialog 要在 activity onDestory() 之前 dismiss，防止内存泄露。</li>
 <li>清楚 window 、WindowManager、Activity 之间的关系。</li>
-<li>知道 Activity 至少有多少层布局</li>
-<li>延伸场景应用：<ul>
-<li>悬浮球</li>
-<li>子线程、全局弹窗</li>
-<li>应用内 loading、数据为空展示页<br>…</li>
-</ul>
-</li>
+<li>知道 Activity 至少有多少层布局。</li>
 </ol>
-
+<h2 id="脑洞"><a href="#脑洞" class="headerlink" title="脑洞"></a>脑洞</h2><p>延伸思考下还有哪些应用场景：</p>
+<pre><code>- 悬浮球
+- 子线程、service 全局弹窗
+- 应用内 loading、数据为空展示页
+...
+</code></pre>
       
     </div>
     
@@ -538,8 +555,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/02/为何写博客/" rel="prev" title="为何写博客">
-                为何写博客 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/06/05/方寸套路/" rel="prev" title="方寸套路">
+                方寸套路 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -626,7 +643,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -688,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x0-前言"><span class="nav-number">1.</span> <span class="nav-text">0x0 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x1-案例"><span class="nav-number">2.</span> <span class="nav-text">0x1 案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0001-需求"><span class="nav-number">2.1.</span> <span class="nav-text">0001 需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0010-实现"><span class="nav-number">2.2.</span> <span class="nav-text">0010 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0011-运行结果"><span class="nav-number">2.3.</span> <span class="nav-text">0011 运行结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0100-分析"><span class="nav-number">2.4.</span> <span class="nav-text">0100 分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0101-解决方法"><span class="nav-number">2.5.</span> <span class="nav-text">0101 解决方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#探索-window"><span class="nav-number">3.</span> <span class="nav-text">探索 window</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#window、WindowManager、Activity-关系"><span class="nav-number">3.1.</span> <span class="nav-text">window、WindowManager、Activity 关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0001-需求"><span class="nav-number">2.1.</span> <span class="nav-text">0001 需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0010-实现"><span class="nav-number">2.2.</span> <span class="nav-text">0010 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0011-运行结果"><span class="nav-number">2.3.</span> <span class="nav-text">0011 运行结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0100-提出问题"><span class="nav-number">2.4.</span> <span class="nav-text">0100 提出问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0101-解决方法"><span class="nav-number">2.5.</span> <span class="nav-text">0101 解决方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#探索-window"><span class="nav-number">3.</span> <span class="nav-text">探索 window</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#window、WindowManager、Activity-关系"><span class="nav-number">3.1.</span> <span class="nav-text">window、WindowManager、Activity 关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脑洞"><span class="nav-number">5.</span> <span class="nav-text">脑洞</span></a></li></ol></div>
             
 
           </div>
@@ -1000,8 +1017,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
-
 
 </body>
 </html>

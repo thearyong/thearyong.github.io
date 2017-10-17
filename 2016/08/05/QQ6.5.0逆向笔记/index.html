@@ -87,13 +87,13 @@
 
 
 
-<meta name="description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完，差点就真给跪了！！！">
+<meta name="description" content="刚开始学习逆向，挑了个不好捏的对象，以 QQ 为目标，最后还是成功绕过了重打包检测。">
 <meta name="keywords" content="反编译,逆向,QQ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QQ6.5.0逆向笔记">
 <meta property="og:url" content="http://www.thearyong.com/2016/08/05/QQ6.5.0逆向笔记/index.html">
 <meta property="og:site_name" content="thearyong">
-<meta property="og:description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完，差点就真给跪了！！！">
+<meta property="og:description" content="刚开始学习逆向，挑了个不好捏的对象，以 QQ 为目标，最后还是成功绕过了重打包检测。">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-13-30-04-0010-0x1-2.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-08-14-11-14-0010-0x1-1.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-10-28-00-13-04-0010-0x1-3.png!post">
@@ -108,10 +108,10 @@
 <meta property="og:image" content="http://img.thearyong.com/2016-09-12-18-05-53-0100-0x1-2.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-12-18-54-03-0100-0x2-1.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-12-23-49-24-0100-0x4-1.png!post">
-<meta property="og:updated_time" content="2017-02-13T08:22:16.000Z">
+<meta property="og:updated_time" content="2017-10-17T13:49:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QQ6.5.0逆向笔记">
-<meta name="twitter:description" content="刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完，差点就真给跪了！！！">
+<meta name="twitter:description" content="刚开始学习逆向，挑了个不好捏的对象，以 QQ 为目标，最后还是成功绕过了重打包检测。">
 <meta name="twitter:image" content="http://img.thearyong.com/2016-09-08-13-30-04-0010-0x1-2.png!post">
 
 
@@ -377,7 +377,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,240
+                  5,191
                 </span>
               
 
@@ -402,7 +402,7 @@
       
 
       
-        <p>刚开始学习逆向，就挑了个不好捏的对象，欲哭无泪。但没招，自己选的跪着也要舔完，差点就真给跪了！！！</p>
+        <p>刚开始学习逆向，挑了个不好捏的对象，以 QQ 为目标，最后还是成功绕过了重打包检测。</p>
 <a id="more"></a>
 <h2 id="0001-准备"><a href="#0001-准备" class="headerlink" title="0001 准备"></a>0001 准备</h2><h3 id="0x1-设备"><a href="#0x1-设备" class="headerlink" title="0x1 设备"></a>0x1 设备</h3><ul>
 <li>Nexus 6</li>
@@ -601,9 +601,9 @@
 </li>
 <li><p>F5 键查看伪代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ( v29 )</div><div class="line">&#123;</div><div class="line"> CCodecWarpper::ParsePhSigCheck(v12, v11, v19);</div><div class="line"> <span class="keyword">if</span> ( v19 )</div><div class="line">   (*(<span class="keyword">void</span> (__fastcall **)(CSSOData *))(*(_DWORD *)v19 + <span class="number">4</span>))(v19);</div><div class="line"> <span class="built_in">std</span>::<span class="built_in">string</span>::erase((CCodecWarpper *)((<span class="keyword">char</span> *)v12 + <span class="number">8</span>), <span class="number">0</span>, dest);</div><div class="line"> v2 = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">LABEL_77:</div><div class="line"> <span class="keyword">if</span> ( gIsDebug )</div><div class="line"> &#123;</div><div class="line">   v7 = <span class="built_in">std</span>::<span class="built_in">string</span>::c_str((CSSOData *)((<span class="keyword">char</span> *)v19 + <span class="number">44</span>));</div><div class="line">   v8 = <span class="built_in">std</span>::<span class="built_in">string</span>::c_str((CSSOData *)((<span class="keyword">char</span> *)v19 + <span class="number">120</span>));</div><div class="line">   _android_log_print(<span class="number">4</span>, <span class="string">"libboot"</span>, <span class="string">"uin = %s, cmd = %s, recvSize = %d"</span>, v7, v8, dest);</div><div class="line"> &#125;</div><div class="line"> v9 = CCodecWarpper::getParseSuccReturnCode(v12, v17);</div><div class="line"> CCodecWarpper::ParseOtherResp(v12, v11, v9, v19, dest);</div><div class="line"> <span class="keyword">if</span> ( v19 )</div><div class="line">   (*(<span class="keyword">void</span> (__fastcall **)(_DWORD))(*(_DWORD *)v19 + <span class="number">4</span>))(v19);</div><div class="line"> <span class="built_in">std</span>::<span class="built_in">string</span>::erase((CCodecWarpper *)((<span class="keyword">char</span> *)v12 + <span class="number">8</span>), <span class="number">0</span>, dest);</div><div class="line"> v2 = <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p> v29应该就是前面的 BEQ，把它改成 BNE。</p>
 </li>
 </ol>
+<p>v29应该就是前面的 BEQ，把它改成 BNE。</p>
 <h3 id="0x3-010-Editor-修改-so"><a href="#0x3-010-Editor-修改-so" class="headerlink" title="0x3 010 Editor 修改 so"></a>0x3 010 Editor 修改 so</h3><ol>
 <li><p>返回 IDA View 视图，光标定位到 BEQ 这行，点击 Hex View 视图，可以看到对应的二进制数据为 <strong>21 DO</strong>，对应的内存地址为 <strong>0001B43A</strong>。</p>
 </li>
@@ -638,12 +638,11 @@
 <li><p>对比了下2种修改方式，逻辑都是一样可行方案。应该是我哪里有个坑踩错了，到现在还没有找到这坑！没招，先晾段时间，在实操一遍，可能就不攻自破！</p>
 </li>
 </ol>
-<p>6.上面夜间主题没有完全适配，应该是资源链接有问题！这里不继续深究了~</p>
 <h2 id="0101-总结"><a href="#0101-总结" class="headerlink" title="0101 总结"></a>0101 总结</h2><p>第一次实践，很多问题一脸懵逼，好在有 google。前期，各种工具和道友分享的资料，指教，侥幸能过，与有荣焉！过程中，一个个完全没接触过的技术：<strong>资源混淆、脱壳、smali、arm 汇编指令、hook、动态调试、IDA pro…</strong> 涉及方方面面，深不见底！后期，上述的坑需要一个一个跳下去填！</p>
 <p>上面一套打下来，耗时很久，中间多少次想放弃，隔段时间，再看竟柳暗花明。找不到的点，又偶尔跳出来在你眼前勾引下，浪里个浪！想那盖伦怕谁，血厚冲塔也能七进七出！最后躺着黑白，看对面水晶塔被爆，露出浅浅的一笑：“还有谁！”</p>
 <h2 id="0110-TODO"><a href="#0110-TODO" class="headerlink" title="0110 TODO"></a>0110 TODO</h2><p>接下来，需要填的坑：</p>
 <ol>
-<li><strong>smali 语法熟悉</strong>（此案例 java 层修改的坑还未填）</li>
+<li><strong>smali 语法熟悉</strong></li>
 <li><strong>IDA Pro 熟悉</strong></li>
 <li><strong>arm 汇编指令</strong></li>
 <li><strong>动态调试</strong></li>
@@ -721,6 +720,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/27/android应用自动化测试/" rel="next" title="android应用自动化测试">
+                <i class="fa fa-chevron-left"></i> android应用自动化测试
+              </a>
             
           </div>
 
@@ -816,7 +819,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1190,8 +1193,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.3"></script>
-
 
 </body>
 </html>
