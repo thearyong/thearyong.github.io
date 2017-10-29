@@ -96,7 +96,7 @@
 <meta property="og:description" content="第一次真正了解测试，是在学校被人安利看的《人月神话》，讲真，现在还没真正看完~ 不过还依稀记得作者对项目开发提出的一个时间安排：   1/3 计划 1/6 编码 1/4 构件测试和早期的系统测试 1/4 系统测试，所有的构件已完成   测试在软件工程的重要地位，超过编码。这后来工作后，慢慢深有体会、认同。二者虽隔衣带水，但市场上职责还是很明确，绝大部分测试的只会测试，编码的只会编码。现实也的确如此">
 <meta property="og:image" content="https://developer.android.com/studio/images/test/project-window-tests_2-2_2x.png?hl=zh-cn">
 <meta property="og:image" content="http://img.thearyong.com/2016-10-31-15-29-38-0011-0x1-1.png!post">
-<meta property="og:updated_time" content="2017-10-17T15:54:12.000Z">
+<meta property="og:updated_time" content="2017-10-29T13:48:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android应用自动化测试">
 <meta name="twitter:description" content="第一次真正了解测试，是在学校被人安利看的《人月神话》，讲真，现在还没真正看完~ 不过还依稀记得作者对项目开发提出的一个时间安排：   1/3 计划 1/6 编码 1/4 构件测试和早期的系统测试 1/4 系统测试，所有的构件已完成   测试在软件工程的重要地位，超过编码。这后来工作后，慢慢深有体会、认同。二者虽隔衣带水，但市场上职责还是很明确，绝大部分测试的只会测试，编码的只会编码。现实也的确如此">
@@ -322,6 +322,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -474,7 +496,8 @@
 </ul>
 <h4 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h4><p>接下来，参考 demo 写一个启动手机 QQ 加好友的栗子。<br>因为测试的第三方 app，需要使用 uiautomator。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RunWith</span>(AndroidJUnit4.class)</div><div class="line"><span class="meta">@SdkSuppress</span>(minSdkVersion = <span class="number">18</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimulateQQClickTest</span> <span class="keyword">extends</span> <span class="title">BaseTest</span> </span>&#123;</div><div class="line">    String PACKAGE ;</div><div class="line">    <span class="keyword">long</span> launch_time = <span class="number">5000</span>;</div><div class="line"></div><div class="line">    UiDevice mDevice;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getLauncherPackageName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// Create launcher Intent</span></div><div class="line">        <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_MAIN);</div><div class="line">        intent.addCategory(Intent.CATEGORY_HOME);</div><div class="line"></div><div class="line">        <span class="comment">// Use PackageManager to get the launcher package name</span></div><div class="line">        PackageManager pm = InstrumentationRegistry.getContext().getPackageManager();</div><div class="line">        ResolveInfo resolveInfo = pm.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);</div><div class="line">        <span class="keyword">return</span> resolveInfo.activityInfo.packageName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startMainActivityFromHomeScreen</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// Initialize UiDevice instance</span></div><div class="line">        mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());</div><div class="line"></div><div class="line">        <span class="comment">// Start from the home screen</span></div><div class="line">        mDevice.pressHome();</div><div class="line"></div><div class="line">        <span class="comment">// Wait for launcher</span></div><div class="line">        <span class="keyword">final</span> String launcherPackage = getLauncherPackageName();</div><div class="line">        assertThat(launcherPackage, notNullValue());</div><div class="line">        mDevice.wait(Until.hasObject(By.pkg(launcherPackage).depth(<span class="number">0</span>)), launch_time);</div><div class="line"></div><div class="line">        <span class="comment">// Launch the blueprint app</span></div><div class="line">        Context context = InstrumentationRegistry.getContext();</div><div class="line">        <span class="keyword">final</span> Intent intent = context.getPackageManager()</div><div class="line">                .getLaunchIntentForPackage(PACKAGE);</div><div class="line">        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);    <span class="comment">// Clear out any previous instances</span></div><div class="line">        context.startActivity(intent);</div><div class="line"></div><div class="line">        <span class="comment">// Wait for the app to appear</span></div><div class="line">        mDevice.wait(Until.hasObject(By.pkg(PACKAGE).depth(<span class="number">0</span>)), launch_time);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Before</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span></span>&#123;</div><div class="line">        PACKAGE = <span class="string">"com.tencent.mobileqq"</span>;</div><div class="line">        startMainActivityFromHomeScreen();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clickSearch</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        String qq = <span class="string">"113449183"</span>;</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().description(<span class="string">"快捷入口"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"加好友"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"QQ号/手机号/邮箱/群/公众号"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"QQ号/手机号/邮箱/群/公众号"</span>)).setText(qq);</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"找人:"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().textContains(<span class="string">"("</span> + qq + <span class="string">")"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().textContains(<span class="string">"加好友"</span>)).click();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>主要后面 before() 和 clickSearch() 方法，都有注解。见名知意，@before 在 @Test 前执行，初始化目标 PACKAGE，然后启动对应的 app；@Test 里为真正的模拟人操作步骤。</p>
+<p>主要后面 before() 和 clickSearch() 方法，都有注解。见名知意，@before 在 @Test 前执行，初始化目标 PACKAGE，然后启动对应的 app；@Test 里为真正的模拟操作步骤。</p>
+<p>UI</p>
 
       
     </div>
@@ -642,12 +665,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -655,7 +687,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

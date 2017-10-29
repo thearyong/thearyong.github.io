@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://www.thearyong.com/2016/04/16/Android编码实用小技巧整理/index.html">
 <meta property="og:site_name" content="thearyong">
 <meta property="og:description" content="之前在知乎上看到个帖子，“你见过哪些令你瞠目结舌的 Android 代码技巧?”在此，整理、补充……">
-<meta property="og:updated_time" content="2017-10-12T17:07:47.000Z">
+<meta property="og:updated_time" content="2017-10-29T13:46:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android编码实用小技巧整理">
 <meta name="twitter:description" content="之前在知乎上看到个帖子，“你见过哪些令你瞠目结舌的 Android 代码技巧?”在此，整理、补充……">
@@ -319,6 +319,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -408,7 +430,7 @@
 <h3 id="神奇的与或运算"><a href="#神奇的与或运算" class="headerlink" title="神奇的与或运算"></a>神奇的与或运算</h3><p>在针对多个条件多个操作时，为了避免长篇累牍的switch/if-else,与或运算粉墨登场（ps:c代码写多的码友可以直接跳过）。如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *  控制3个按钮的显示隐藏，避免长篇大幅.如果有2个以上显示，对应的值相或，如：1|2|4</div><div class="line"> *	tv1:0x1</div><div class="line"> *	tv2:0x2</div><div class="line"> *	tv3:0x4</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">magicAndOrOperation</span><span class="params">(<span class="keyword">int</span> mask)</span> </span>&#123;</div><div class="line">  tv_1.setVisibility((mask &amp; <span class="number">0x1</span>) == <span class="number">0x1</span> ? View.VISIBLE : View.GONE);</div><div class="line">  tv_2.setVisibility((mask &amp; <span class="number">0x2</span>) == <span class="number">0x2</span> ? View.VISIBLE : View.GONE);</div><div class="line">  tv_3.setVisibility((mask &amp; <span class="number">0x4</span>) == <span class="number">0x4</span> ? View.VISIBLE : View.GONE);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>实际调用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">case</span> OrderState.STATE_RETURN:</div><div class="line">    magicAndOrOperation(<span class="number">2</span>|<span class="number">4</span>);</div><div class="line">    <span class="comment">//下面是对应之前的写法，上面还有N多状态，对应不同的按钮显示、隐藏</span></div><div class="line">    <span class="comment">//tv_1.setVisibility(View.GONE);</span></div><div class="line">    <span class="comment">//tv_2.setVisibility(View.VISIBLE);</span></div><div class="line">    <span class="comment">//tv_3.setVisibility(View.VISIBLE);</span></div><div class="line">    <span class="keyword">break</span>;</div></pre></td></tr></table></figure></p>
 <p>上面孰优孰劣，一看便知。</p>
-<h3 id="BuildConfig字段"><a href="#BuildConfig字段" class="headerlink" title="BuildConfig字段"></a>BuildConfig字段</h3><p>在 ADT(r17)后，构建器增加了 BuildConfig。android studio 中的 gradle也自带功能。有什么呢？<br>BuildConfig.DEBUG，区别debug和release版本字段，可用来开关打印。虽然不至于特别出奇，但也算很实用。还支持自定义字段，比如区分线上线下环境的 api_url等，使用很简单：</p>
+<h3 id="BuildConfig字段"><a href="#BuildConfig字段" class="headerlink" title="BuildConfig字段"></a>BuildConfig字段</h3><p>在 ADT(r17)后，构建器增加了 BuildConfig，android studio 中的 gradle也自带此功能。其中BuildConfig.DEBUG，区别 debug 和 release 版本字段，可用来开关打印。虽然不至于特别出奇，但也算很实用。还支持自定义字段，比如区分线上线下环境的 api_url 等，使用很简单：</p>
 <blockquote>
 <p>buildConfigField ‘String’,’HOST_URL’,’”<a href="http://thearyong.com/api/" target="_blank" rel="external">http://thearyong.com/api/</a>“‘<br>第一个参数类型，第二个参数字段名，第三个参数字段值。<br>android studio 中 gradle build 是会在项目的 build/generated/source/自动生生成一个 BuildConfig.java 文件，里面其实就是定义的一些静态字段：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">BuildConfig</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> DEBUG = Boolean.parseBoolean(<span class="string">"true"</span>);</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String BUILD_TYPE = <span class="string">"debug"</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String FLAVOR = <span class="string">""</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> VERSION_CODE = <span class="number">1</span>;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String VERSION_NAME = <span class="string">"1.0"</span>;</div><div class="line">  <span class="comment">// Fields from default config.</span></div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String HOST_URL = <span class="string">"http://thearyong.com/api/"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
@@ -495,8 +517,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/15/Android自定义dialog显示问题/" rel="prev" title="Android自定义dialog显示问题">
-                Android自定义dialog显示问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/10/21/git常用命令问题记录/" rel="prev" title="Git常用命令问题记录">
+                Git常用命令问题记录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -583,12 +605,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -596,7 +627,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

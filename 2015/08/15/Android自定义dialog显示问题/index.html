@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://img.thearyong.com/2016-09-18-01-11-36-0x3-1.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2016-09-18-01-15-35-0x3-2.png!post">
 <meta property="og:image" content="http://img.thearyong.com/2017-10-17-22-31-14-3.png!post">
-<meta property="og:updated_time" content="2017-10-17T14:53:45.000Z">
+<meta property="og:updated_time" content="2017-10-29T13:46:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android自定义dialog显示问题">
 <meta name="twitter:description" content="之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。">
@@ -324,6 +324,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -446,7 +468,7 @@
 <p>PhoneWindow 是 Window 的子类，并且设置 WindowManager。<br>这里可以得出，<strong>每个 Activity 都有对应的一个 window</strong>。</p>
 <p>接下来继续跟进 PhoneWindow，可以看到 DecorView：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// This is the top-level view of the window, containing the window decor.</span></div><div class="line">    <span class="keyword">private</span> DecorView mDecor;</div></pre></td></tr></table></figure></p>
 <p>DecorView 就是我们平时经常在 activity 中 getWindow().getDecorView()的实例，它是继承 FrameLayout 的顶级视图。它包含 contentView、actionBar、statusBar 等视图。所以可以得出如下结构：<br><img src="http://img.thearyong.com/2017-10-17-22-31-14-3.png!post" alt="0x3-3"></p>
-<p>从上图中，我们回答之前的疑问，<strong>Activity 至少有4层以上的布局</strong>。</p>
+<p>从上图中，我们回答之前的疑问，<strong>Activity 至少有3层以上的布局</strong>。</p>
 <p>接下来继续跟进 Activity 中 attach 调用 Window 的setWindowManager 方法：<br>Manager：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWindowManager</span><span class="params">(WindowManager wm, IBinder appToken, String appName,</span></span></div><div class="line">            <span class="keyword">boolean</span> hardwareAccelerated) &#123;</div><div class="line">        mAppToken = appToken;</div><div class="line">        mAppName = appName;</div><div class="line">        mHardwareAccelerated = hardwareAccelerated</div><div class="line">                || SystemProperties.getBoolean(PROPERTY_HARDWARE_UI, <span class="keyword">false</span>);</div><div class="line">        <span class="keyword">if</span> (wm == <span class="keyword">null</span>) &#123;</div><div class="line">            wm = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);</div><div class="line">        &#125;</div><div class="line">        mWindowManager = ((WindowManagerImpl)wm).createLocalWindowManager(<span class="keyword">this</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 <p>通过 mContext.getSystemService 获取设备 wm ，然后重新创建 mWindowManager 引用。我们知道所有的窗口管理都是由一个 WindowManagerService，简称 WMS。最终的添加删除都在此类进行，它在开机启动时，就已经 SystemServer 中注册运行。所以 wm 是一个全局的引用。</p>
 <p>接下来继续看 createLocalWindowManager：</p>
@@ -545,8 +567,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/16/Android编码实用小技巧整理/" rel="next" title="Android编码实用小技巧整理">
-                <i class="fa fa-chevron-left"></i> Android编码实用小技巧整理
+              <a href="/2015/10/21/git常用命令问题记录/" rel="next" title="Git常用命令问题记录">
+                <i class="fa fa-chevron-left"></i> Git常用命令问题记录
               </a>
             
           </div>
@@ -555,7 +577,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/05/方寸套路/" rel="prev" title="方寸套路">
+              <a href="/2015/01/05/方寸套路/" rel="prev" title="方寸套路">
                 方寸套路 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -643,12 +665,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -656,7 +687,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
