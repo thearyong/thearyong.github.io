@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.thearyong.com/2015/03/17/adb%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2017-11-18T02:27:39.000Z</lastmod>
+    <lastmod>2017-11-18T03:41:07.000Z</lastmod>
     <data>
         <display>
         <title>adb常用命令学习记录</title>
@@ -15,6 +15,35 @@
          
          
            
+             
+              <breadCrumb title="android" url="http://www.thearyong.com/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.thearyong.com/2015/08/15/Android%E8%87%AA%E5%AE%9A%E4%B9%89dialog%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2017-11-18T02:57:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android自定义dialog显示问题</title>
+        <pubTime>2015-08-15T11:30:08.000Z</pubTime>
+        
+        <tag>android</tag>
+         
+        <tag>自定义dialog</tag>
+         
+        <tag>Window</tag>
+         
+        <tag>WindowManager</tag>
+         
+         
+           
+             
+              <breadCrumb title="android" url="http://www.thearyong.com/categories/android/"/>
+          
         </display>
     </data>
     </url>
@@ -120,9 +149,9 @@
         <title>QQ6.5.0逆向笔记</title>
         <pubTime>2016-08-05T12:12:24.000Z</pubTime>
         
-        <tag>反编译</tag>
-         
         <tag>逆向</tag>
+         
+        <tag>反编译</tag>
          
         <tag>QQ</tag>
          
@@ -149,32 +178,6 @@
         <tag>小技巧</tag>
          
         <tag>编码</tag>
-         
-         
-           
-             
-              <breadCrumb title="android" url="http://www.thearyong.com/categories/android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.thearyong.com/2015/08/15/Android%E8%87%AA%E5%AE%9A%E4%B9%89dialog%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2017-10-29T13:46:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android自定义dialog显示问题</title>
-        <pubTime>2015-08-15T11:30:08.000Z</pubTime>
-        
-        <tag>android</tag>
-         
-        <tag>自定义dialog</tag>
-         
-        <tag>Window</tag>
-         
-        <tag>WindowManager</tag>
          
          
            
