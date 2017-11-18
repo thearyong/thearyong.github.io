@@ -2,6 +2,7 @@
 title: "Android自定义dialog显示问题"
 date: 2015-08-15 19:30:08
 tags: [android,自定义dialog,Window,WindowManager]
+categories: android
 ---
 
 之前项目中，自定义 dialog 时，不管怎么调整布局边距等属性，都没有效果。今天就以简单的弹窗显示问题，来继续深入了解 Window 实现原理与应用。

@@ -37,13 +37,13 @@ rss:
 footer:
   # Specify the date when the site was setup.
   # If not defined, current year will be used.
-  #since: 2015
+  since: 2015
 
   # Icon between year and copyright info.
-  icon: user
+  #icon: user
 
   # If not defined, will be used `author` from Hexo main config.
-  copyright:
+  copyright: thearyong        |        粤ICP备16077052号
   # -------------------------------------------------------------
   # Hexo link (Powered by Hexo).
   powered: true
@@ -523,7 +523,7 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: true
+  enable: false
   app_id: 4n5E0a9Hjha1FBCiLdHnJ6Ap-gzGzoHsz #<app_id>
   app_key: lc6kA9kjySm3fjFYAN4GP9by #<app_key>
 
@@ -531,19 +531,19 @@ leancloud_visitors:
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
 busuanzi_count:
   # count values only if the other configs are false
-  enable: false
+  enable: true
   # custom uv span for the whole site
   site_uv: true
-  site_uv_header: <i class="fa fa-user"></i>
+  site_uv_header: <i class="fa fa-user"></i> 访问人数
   site_uv_footer:
   # custom pv span for the whole site
   site_pv: true
-  site_pv_header: <i class="fa fa-eye"></i>
+  site_pv_header: <i class="fa fa-eye"></i> 总访问量
   site_pv_footer:
   # custom pv span for one page only
   page_pv: true
-  page_pv_header: <i class="fa fa-file-o"></i>
-  page_pv_footer:
+  page_pv_header: <i class="fa fa-file-o"></i> 阅读
+  page_pv_footer: 次
 
 
 # Tencent analytics ID

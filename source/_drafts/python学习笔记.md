@@ -2,6 +2,7 @@
 title: python学习笔记
 date: 2016-09-22 21:09:34
 tags: [python]
+categories: python
 ---
 ## python 入门基础
 ### 环境搭建
