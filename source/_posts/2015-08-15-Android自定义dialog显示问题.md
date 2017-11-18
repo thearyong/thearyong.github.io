@@ -95,7 +95,7 @@ Dialog(Context context, int theme, boolean createContextThemeWrapper) {
 
 >注：这里引用的 mContext 为当前 activity 的引用，突然想到经常遇到的一个问题：当 Dialog 显示的时候，finish 掉 activity 会出现的内存泄漏打印，因为还被 dialog 引用着。
 
-在调用show()时，才真正把Dialog添加到window中：
+在调用 show() 时，才真正把Dialog添加到window中：
 ```java
 public void show() {
         if (mShowing) {
@@ -192,7 +192,7 @@ WindowManager 中，有定义很多常量：
 - TYPE_PHONE = FIRST_SYSTEM_WINDOW +2
 - TYPE_TOAST = FIRST_SYSTEM_WINDOW +5
 - TYPE_SYSTEM_DIALOG = FIRST_SYSTEM_WINDOW + 8
-...
+  ...
 
 由于篇幅，不全部列出来。大致可以分为3类：
 1. 普通窗口
@@ -263,7 +263,7 @@ public void setWindowManager(WindowManager wm, IBinder appToken, String appName,
 WindowManager 通常不会直接使用，实例是非常敏感的。要是用同一个引用，如果后台有多个程序，会不会影响到其他程序呢，所以才重新创建。
 这仅是个人的理解，猜测，如有不正，欢迎斧正。
 
-WindowManagerImpl 是WindowManager的实现类，包含一个 WindowManagerGlobal 单例：
+WindowManagerImpl 是 WindowManager 的实现类，包含一个 WindowManagerGlobal 单例：
 ``` java
 private final WindowManagerGlobal mGlobal = WindowManagerGlobal.getInstance();
 ```
