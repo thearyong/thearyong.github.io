@@ -17,3 +17,13 @@ tags: [android,签名,校验]
 ## 如何校验
 
 ## 防篡改
+
+
+
+[管理应用签名密钥](
+https://support.google.com/googleplay/android-developer/answer/7384423)
+
+
+
+
+

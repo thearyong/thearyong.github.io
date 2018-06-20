@@ -1,20 +1,63 @@
 ---
-title: gradle深入理解
+title: gradle学习笔记
 date: 2017-02-24 14:41:42
 tags: [android studio,gradle,module依赖]
 ---
-自 android studio 推出，引入new build system --- gradle,是 android 开发者的新利器。虽然目前互联网上相关资料不胜其数，但是门槛还是不低，能熟练使用的少数。本文学习总结 gradle 一些常用的应用场景，水平有限，如有不正，欢迎大家拍砖斧正！
+自 android studio 推出，引入一个开发者利器--- gradle。虽然目前互联网上相关资料不胜其数，但是门槛还是不低，能熟练使用的少数。本文学习总结 gradle 一些基本的用法和常用的应用场景，水平有限，如有不正，欢迎大家拍砖斧正！
 <!-- more -->
 
-## 依赖远程开源库
+## gradle 是什么
+
+
+
+
+
+
+
+## gradle 能干什么
+
+
+
+
+
+## gradle 构建流程
+上面讲了那么多废话，其实最主要的是对 gradle 的结构，有个初步了解。真正需要理解的是： gradle 的构建流程。
+
+## gradle 自动化
+
+## gradle 插件
+在开发中，我们经常会用到别人开源库，会发现经常有一些要在根目录的 build.gradle 文件中引入他们对应的 gradle 插件。会不会很好奇，怎么来自己开发一个 gradle 插件。
+
+
+
+##　gradle 多渠道打包
+
+
+
+
+
+
+
+## gradle 上传开源库
+
+
+
+### 
+
+
+## 扩展
+### 多个工程同时依赖远程开源库
+
 在项目中使用 github 上的一些开源库，这些库可能没有打包上传 gradle 中央仓库，以致不能直接在 gradle 中引用。我们首先想到的可能是先下载 zip 或 clone 本地，然后  import module。这种方式繁琐不说，依赖库一旦有更新、修复，咱们又要重复操作一遍。
 
 那有没有其他办法，直接依赖远程库，并且可以提交合并更新等操作？
 
 答案肯定是有的.
 
-### 1. 调整项目结构
+#### 1. 调整项目结构
+
 普遍情况下，我们使用 android studio 都指定一个 workspace，然后在此目录里面新建 project，或 git clone [remote poroject]，结构如下：
+
 ```shell
 workspace
 ├── localA
@@ -27,10 +70,12 @@ workspace
 └────── setting.gradle
 
 ```
+
 假设localA 和 localB 都依赖 remote1/lib，按上面的 import 方式后，localA 和 localB里都有一个副本，且和remote1没有关联。
 
 setting.gradle 中 include 使用 “:” 来表示“/”，且相对于 project 的根路径，如：
-``` gradle
+
+```gradle
 include ':lib',':app',':ext:other'
 
 ```
@@ -42,6 +87,7 @@ include ':lib',':app',':ext:other'
 这样的话，要是把 workspace 当做一个 project，其他 project 降到 module，是不就解决这问题了？
 
 需要的仅仅是修改 setting.gradle 而已！上面的结构调整后如下：
+
 ```shell
 workspace
 ├── localA
@@ -55,25 +101,18 @@ workspace
 └── setting.gradle
 
 ```
+
 以后新建项目，只要在 workspace 下新建 module ；依赖远程库时，当前目录下 git clone，再修改 workspace下的 setting.grale。
 
 当然需要注意：如果 workspace module 过多，第一次打开 android studio 需要一点时间。不过要完美的体验，换 mac 吧，16G + ssd 无压力，打开一次，几乎不再退出，就是这么不闹心！
 
-### 2. git submodule
+#### 2. git submodule
+
 android 源码就是多个子模块单独维护，使用 repo 脚本工具统一管理。老罗有一篇分析 repo 的文章，[戳这里](#Android源代码仓库及其管理工具Repo分析)。 repo 其实就是对 git 做了一层封装，管理子模块依赖关系的还是 [git submodule](#gitsubmodule完全使用教程)。
 
 这里列出 git submodule，是对上面解决思路的补充，可以很方便更新、提交或修改等操作远程库！
 
 有关 git submodule 使用，请参考上面的链接。
-
-## gradle 构建流程
-上面讲了那么多废话，其实最主要的是理解 gradle 的构建流程。
-
-## gradle 自动化
-
-## gradle 插件
-在开发中，我们经常会用到别人开源库，会发现经常有一些要在根目录的 build.gradle 文件中引入他们对应的 gradle 插件。会不会很好奇，怎么来自己开发一个 gradle 插件。
-### TODO
 
 
 ## 参考阅读
