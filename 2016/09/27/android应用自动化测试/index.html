@@ -96,7 +96,7 @@
 <meta property="og:description" content="第一次真正了解测试，是在学校被人安利看的《人月神话》，讲真，现在还没真正看完~ 不过还依稀记得作者对项目开发提出的一个时间安排：   1/3 计划 1/6 编码 1/4 构件测试和早期的系统测试 1/4 系统测试，所有的构件已完成   测试在软件工程的重要地位，超过编码。这后来工作后，慢慢深有体会、认同。二者虽隔衣带水，但市场上职责还是很明确，绝大部分测试的只会测试，编码的只会编码。现实也的确如此">
 <meta property="og:image" content="https://developer.android.com/studio/images/test/project-window-tests_2-2_2x.png?hl=zh-cn">
 <meta property="og:image" content="http://img.thearyong.com/2016-10-31-15-29-38-0011-0x1-1.png!post">
-<meta property="og:updated_time" content="2017-10-29T13:48:16.000Z">
+<meta property="og:updated_time" content="2017-12-02T07:50:50.890Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android应用自动化测试">
 <meta name="twitter:description" content="第一次真正了解测试，是在学校被人安利看的《人月神话》，讲真，现在还没真正看完~ 不过还依稀记得作者对项目开发提出的一个时间安排：   1/3 计划 1/6 编码 1/4 构件测试和早期的系统测试 1/4 系统测试，所有的构件已完成   测试在软件工程的重要地位，超过编码。这后来工作后，慢慢深有体会、认同。二者虽隔衣带水，但市场上职责还是很明确，绝大部分测试的只会测试，编码的只会编码。现实也的确如此">
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,054
+                  2,042
                 </span>
               
 
@@ -417,8 +417,9 @@
 </blockquote>
 <p>测试在软件工程的重要地位，超过编码。这后来工作后，慢慢深有体会、认同。二者虽隔衣带水，但市场上职责还是很明确，绝大部分测试的只会测试，编码的只会编码。现实也的确如此，真正敲代码的时间占极少部分，其他都在解决 bug。码界最让人羞愧的就是被人说：在干嘛，这么晚是不是又在加班写 bug ？<br>为了尽量避免这种无地自容，多了解点点自测技巧，防范于未然嘛。</p>
 <p>言归正传，这篇文章主要了解android应用自动化测试。<br><a id="more"></a></p>
-<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>学习android应用自动化，了解市面上的自动化方案。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="0001-案例"><a href="#0001-案例" class="headerlink" title="0001 案例"></a>0001 案例</h3><p>最近微信自动抢红包不是很火么？<br>经过搜索，首先了解到目前主要有2种实现方案：</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在写自动化测试之前，先说明下问题背景。最近微信自动抢红包很火，它是怎么实现的？</p>
+<p>##　分析</p>
+<h3 id="0x1-调研"><a href="#0x1-调研" class="headerlink" title="0x1 调研"></a>0x1 调研</h3><p>抱着问题，经过搜索，首先了解到目前主要有2种实现方案：</p>
 <ol>
 <li>系统辅助服务Accessibility Service，但是安装后需要用户手动开启该功能，当然也可以做个引导跳转，很多机型跳转描述不一，对大部分用户来说，不一定会开启，这是个麻烦事！</li>
 <li>xposed ，hook 微信 api 实现。这个需要手机 root，而且要先逆向微信，找到 hook 入口，难度很高！当然我不会告诉你，已经有很多现成的红包插件可以下载（这个不在本文讨论范围）</li>
@@ -430,9 +431,16 @@
 <li>模拟触发事件，包含点击、赋值、滑动等</li>
 </ul>
 <p>模拟点击，其实还可以用 Android 提供的 api 来实现，如 应用内模拟某个 view 的点击可以用 MotionEvent，应用外可用 Instrumentation 或 InputManager 模拟键盘鼠标事件，但是后两者需要添加权限：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INJECT_EVENTS"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
-<p>这个权限需要是系统应用，限制太大。那有木有其他办法？<br>看到这里，肯定能联想本文主题—<strong>自动化测试</strong>。想象下，我们能不能用自动化测试来代替呢？<br>之前也没写过测试用例，一般生成 apk 丢给线上第三方平台。这些平台既然都可以做到，自动测试最多的就是模拟点击、模拟输入等，这些属性，理论上完全符合，是可行的。</p>
-<p><strong>工欲善其事必先利其器</strong>，在动手前，先了解下有哪些主流测试工具。</p>
-<h3 id="0010-测试框架"><a href="#0010-测试框架" class="headerlink" title="0010 测试框架"></a>0010 测试框架</h3><ol>
+<p>这个权限需要是系统应用，限制太大。那有木有其他办法？</p>
+<p>看到这里，肯定能联想本文主题—<strong>自动化测试</strong>。想象下，我们能不能用自动化测试来代替呢？</p>
+<p>之前也没写过测试用例，一般生成 apk 丢给线上第三方平台。这些平台既然都可以做到，自动测试最多的就是模拟点击、模拟输入等，这些属性，理论上完全符合，是可行的。</p>
+<p>那接下来需要解决的问题：</p>
+<ol>
+<li>开发一个辅助工具 apk，支持对第三方应用模拟点击</li>
+<li>需要监听全局视图变化，识别关键字，自动模拟点击、输入等</li>
+</ol>
+<p><strong>工欲善其事必先利其器</strong>，在动手前，先了解下有木有哪些现成的测试工具。</p>
+<h3 id="0x2-测试框架"><a href="#0x2-测试框架" class="headerlink" title="0x2 测试框架"></a>0x2 测试框架</h3><ol>
 <li><a href="https://developer.android.com/studio/test/monkeyrunner/index.html" target="_blank" rel="external">monkeyrunner</a>：提供一个API来控制Android设备。可以写一个Python脚本来安装应用，运行应用，发送键值，截图。</li>
 <li><a href="https://github.com/robotiumtech/robotium" target="_blank" rel="external">robotium</a>：一个扩展于JUnit的开源库，运用多种有用的方法来支持Android UI测试。</li>
 <li><a href="https://google.github.io/android-testing-support-library/docs/uiautomator/" target="_blank" rel="external">UiAutomator</a>：基于Android 4.X+系统，专业UI自动化测试，可以模拟用户对手机的各种行为。编写快速、可以使用大部分的Android API、无需签名，无任何Activity限制，跨应用测试；来自 google。</li>
@@ -452,22 +460,17 @@
 <li><a href="https://github.com/googlesamples/android-testing" target="_blank" rel="external">Android testing samples</a></li>
 </ul>
 <p>了解完上面的一些主流测试框架，我们来开始动手实践。</p>
-<h2 id="Do-it"><a href="#Do-it" class="headerlink" title="Do it"></a>Do it</h2><h3 id="0x0-需求"><a href="#0x0-需求" class="headerlink" title="0x0 需求"></a>0x0 需求</h3><p>抢红包可以分解罗列下需求：</p>
-<ol>
-<li>开发一个辅助工具 apk，支持对第三方应用测试</li>
-<li>需要监听全局视图变化，识别红包，自动模拟点击、输入等（回复感谢）</li>
-</ol>
-<p>综上所述，UiAutomator 和 Appium 可选，最后决定使用 <strong>AndroidJUnitRunner + UiAutomator + Espresso</strong>，android 官方也有相关结合使用的栗子和详细文档，毕竟官方推荐使用嘛。</p>
-<p>为了得心应手，开始之前，从 google demo 了解下 Test 的目录结构和执行流程，参考上面[#android studio test]</p>
-<h3 id="0x1-test-目录结构"><a href="#0x1-test-目录结构" class="headerlink" title="0x1 test 目录结构"></a>0x1 test 目录结构</h3><p>在 android studio 创建项目时，默认会在 moudle/scr 下生成 androidTest 和 test 目录，我们编写的测试用例文件就在这目录下：</p>
+<h2 id="Do-it"><a href="#Do-it" class="headerlink" title="Do it"></a>Do it</h2><p>结合需求，最后决定使用 <strong>AndroidJUnitRunner + UiAutomator + Espresso</strong>，android 官方也有相关结合使用的栗子和详细文档，毕竟官方推荐嘛。</p>
+<p>先从 google demo 了解下 Test 的目录结构和执行流程，参考上面[#android studio test]</p>
+<h3 id="0x1-目录结构"><a href="#0x1-目录结构" class="headerlink" title="0x1 目录结构"></a>0x1 目录结构</h3><p>在 android studio 创建项目时，默认会在 moudle/scr 下生成 androidTest 和 test 目录，我们编写的测试用例文件就在这目录下：</p>
 <p><img src="https://developer.android.com/studio/images/test/project-window-tests_2-2_2x.png?hl=zh-cn" alt="0011-0x1-0"></p>
 <p>androidTest 和 test 有什么区别？</p>
 <ul>
 <li>androidTest ：官网上描述为 Instrumentation 测试，通俗的需要在设备或模拟器上运行的测试用例。</li>
 <li>test：本地单元测试，一些简单不依赖 android 环境和框架的测试用例。<br>直白点讲，一个功能测试，一个单元测试。也就是他们专业人士讲的黑盒白盒测试。</li>
 </ul>
-<p>因为需要模拟点击 ui 等，这里用到的肯定是 androidTest 用例。那接下来了解下测试用例的一个基本流程。</p>
-<h3 id="0x2-测试流程"><a href="#0x2-测试流程" class="headerlink" title="0x2 测试流程"></a>0x2 测试流程</h3><h4 id="框架库依赖问题"><a href="#框架库依赖问题" class="headerlink" title="框架库依赖问题"></a>框架库依赖问题</h4><p>按上面官方文档或 [Android testing samples]，代码就不贴了。中间可能会遇到一些编译异常，比如：</p>
+<p>因为需要模拟点击 ui 等，这里用到的肯定是 androidTest 用例。</p>
+<h3 id="0x2-测试流程"><a href="#0x2-测试流程" class="headerlink" title="0x2 测试流程"></a>0x2 测试流程</h3><p>按上面官方文档或 [Android testing samples]，代码就不贴了。中间可能会遇到一些编译异常，比如：</p>
 <ol>
 <li><p>依赖库 Espresso 找不到，需要在项目的 build.gradle 添加仓库地址：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> maven &#123;</div><div class="line">    url "https://maven.google.com"</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -478,20 +481,30 @@
 </ol>
 <p>如果还不行，继续使用 compile ，在 dependencies 添加：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">configurations.all &#123;</div><div class="line">    resolutionStrategy &#123;</div><div class="line">        force 'com.android.support:support-annotations:25.3.1'</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><a href="https://github.com/JakeWharton/u2020/blob/05a57bf43b9b61f16d32cbe8717af77cd608b0fb/build.gradle#L136-L140" target="_blank" rel="external">解决方案参考</a></p>
-<h4 id="运行-demo"><a href="#运行-demo" class="headerlink" title="运行 demo"></a>运行 demo</h4><p>解决编译问题后，右键 run，可以看到控制台输出通过命令 am instrument 指定测试用例，作为参数传给android.support.test.runner.AndroidJUnitRunner。如下图：</p>
+<p>解决编译问题后，右键 run，可以看到控制台输出通过命令 am instrument 指定测试用例，作为参数传给android.support.test.runner.AndroidJUnitRunner。如下图：</p>
 <p><img src="http://img.thearyong.com/2016-10-31-15-29-38-0011-0x1-1.png!post" alt="0011-0x1-1"></p>
 <ol>
-<li>AndroidJUnitRunner 是个什么鬼呢？<br>从依赖的 jar 包 com.android.support.test:runner 可以找到对应的源码描述：对一个 android app 进行 JUnit3 和 JUnit4 测试的测试器。<br>&gt;<br>An {@link Instrumentation} that runs JUnit3 and JUnit4 tests against<br>an Android package (application).</li>
+<li>AndroidJUnitRunner 是个什么鬼呢？<br>从依赖的 jar 包 com.android.support.test:runner 可以找到对应的源码描述：对一个 android app 进行 JUnit3 和 JUnit4 测试的测试器。<br>&gt;<blockquote>
+<p>An {@link Instrumentation} that runs JUnit3 and JUnit4 tests against<br>an Android package (application).</p>
+</blockquote>
+</li>
 </ol>
 <p>上面栗子是 google 的 demo，从上图可以发现，在安装 app 的时候，同时安装了一个 app-debug-androidTest.apk，然后通过命令 am  instrument 启动测试器。</p>
 <ul>
 <li>app-debug.apk：被测试目标</li>
 <li>app-debug-androidTest.apk ：测试用例</li>
 </ul>
-<h4 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h4><p>接下来，参考 demo 写一个启动手机 QQ 加好友的栗子。<br>因为测试的第三方 app，需要使用 uiautomator。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RunWith</span>(AndroidJUnit4.class)</div><div class="line"><span class="meta">@SdkSuppress</span>(minSdkVersion = <span class="number">18</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimulateQQClickTest</span> <span class="keyword">extends</span> <span class="title">BaseTest</span> </span>&#123;</div><div class="line">    String PACKAGE ;</div><div class="line">    <span class="keyword">long</span> launch_time = <span class="number">5000</span>;</div><div class="line"></div><div class="line">    UiDevice mDevice;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getLauncherPackageName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// Create launcher Intent</span></div><div class="line">        <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_MAIN);</div><div class="line">        intent.addCategory(Intent.CATEGORY_HOME);</div><div class="line"></div><div class="line">        <span class="comment">// Use PackageManager to get the launcher package name</span></div><div class="line">        PackageManager pm = InstrumentationRegistry.getContext().getPackageManager();</div><div class="line">        ResolveInfo resolveInfo = pm.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);</div><div class="line">        <span class="keyword">return</span> resolveInfo.activityInfo.packageName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startMainActivityFromHomeScreen</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// Initialize UiDevice instance</span></div><div class="line">        mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());</div><div class="line"></div><div class="line">        <span class="comment">// Start from the home screen</span></div><div class="line">        mDevice.pressHome();</div><div class="line"></div><div class="line">        <span class="comment">// Wait for launcher</span></div><div class="line">        <span class="keyword">final</span> String launcherPackage = getLauncherPackageName();</div><div class="line">        assertThat(launcherPackage, notNullValue());</div><div class="line">        mDevice.wait(Until.hasObject(By.pkg(launcherPackage).depth(<span class="number">0</span>)), launch_time);</div><div class="line"></div><div class="line">        <span class="comment">// Launch the blueprint app</span></div><div class="line">        Context context = InstrumentationRegistry.getContext();</div><div class="line">        <span class="keyword">final</span> Intent intent = context.getPackageManager()</div><div class="line">                .getLaunchIntentForPackage(PACKAGE);</div><div class="line">        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);    <span class="comment">// Clear out any previous instances</span></div><div class="line">        context.startActivity(intent);</div><div class="line"></div><div class="line">        <span class="comment">// Wait for the app to appear</span></div><div class="line">        mDevice.wait(Until.hasObject(By.pkg(PACKAGE).depth(<span class="number">0</span>)), launch_time);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Before</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span></span>&#123;</div><div class="line">        PACKAGE = <span class="string">"com.tencent.mobileqq"</span>;</div><div class="line">        startMainActivityFromHomeScreen();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clickSearch</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        String qq = <span class="string">"113449183"</span>;</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().description(<span class="string">"快捷入口"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"加好友"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"QQ号/手机号/邮箱/群/公众号"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"QQ号/手机号/邮箱/群/公众号"</span>)).setText(qq);</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"找人:"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().textContains(<span class="string">"("</span> + qq + <span class="string">")"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().textContains(<span class="string">"加好友"</span>)).click();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="0x3-实践"><a href="#0x3-实践" class="headerlink" title="0x3 实践"></a>0x3 实践</h3><p>接下来，参考 demo 写一个启动手机 QQ 加好友的栗子。<br>因为测试的第三方 app，需要使用 uiautomator。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RunWith</span>(AndroidJUnit4.class)</div><div class="line"><span class="meta">@SdkSuppress</span>(minSdkVersion = <span class="number">18</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimulateQQClickTest</span> <span class="keyword">extends</span> <span class="title">BaseTest</span> </span>&#123;</div><div class="line">    String PACKAGE ;</div><div class="line">    <span class="keyword">long</span> launch_time = <span class="number">5000</span>;</div><div class="line"></div><div class="line">    UiDevice mDevice;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getLauncherPackageName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// Create launcher Intent</span></div><div class="line">        <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_MAIN);</div><div class="line">        intent.addCategory(Intent.CATEGORY_HOME);</div><div class="line"></div><div class="line">        <span class="comment">// Use PackageManager to get the launcher package name</span></div><div class="line">        PackageManager pm = InstrumentationRegistry.getContext().getPackageManager();</div><div class="line">        ResolveInfo resolveInfo = pm.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);</div><div class="line">        <span class="keyword">return</span> resolveInfo.activityInfo.packageName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startMainActivityFromHomeScreen</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// Initialize UiDevice instance</span></div><div class="line">        mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());</div><div class="line"></div><div class="line">        <span class="comment">// Start from the home screen</span></div><div class="line">        mDevice.pressHome();</div><div class="line"></div><div class="line">        <span class="comment">// Wait for launcher</span></div><div class="line">        <span class="keyword">final</span> String launcherPackage = getLauncherPackageName();</div><div class="line">        assertThat(launcherPackage, notNullValue());</div><div class="line">        mDevice.wait(Until.hasObject(By.pkg(launcherPackage).depth(<span class="number">0</span>)), launch_time);</div><div class="line"></div><div class="line">        <span class="comment">// Launch the blueprint app</span></div><div class="line">        Context context = InstrumentationRegistry.getContext();</div><div class="line">        <span class="keyword">final</span> Intent intent = context.getPackageManager()</div><div class="line">                .getLaunchIntentForPackage(PACKAGE);</div><div class="line">        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);    <span class="comment">// Clear out any previous instances</span></div><div class="line">        context.startActivity(intent);</div><div class="line"></div><div class="line">        <span class="comment">// Wait for the app to appear</span></div><div class="line">        mDevice.wait(Until.hasObject(By.pkg(PACKAGE).depth(<span class="number">0</span>)), launch_time);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Before</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">()</span></span>&#123;</div><div class="line">        PACKAGE = <span class="string">"com.tencent.mobileqq"</span>;</div><div class="line">        startMainActivityFromHomeScreen();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clickSearch</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        String qq = <span class="string">"123456789"</span>;</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().description(<span class="string">"快捷入口"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"加好友"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"QQ号/手机号/邮箱/群/公众号"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"QQ号/手机号/邮箱/群/公众号"</span>)).setText(qq);</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().text(<span class="string">"找人:"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().textContains(<span class="string">"("</span> + qq + <span class="string">")"</span>)).click();</div><div class="line">        mDevice.findObject(<span class="keyword">new</span> UiSelector().textContains(<span class="string">"加好友"</span>)).click();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>主要后面 before() 和 clickSearch() 方法，都有注解。见名知意，@before 在 @Test 前执行，初始化目标 PACKAGE，然后启动对应的 app；@Test 里为真正的模拟操作步骤。</p>
-<p>UI</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>了解一些主流测试框架</li>
+<li>学习编写简单的测试代码</li>
+<li>​</li>
+</ol>
+<h2 id="脑洞"><a href="#脑洞" class="headerlink" title="脑洞"></a>脑洞</h2><ol>
+<li>​</li>
+</ol>
 
       
     </div>
@@ -564,6 +577,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/10/语音方案预研/" rel="next" title="语音方案预研">
+                <i class="fa fa-chevron-left"></i> 语音方案预研
+              </a>
             
           </div>
 
@@ -659,7 +676,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -681,7 +698,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -730,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0001-案例"><span class="nav-number">2.1.</span> <span class="nav-text">0001 案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0010-测试框架"><span class="nav-number">2.2.</span> <span class="nav-text">0010 测试框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Do-it"><span class="nav-number">3.</span> <span class="nav-text">Do it</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x0-需求"><span class="nav-number">3.1.</span> <span class="nav-text">0x0 需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-test-目录结构"><span class="nav-number">3.2.</span> <span class="nav-text">0x1 test 目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-测试流程"><span class="nav-number">3.3.</span> <span class="nav-text">0x2 测试流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#框架库依赖问题"><span class="nav-number">3.3.1.</span> <span class="nav-text">框架库依赖问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行-demo"><span class="nav-number">3.3.2.</span> <span class="nav-text">运行 demo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实践"><span class="nav-number">3.3.3.</span> <span class="nav-text">实践</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-调研"><span class="nav-number">1.1.</span> <span class="nav-text">0x1 调研</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-测试框架"><span class="nav-number">1.2.</span> <span class="nav-text">0x2 测试框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Do-it"><span class="nav-number">2.</span> <span class="nav-text">Do it</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x1-目录结构"><span class="nav-number">2.1.</span> <span class="nav-text">0x1 目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x2-测试流程"><span class="nav-number">2.2.</span> <span class="nav-text">0x2 测试流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x3-实践"><span class="nav-number">2.3.</span> <span class="nav-text">0x3 实践</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脑洞"><span class="nav-number">4.</span> <span class="nav-text">脑洞</span></a></li></ol></div>
             
 
           </div>
@@ -750,7 +767,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-"></i>
   </span>

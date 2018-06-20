@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://www.thearyong.com/2015/03/17/adb常用命令学习记录/index.html">
 <meta property="og:site_name" content="thearyong">
 <meta property="og:description" content="adb 是 android 提供的一个二进制可运行的开发工具，位于 SDK 的 platform-tools 目录。 android 开发者不可或缺的工具，少了她，好比没有了番号。熟练使用，工作生活事半功倍。下面总结部分常用命令，详细可以直接终端 adb help。">
-<meta property="og:updated_time" content="2017-11-18T03:41:07.000Z">
+<meta property="og:updated_time" content="2017-12-28T01:10:28.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="adb常用命令学习记录">
 <meta name="twitter:description" content="adb 是 android 提供的一个二进制可运行的开发工具，位于 SDK 的 platform-tools 目录。 android 开发者不可或缺的工具，少了她，好比没有了番号。熟练使用，工作生活事半功倍。下面总结部分常用命令，详细可以直接终端 adb help。">
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,037
+                  1,085
                 </span>
               
 
@@ -462,12 +462,19 @@
 <p>抓好后，ctrl+c中断。adb pull 到 PC上，使用 <strong>WireShark</strong> 分析。</p>
 <p><strong>PS：如果只是抓 http 包，可以使用 Charles 或 fiddler。手机设置代理，即可实时监测接口请求数据。</strong></p>
 <h3 id="5-厂家修改-adb，调试专用"><a href="#5-厂家修改-adb，调试专用" class="headerlink" title="5. 厂家修改 adb，调试专用"></a>5. 厂家修改 adb，调试专用</h3><p>经常有厂家修改 adb，作为开发者就在那哭爹喊娘，非得用他们提供的 adb 工具才行，在电视行业尤甚。根据上面原理分析，只要修改对应源码即可。</p>
-<h3 id="6-设备屏幕截图"><a href="#6-设备屏幕截图" class="headerlink" title="6. 设备屏幕截图"></a>6. 设备屏幕截图</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell screencap -p /data/local/tmp/1.png</div><div class="line">adb pull /data/local/tmp/1.png</div></pre></td></tr></table></figure>
+<h3 id="6-设备屏幕截图"><a href="#6-设备屏幕截图" class="headerlink" title="6. 设备屏幕截图"></a>6. 设备屏幕截图</h3><p><strong>正确姿势：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell screencap -p /data/local/tmp/1.png</div><div class="line">adb pull /data/local/tmp/1.png</div></pre></td></tr></table></figure>
 <p>网上有很多使用直接使用重定向到本机上，命令如下：</p>
 <blockquote>
 <p>$adb shell screencap -p | sed ‘s/\r$//‘ &gt; screen.png</p>
 </blockquote>
 <p>但是实践后，并未成功过，大小0KB。不加 sed 去转换换行符，大小有1.5MB，图片打不开。</p>
+<h3 id="7-adb-连接不上"><a href="#7-adb-连接不上" class="headerlink" title="7. adb 连接不上"></a>7. adb 连接不上</h3><p>有时 adb connect ip 连不上，提示：</p>
+<blockquote>
+<p>Connection refused</p>
+</blockquote>
+<p>有可能是端口号问题，可尝试先用 usb 线连上：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb tcpip 5555</div></pre></td></tr></table></figure></p>
+<p>再 adb connect ip。</p>
 
       
     </div>
@@ -633,7 +640,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -655,7 +662,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -704,7 +711,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#adb-常用命令"><span class="nav-number">1.</span> <span class="nav-text">adb 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-adb-shell"><span class="nav-number">1.1.</span> <span class="nav-text">1. adb shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-adb-devices"><span class="nav-number">1.2.</span> <span class="nav-text">2. adb devices</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-adb-kill-server"><span class="nav-number">1.3.</span> <span class="nav-text">3. adb kill-server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-adb-connect"><span class="nav-number">1.4.</span> <span class="nav-text">4. adb connect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-adb-disconnect"><span class="nav-number">1.5.</span> <span class="nav-text">5.  adb disconnect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-adb-install"><span class="nav-number">1.6.</span> <span class="nav-text">6. adb install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-adb-uninstall"><span class="nav-number">1.7.</span> <span class="nav-text">7. adb  uninstall</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-adb-push"><span class="nav-number">1.8.</span> <span class="nav-text">8. adb push</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-adb-pull"><span class="nav-number">1.9.</span> <span class="nav-text">9. adb pull</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-adb-logcat"><span class="nav-number">1.10.</span> <span class="nav-text">10. adb logcat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#清理缓存区-log"><span class="nav-number">1.10.1.</span> <span class="nav-text">清理缓存区 log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含时间的-log"><span class="nav-number">1.10.2.</span> <span class="nav-text">包含时间的 log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤输出"><span class="nav-number">1.10.3.</span> <span class="nav-text">过滤输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-adb-forward"><span class="nav-number">1.11.</span> <span class="nav-text">11. adb forward</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#场景"><span class="nav-number">3.</span> <span class="nav-text">场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查看已安装的-apk-包信息，包括包名、版本号、权限等"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. 查看已安装的 apk 包信息，包括包名、版本号、权限等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-查看当前设备显示的-activity"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 查看当前设备显示的 activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-包含时间的-log"><span class="nav-number">3.0.3.</span> <span class="nav-text">3. 包含时间的 log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-抓设备网络数据包"><span class="nav-number">3.0.4.</span> <span class="nav-text">4. 抓设备网络数据包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-厂家修改-adb，调试专用"><span class="nav-number">3.0.5.</span> <span class="nav-text">5. 厂家修改 adb，调试专用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-设备屏幕截图"><span class="nav-number">3.0.6.</span> <span class="nav-text">6. 设备屏幕截图</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#adb-常用命令"><span class="nav-number">1.</span> <span class="nav-text">adb 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-adb-shell"><span class="nav-number">1.1.</span> <span class="nav-text">1. adb shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-adb-devices"><span class="nav-number">1.2.</span> <span class="nav-text">2. adb devices</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-adb-kill-server"><span class="nav-number">1.3.</span> <span class="nav-text">3. adb kill-server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-adb-connect"><span class="nav-number">1.4.</span> <span class="nav-text">4. adb connect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-adb-disconnect"><span class="nav-number">1.5.</span> <span class="nav-text">5.  adb disconnect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-adb-install"><span class="nav-number">1.6.</span> <span class="nav-text">6. adb install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-adb-uninstall"><span class="nav-number">1.7.</span> <span class="nav-text">7. adb  uninstall</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-adb-push"><span class="nav-number">1.8.</span> <span class="nav-text">8. adb push</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-adb-pull"><span class="nav-number">1.9.</span> <span class="nav-text">9. adb pull</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-adb-logcat"><span class="nav-number">1.10.</span> <span class="nav-text">10. adb logcat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#清理缓存区-log"><span class="nav-number">1.10.1.</span> <span class="nav-text">清理缓存区 log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含时间的-log"><span class="nav-number">1.10.2.</span> <span class="nav-text">包含时间的 log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤输出"><span class="nav-number">1.10.3.</span> <span class="nav-text">过滤输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-adb-forward"><span class="nav-number">1.11.</span> <span class="nav-text">11. adb forward</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#场景"><span class="nav-number">3.</span> <span class="nav-text">场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查看已安装的-apk-包信息，包括包名、版本号、权限等"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. 查看已安装的 apk 包信息，包括包名、版本号、权限等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-查看当前设备显示的-activity"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 查看当前设备显示的 activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-包含时间的-log"><span class="nav-number">3.0.3.</span> <span class="nav-text">3. 包含时间的 log</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-抓设备网络数据包"><span class="nav-number">3.0.4.</span> <span class="nav-text">4. 抓设备网络数据包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-厂家修改-adb，调试专用"><span class="nav-number">3.0.5.</span> <span class="nav-text">5. 厂家修改 adb，调试专用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-设备屏幕截图"><span class="nav-number">3.0.6.</span> <span class="nav-text">6. 设备屏幕截图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-adb-连接不上"><span class="nav-number">3.0.7.</span> <span class="nav-text">7. adb 连接不上</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -724,7 +731,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-"></i>
   </span>
