@@ -320,6 +320,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语音/" itemprop="url" rel="index">
+                    <span itemprop="name">语音</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -378,8 +400,7 @@
 
       
         
-          
-            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>为满足项目场景需求，主要应用到的语音技术有：</p>
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>为满足项目场景需求，主要应用到的语音技术有：</p>
 <ol>
 <li><strong>语音识别(ASR)</strong></li>
 <li><strong>语音合成( TTS)</strong></li>
@@ -387,350 +408,13 @@
 <li><strong>语音唤醒</strong></li>
 <li><strong>声纹识别</strong></li>
 </ol>
-<p>由于官方对外公布的识别准确度都是在95%以上，效果都相差不大，精确度和语义相关性量化成本太高，所以分别从以下几个维度来参考：</p>
-<ol>
-<li>是否支持自定义关键词</li>
-<li>以上是否支持离线</li>
-<li>集成以及更换难易程度</li>
-<li>合作方式以及价格</li>
-<li>海外是否有录音隐私数据的问题</li>
-<li>性能方面是否有相应的数据支持</li>
-</ol>
-<p><strong>注：语音涉及收集用户录音数据，跟国内情景不同，在海外需要对应的许可证，目前只有部分大厂以及专业的语音服务提供商才有，如果直接使用国内的语音方案，在海外可能有相关风险。</strong></p>
-<h2 id="语音技术"><a href="#语音技术" class="headerlink" title="语音技术"></a>语音技术</h2><h3 id="语音识别"><a href="#语音识别" class="headerlink" title="语音识别"></a>语音识别</h3><p>语音识别，也被称为：</p>
-<ul>
-<li><strong>自动语音识别（Automatic Speech Recognition, ASR）</strong></li>
-<li><strong>电脑语音识别（Computer Speech Recognition,CSR）</strong></li>
-<li><strong>语音转文本识别（Speech To Text, STT）</strong></li>
-</ul>
-<p>其目标是以电脑自动将人类的语音内容转换为相应的文字（<strong>语音转文字</strong>），有2种传输方式：</p>
-<ul>
-<li><strong>流式传输</strong>，实时返回文字结果。</li>
-<li><strong>完整音频传输</strong>，整个音频文件传输，识别后再返回结果。</li>
-</ul>
-<p>目前需要考虑的场景有：</p>
-<ol>
-<li>远场/近场</li>
-<li>按键/非按键</li>
-</ol>
-<p>对应的模型：搜索/输入法/远场。</p>
-<p>参考：</p>
-<ol>
-<li><a href="https://zh.wikipedia.org/wiki/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB#%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E5%A3%B0%E5%AD%A6%E7%89%B9%E5%BE%81" target="_blank" rel="external">维基百科-语音识别</a></li>
-<li><a href="https://www.zhihu.com/question/20398418" target="_blank" rel="external">语音识别的技术原理是什么？</a></li>
-</ol>
-<h3 id="语音唤醒"><a href="#语音唤醒" class="headerlink" title="语音唤醒"></a>语音唤醒</h3><p>语音唤醒，原理与语音识别类似，都是通过将录入的语音转文字，然后匹配对应的唤醒词。但也有细微区别：</p>
-<ol>
-<li>唤醒有专门设定的唤醒词，速度更快，更精准，稳定</li>
-<li>唤醒不用实时处于工作状态，从而节省能耗</li>
-</ol>
-<p>参考：</p>
-<p>1.<a href="https://yq.aliyun.com/articles/232231" target="_blank" rel="external">语音唤醒技术：small-footprint keyword spotting</a></p>
-<h3 id="语义理解"><a href="#语义理解" class="headerlink" title="语义理解"></a>语义理解</h3><p>语义理解，或称自然语言处理与对话技术（Natural Language）。包含：</p>
-<ul>
-<li>文本语义</li>
-<li>语音语义</li>
-</ul>
-<p>主要是利用语音识别，把自然语言内容，转换为有一定结构的文本数据，结合大数据和深度学习，使应用能够抓取其中的重点数据，理解用户的使用意图，进行下一步的处理。需要考虑的需求：</p>
-<ol>
-<li><p>后台意图、场景的配置，使用难易程度</p>
-</li>
-<li><p>是否支持闲聊，自定义对话等</p>
-</li>
-<li><p>后台资源库切换等</p>
-</li>
-</ol>
-<h3 id="语音合成"><a href="#语音合成" class="headerlink" title="语音合成"></a>语音合成</h3><p>语音合成，与语音识别相反，主要是把<strong>文字转语音</strong>，目前常用的语音合成方法：</p>
-<ul>
-<li>参数化合成（Parameric TTS）：利用数学模型对已知的声音进行排列、组装成词语或句子来重新创造声音数据。当前市面上大部分机器人的发音主要就是采用的这种方法，不过声音听起来总是不自然，就像机器发出的声音。</li>
-<li>拼接式语音合成（Concatenative TTS）：需要先录制单一说话者的大量语音片段，建立一个大型语料库，然后简单地从中进行选择并合成完整的大段音频、词语和句子。我们有时会听到机器模仿某些明星的声音，其背后技术就是这种方法。但是这种方法要求语料库非常大，而且处理不好就经常产生语音毛刺和语调的诡异变化，并且无法调整语音的抑扬顿挫。特殊音色定制一般也是此方式。</li>
-</ul>
-<h3 id="声纹识别"><a href="#声纹识别" class="headerlink" title="声纹识别"></a>声纹识别</h3><p>声纹识别（Voiceprint Recognize），是一项提取说话人声音特征和说话内容信息，自动核验说话人身份的技术。有2种类型：</p>
-<ul>
-<li>数字</li>
-<li>文本</li>
-</ul>
-<p>使用较多的还是纯数字，如微信的语音登录。</p>
-<h2 id="语音方案"><a href="#语音方案" class="headerlink" title="语音方案"></a>语音方案</h2><p>接下来主要从以下几个方面调研语音方案：</p>
-<ol>
-<li>有哪些主流语音方案服务商</li>
-<li>提供哪些语音技术服务</li>
-<li>如何集成</li>
-<li>价格以及合作方式</li>
-<li>其他注意问题</li>
-</ol>
-<h3 id="Alexa"><a href="#Alexa" class="headerlink" title="Alexa"></a>Alexa</h3><p>Alexa是亚马逊提供的运行在云端的语音服务。主要包含：</p>
-<ul>
-<li><strong>ASK (Alexa Skills Kit)</strong></li>
-</ul>
-<p>Alexa Skills Kit是一系列API, 工具，文档和示例代码的集合。开发者可以快速的使用ASK开发集成了Alexa能力的服务，并将这些服务提交到亚马逊Alexa商店(Alexa Store)供Echo用户使用。这些集成了Alexa的第三方服务被称作 Alexa 的 Skills， <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit#get-started-now" target="_blank" rel="external">开始使用ASK</a>。</p>
-<ul>
-<li><strong>Smart Home Skill</strong></li>
-</ul>
-<p>Smart Home Skill API是对ASK的一个补充，它包含了一系列内置的智能家庭功能API。这些功能包括控制灯、开关和其他智能家居设备， <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/content/smart-home" target="_blank" rel="external">更多详细信息</a>。</p>
-<ul>
-<li><strong>AVS (Alexa Voice Service)</strong></li>
-</ul>
-<p>Alexa在线语音服务，可以很方便的通过语音控制设备。为开发者提供了一套资源，可以快速、轻松地构建支持alexa的产品，包括api、硬件开发工具包、软件开发工具包和文档。同时也可以使用第三方Alexa服务（ASK）。热门产品如亚马逊Echo，<a href="https://developer.amazon.com/public/solutions/alexa/alexa-voice-service/getting-started-with-the-alexa-voice-service" target="_blank" rel="external">更多详细信息</a>。</p>
-<ul>
-<li><strong>AVS Device SDK</strong></li>
-</ul>
-<p>基于C++跨平台的、模块化的SDK，用于与AVS交互。例如语音捕获、音频处理和通信，它还包括一个示例应用程序，它演示了与它的交互作用，地址：<a href="https://github.com/alexa/avs-device-sdk。" target="_blank" rel="external">https://github.com/alexa/avs-device-sdk。</a></p>
-<p><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/avs/Alexa_Device_SDK_Architecture.png" alt="AVS Device SDK"></p>
-<ul>
-<li><strong>Alexa基金</strong></li>
-</ul>
-<p>亚马逊设立的1亿美元Alexa基金以支持语音技术创新，<a href="https://developer.amazon.com/public/solutions/alexa/alexa-fund" target="_blank" rel="external">更多详细信息</a> </p>
-<p>开发者： <a href="https://developer.amazon.com/alexa" target="_blank" rel="external">https://developer.amazon.com/alexa</a></p>
-<p>支持页面：<a href="https://developer.amazon.com/public/support" target="_blank" rel="external">https://developer.amazon.com/public/support</a></p>
-<p>论坛 ：<a href="https://forums.developer.amazon.com/spaces/165/alexa.html" target="_blank" rel="external">https://forums.developer.amazon.com/spaces/165/alexa.html</a></p>
-<p><a href="https://aws.amazon.com/cn/blogs/china/lambda-alexa-echo/" target="_blank" rel="external">手把手教你如何用Lambda + Alexa调用echo设备</a></p>
-<h4 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h4><ul>
-<li><a href="https://github.com/alexa/alexa-avs-sample-app" target="_blank" rel="external">官方 demo</a>：包含各个平台的运行 demo 以及文档，其中 android  部分只是一个辅助登录验证的demo。</li>
-<li><a href="https://github.com/willblaschko/AlexaAndroid" target="_blank" rel="external">第三方 demo</a>：封装 AVS 语义识别的 app，其中 TTS 用的是android.speech.tts.TextToSpeech。</li>
-<li><a href="https://github.com/alexa/avs-device-sdk" target="_blank" rel="external">AVS Device SDK</a>：以C++基于AVS封装的跨平台的、模块化的SDK。</li>
-</ul>
-<h4 id="语音服务"><a href="#语音服务" class="headerlink" title="语音服务"></a>语音服务</h4><ol>
-<li>在线语音识别</li>
-<li>在线语音合成</li>
-<li>自然语言（NLU）</li>
-<li>语音唤醒，使用<a href="https://github.com/Sensory/alexa-rpi#frequently-asked-questions" target="_blank" rel="external">Sensory TrulyHandsfree WakeWord Engine</a>或<a href="https://github.com/Kitt-AI/snowboy" target="_blank" rel="external">Kitt-AI</a></li>
-<li><a href="https://console.aws.amazon.com/a4b/home?region=us-east-1#/get-started" target="_blank" rel="external">Alexa for Business</a></li>
-</ol>
-<h4 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h4><p>目前支持的平台有：</p>
-<ul>
-<li><a href="https://github.com/alexa/alexa-avs-sample-app/wiki/Raspberry-Pi" target="_blank" rel="external">Raspberry Pi</a></li>
-<li><a href="https://github.com/alexa/alexa-avs-sample-app/wiki/Linux" target="_blank" rel="external">Linux</a></li>
-<li><a href="https://github.com/alexa/alexa-avs-sample-app/wiki/Mac" target="_blank" rel="external">Mac</a></li>
-<li><a href="https://github.com/alexa/alexa-avs-sample-app/wiki/Windows" target="_blank" rel="external">Windows</a></li>
-</ul>
-<p>上述平台有详细的集成文档，Android 平台集成比较复杂，需要基于 AVS Device SDK 重新封装一层，详细参考：<a href="https://github.com/alexa/avs-device-sdk" target="_blank" rel="external">AVS Device SDK</a>。</p>
-<p><strong>测试页面</strong>：<a href="https://echosim.io/" target="_blank" rel="external">https://echosim.io/</a></p>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ol>
-<li>目前仅支持英文。</li>
-<li>且只提供美国、英国、德国地区在线语音识别，不支持离线。</li>
-<li>alexa本身无语音唤醒，demo 中推荐使用<a href="https://github.com/Sensory/alexa-rpi" target="_blank" rel="external">sensory alexa-rpi</a> 或者<a href="https://github.com/Kitt-AI/snowboy" target="_blank" rel="external">Kitt-AI</a>。</li>
-<li>集成方面比较复杂，需要再封装。</li>
-<li>收集用户录音数据的隐私问题，需要用户登录亚马逊账号登录授权许可才行。</li>
-<li>返回数据暂未找到语音识别的文本结果，但是在后台可以看到<a href="https://alexa.amazon.com/spa/index.html#cards" target="_blank" rel="external">识别文本</a>。</li>
-<li>价格：免费</li>
-<li>与 alexa 认证合作：<a href="https://developer.amazon.com/alexa/smart-home/launch/works-with-amazon-alexa" target="_blank" rel="external">https://developer.amazon.com/alexa/smart-home/launch/works-with-amazon-alexa</a></li>
-</ol>
-<h3 id="lex"><a href="#lex" class="headerlink" title="lex"></a>lex</h3><p>Amazon Lex 是一种使用语音和文本在任何应用程序中构建对话界面的服务。Amazon Lex 提供高级的自动语音识别 (ASR) 深度学习功能，可以将语音转换为文本，还提供自然语言理解 (NLU) 功能，可以识别文本的意图，让您能够构建用户体验极具吸引力且会话交互逼真的应用程序。详细参考：<a href="https://aws.amazon.com/cn/lex/?nc2=h_a1" target="_blank" rel="external">https://aws.amazon.com/cn/lex/?nc2=h_a1</a></p>
-<h4 id="demo-amp-SDK"><a href="#demo-amp-SDK" class="headerlink" title="demo&amp;SDK"></a>demo&amp;SDK</h4><p><a href="https://aws.amazon.com/cn/tools/#sdk" target="_blank" rel="external">https://aws.amazon.com/cn/tools/#sdk</a></p>
-<h4 id="语音服务-1"><a href="#语音服务-1" class="headerlink" title="语音服务"></a>语音服务</h4><ol>
-<li>语音识别(ASR)</li>
-<li>自然语言理解 (NLU) </li>
-</ol>
-<h4 id="集成-1"><a href="#集成-1" class="headerlink" title="集成"></a>集成</h4><p><img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fncgd4x59lj312a0ymqb0.jpg" alt="img-lex1"><br><img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fncgoyevl2j312u0hymzt.jpg" alt="img-lex2"><br><img src="http://ww3.sinaimg.cn/large/0060lm7Tly1fncgoygoulj31es0y6428.jpg" alt="img-lex3"><br><img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fncgoyji9lj31kw0tkagt.jpg" alt="img-lex4"></p>
-<h4 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h4><ol>
-<li><p><a href="https://aws.amazon.com/cn/lex/pricing/" target="_blank" rel="external">定价</a><br><img src="https://s1.ax1x.com/2018/01/13/pJFXKs.png" alt="img-lex-price"></p>
-<p><strong>假设每个用户100条语音限制，总计$0.4/天</strong></p>
-</li>
-<li><p>未提供唤醒服务</p>
-</li>
-</ol>
-<h3 id="Google-Cloud-Speech-API"><a href="#Google-Cloud-Speech-API" class="headerlink" title="Google Cloud Speech API"></a>Google Cloud Speech API</h3><p>Google Cloud Speech API 通过<strong>强大的神经网络模型</strong>让开发者可以通过一个 API 来将<strong>语音转换为文字</strong>，能<strong>识别超过 80 种语言</strong>。详细参考：<a href="https://cloud.google.com/speech/" target="_blank" rel="external">https://cloud.google.com/speech/</a></p>
-<h4 id="demo-1"><a href="#demo-1" class="headerlink" title="demo"></a>demo</h4><p>demo 请参考<a href="https://github.com/GoogleCloudPlatform/android-docs-samples" target="_blank" rel="external">android-docs-samples</a>，包含：</p>
-<ul>
-<li>Speech（在线语音识别）</li>
-<li>Natural Language（google自然语言 API）</li>
-</ul>
-<h4 id="语音服务-2"><a href="#语音服务-2" class="headerlink" title="语音服务"></a>语音服务</h4><ol>
-<li>在线语音识别</li>
-<li>自然语言语义</li>
-</ol>
-<h4 id="集成-2"><a href="#集成-2" class="headerlink" title="集成"></a>集成</h4><p>集成文档详细，比较方便，详细参考：</p>
-<p>1.<a href="https://github.com/GoogleCloudPlatform/android-docs-samples" target="_blank" rel="external">demo</a></p>
-<p>2.<a href="https://cloud.google.com/speech/docs/" target="_blank" rel="external">speech</a></p>
-<h4 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h4><ol>
-<li><strong>价格</strong>：$0.006/15s，1台设备每天平均1小时语音识别使用费用=60x4x0.006=1.44。<br><strong>注：此价格适用于个人系统（例如手机、平板电脑、笔记本、台式机）上的应用。要在嵌入式设备（如汽车、电视机、家电或音响设备）上使用 Speech API，请<a href="https://services.google.com/fb/forms/speech-api-pricing-request/" target="_blank" rel="external">与我们联系</a>以获取批准和价格。</strong></li>
-<li>集成方便</li>
-<li>支持多种语言</li>
-<li>仅支持在线</li>
-<li>暂未找到相关语音唤醒以及合成服务</li>
-</ol>
-<p>延伸阅读：</p>
-<p>1.<a href="https://www.jiqizhixin.com/articles/2017-03-31-5" target="_blank" rel="external">谷歌全端到端语音合成系统Tacotron：直接从字符合成语音</a></p>
-<h3 id="Google-Assistant-SDK"><a href="#Google-Assistant-SDK" class="headerlink" title="Google Assistant SDK"></a>Google Assistant SDK</h3><p>google assistant sdk 是 google 开放的语音助手服务，包含：</p>
-<ul>
-<li>Google Assistant Library<br>python 库，可在树莓派上运行。</li>
-<li>Google Assistant Service<br>其他平台库，支持 android 2.3+</li>
-</ul>
-<p>详细查看：<a href="https://developers.google.com/assistant/sdk/overview" target="_blank" rel="external">https://developers.google.com/assistant/sdk/overview</a></p>
-<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><p><a href="https://github.com/googleapis/googleapis" target="_blank" rel="external">https://github.com/googleapis/googleapis</a></p>
-<h4 id="语音服务-3"><a href="#语音服务-3" class="headerlink" title="语音服务"></a>语音服务</h4><ol>
-<li>热词检测（命令词）</li>
-<li>语音识别（ASR）</li>
-<li>自然语言（NLP）</li>
-<li>Device Actions（Assistant 扩展 API）<br><img src="https://developers.google.com/assistant/sdk/images/device-actions.png" alt="img-google-assistant"></li>
-</ol>
-<h4 id="集成-3"><a href="#集成-3" class="headerlink" title="集成"></a>集成</h4><p>稍复杂，需要熟悉一套GRPC 协议。详细步骤参考：<br><a href="https://developers.google.com/assistant/sdk/guides/service/integrate" target="_blank" rel="external">https://developers.google.com/assistant/sdk/guides/service/integrate</a></p>
-<h4 id="小结-3"><a href="#小结-3" class="headerlink" title="小结"></a>小结</h4><ol>
-<li><p><strong>价格</strong>，每日有免费限额：</p>
-<p><img src="https://s1.ax1x.com/2018/01/13/pJtFAK.png" alt="img-assistant"></p>
-<p>联系方式：<a href="https://docs.google.com/forms/d/e/1FAIpQLScBi7ESV6vN50qSD2KFuvjZHtwcWl2CuwP6nw-cmtgGmWXSXw/viewform" target="_blank" rel="external">https://docs.google.com/forms/d/e/1FAIpQLScBi7ESV6vN50qSD2KFuvjZHtwcWl2CuwP6nw-cmtgGmWXSXw/viewform</a></p>
-</li>
-<li><p>商业产品需要授权， <a href="https://developers.google.com/assistant/sdk/interest" target="_blank" rel="external">联系方式</a> </p>
-</li>
-<li><p>和 alexa 一样不支持唤醒词，需自己额外集成，<a href="https://github.com/Kitt-AI/snowboy" target="_blank" rel="external">Kitt-AI</a></p>
-<p>​</p>
-</li>
-</ol>
-<h3 id="Azure"><a href="#Azure" class="headerlink" title="Azure"></a>Azure</h3><p>微软开放的必应语音 API，主要成熟产品有：Cortana，小冰等，详细请查看<a href="https://azure.microsoft.com/zh-cn/services/cognitive-services/speech/" target="_blank" rel="external">官网</a>。</p>
-<p>还支持<a href="https://azure.microsoft.com/zh-cn/services/cognitive-services/speaker-recognition/" target="_blank" rel="external">声纹识别</a>以及实时<a href="">语音翻译</a></p>
-<h4 id="demo-2"><a href="#demo-2" class="headerlink" title="demo"></a>demo</h4><ul>
-<li><a href="https://github.com/Azure-Samples/Cognitive-Speech-STT-Android.git" target="_blank" rel="external">STT demo</a>：语音转文字</li>
-<li><a href="https://github.com/Azure-Samples/Cognitive-Speech-TTS" target="_blank" rel="external">TTS demo</a>：文字转语音</li>
-</ul>
-<h4 id="语音服务-4"><a href="#语音服务-4" class="headerlink" title="语音服务"></a>语音服务</h4><ol>
-<li>在线语音识别</li>
-<li>语音合成</li>
-<li>语义理解</li>
-<li>声纹识别</li>
-<li>人脸 API</li>
-</ol>
-<h4 id="集成-4"><a href="#集成-4" class="headerlink" title="集成"></a>集成</h4><p>集成文档详细，比较方便，支持<a href="https://docs.microsoft.com/zh-cn/azure/cognitive-services/speech/getstarted/getstartedrest" target="_blank" rel="external">REST APIs</a>和<a href="https://docs.microsoft.com/zh-cn/azure/cognitive-services/speech/getstarted/getstartedclientlibraries" target="_blank" rel="external">Client libraries</a>，详细参考：</p>
-<ol>
-<li>上述demo</li>
-<li><a href="https://docs.microsoft.com/zh-cn/azure/cognitive-services/speech/home" target="_blank" rel="external">官方文档</a></li>
-</ol>
-<h4 id="小结-4"><a href="#小结-4" class="headerlink" title="小结"></a>小结</h4><ol>
-<li>价格按 api 请求次数计算，<a href="https://azure.microsoft.com/zh-cn/pricing/details/cognitive-services/speech-api/" target="_blank" rel="external">参考这里</a></li>
-<li>集成简单</li>
-<li>支持多种语言</li>
-<li>仅支持在线</li>
-<li>暂未找到相关语音唤醒服务</li>
-</ol>
-<h3 id="Nuance"><a href="#Nuance" class="headerlink" title="Nuance"></a>Nuance</h3><p>Nuance 老牌专业语音服务方案提供商，超过三分之二的财富100强企业使用 Nuance 解决方案，曾经被冠为全球最大的语音技术公司。主要提供：</p>
-<ul>
-<li><h5 id="Dragon-NaturallySpeaking-for-developers（Naturally-Speaking-电脑语音识别方案）"><a href="#Dragon-NaturallySpeaking-for-developers（Naturally-Speaking-电脑语音识别方案）" class="headerlink" title="Dragon NaturallySpeaking for developers（Naturally Speaking 电脑语音识别方案）"></a>Dragon NaturallySpeaking for developers（Naturally Speaking 电脑语音识别方案）</h5></li>
-<li><h5 id="Top-Imaging-OCR-Toolkit-for-Windows-Linux-and-Mac（图片文字识别方案）"><a href="#Top-Imaging-OCR-Toolkit-for-Windows-Linux-and-Mac（图片文字识别方案）" class="headerlink" title="Top Imaging OCR Toolkit for Windows, Linux and Mac（图片文字识别方案）"></a>Top Imaging OCR Toolkit for Windows, Linux and Mac（图片文字识别方案）</h5></li>
-<li><h5 id="Nuance-Mobile-Solutions-for-Developers（移动语音解决方案）"><a href="#Nuance-Mobile-Solutions-for-Developers（移动语音解决方案）" class="headerlink" title="Nuance Mobile Solutions for Developers（移动语音解决方案）"></a>Nuance Mobile Solutions for Developers（移动语音解决方案）</h5></li>
-<li><h5 id="Nuance-Healthcare-Solutions-for-Developers（健康医疗语音解决方案）"><a href="#Nuance-Healthcare-Solutions-for-Developers（健康医疗语音解决方案）" class="headerlink" title="Nuance Healthcare Solutions for Developers（健康医疗语音解决方案）"></a>Nuance Healthcare Solutions for Developers（健康医疗语音解决方案）</h5></li>
-</ul>
-<p>官网：<a href="https://www.nuance.com/" target="_blank" rel="external">https://www.nuance.com/</a></p>
-<p>开发者：<a href="https://developer.nuance.com/" target="_blank" rel="external">https://developer.nuance.com/</a></p>
-<h4 id="demo-3"><a href="#demo-3" class="headerlink" title="demo"></a>demo</h4><p>官方 demo，<a href="https://developer.nuance.com/public/index.php?task=prodDev" target="_blank" rel="external">请看这里</a>。</p>
-<h4 id="语音服务-5"><a href="#语音服务-5" class="headerlink" title="语音服务"></a>语音服务</h4><ol>
-<li>语音识别</li>
-<li>语音合成</li>
-<li>语音唤醒（demo 无语音唤醒，需<a href="https://www.nuance.com/mobile/speech-recognition-solutions/vocon-hybrid.html" target="_blank" rel="external">另外联系</a>）</li>
-<li>自然语言</li>
-<li>声纹识别（demo 无声纹识别）</li>
-</ol>
-<h4 id="集成-5"><a href="#集成-5" class="headerlink" title="集成"></a>集成</h4><p>集成文档详细，比较方便，请参考：</p>
-<ol>
-<li>demo</li>
-<li><a href="https://developer.nuance.com/public/index.php?task=prodDev" target="_blank" rel="external">Documentation and SDKs</a></li>
-</ol>
-<h4 id="小结-5"><a href="#小结-5" class="headerlink" title="小结"></a>小结</h4><ol>
-<li><strong>价格：</strong><ul>
-<li>在线ASR 3USD/年/台， 语音合成 3 USD/年/台 </li>
-<li>NRE 1W美金起，增加一种语种开通费3000USD</li>
-<li>离线TTS 一次性 3USD/台</li>
-<li>硬件 降噪模组 5K以下 45 含税</li>
-</ul>
-</li>
-<li>集成简单</li>
-<li>多语种支持</li>
-<li>暂未找到离线相关资源</li>
-</ol>
-<h3 id="sensory"><a href="#sensory" class="headerlink" title="sensory"></a>sensory</h3><p><strong>sensory</strong>是一家专业从事语音、视觉和自然语言处理等嵌入式机器学习技术的软件公司。开创了嵌入语音识别的神经网络方法，被ATT、Hasbro、华为、谷歌、JVC、肯伍德、LG、美泰、摩托罗拉、plan电子学、三星、索尼、世嘉、Uniden和v-tech在内的数百家领先的消费电子产品制造商中使用。有超过35项专利，涵盖了消费者电子产品的语音识别、生物识别认证、传感器/语音组合、唤醒词技术、DSP的语音识别、语音识别技术等，详细介绍请查看<a href="http://www.sensory.com/" target="_blank" rel="external">官网</a>。</p>
-<h4 id="demo-4"><a href="#demo-4" class="headerlink" title="demo"></a>demo</h4><ol>
-<li><a href="https://github.com/Sensory/alexa-rpi" target="_blank" rel="external">结合 alexa 唤醒 demo</a></li>
-</ol>
-<h4 id="语音服务-6"><a href="#语音服务-6" class="headerlink" title="语音服务"></a>语音服务</h4><ol>
-<li>语音识别（Voice）</li>
-<li>自然语言（Natural Language）</li>
-<li>语音唤醒</li>
-<li>语音合成</li>
-<li>生物识别（Biometrics）</li>
-</ol>
-<h4 id="集成-6"><a href="#集成-6" class="headerlink" title="集成"></a>集成</h4><p>官网只有介绍，无直接下载地址。</p>
-<h4 id="小结-6"><a href="#小结-6" class="headerlink" title="小结"></a>小结</h4><ol>
-<li><p>语音技术服务很全，集成以及价格未知，官网未找到相关集成文档，需要联系 sensory 进一步了解，<a href="http://www.sensory.com/support/international-sales/" target="_blank" rel="external">联系方式</a>以及<a href="http://www.sensory.com/wp-content/uploads/orderform-fill-in11-10-15.pdf" target="_blank" rel="external">表单</a>。</p>
-</li>
-<li><p>支持中文、英文。</p>
-</li>
-</ol>
-<h3 id="sapientx"><a href="#sapientx" class="headerlink" title="sapientx"></a>sapientx</h3><p>sapientx 提供，www.sapientx.com</p>
-<ol>
-<li>对话：文本+语音（整段）</li>
-<li>合成</li>
-<li>天气</li>
-</ol>
-<p>暂时不知价格如何，目前测试需要申请 key，在申请中…</p>
-<h3 id="百度语音"><a href="#百度语音" class="headerlink" title="百度语音"></a>百度语音</h3><p>百度语音是百度 AI 开发平台为开发者提供近场、远场、长语音等多场景高精度语音识别服务，详细参考<a href="https://ai.baidu.com" target="_blank" rel="external">官网</a>。</p>
-<p>成熟产品集成的有：百度输入法、手机百度等。</p>
-<h4 id="demo-5"><a href="#demo-5" class="headerlink" title="demo"></a>demo</h4><p>demo 请查看<a href="https://ai.baidu.com/sdk" target="_blank" rel="external">SDK资源</a>。</p>
-<p><strong>注：SDK与RESTful API区别在于，前者用户边说边处理，RESTful API 需要上传整个录音文件。</strong></p>
-<h4 id="语音服务-7"><a href="#语音服务-7" class="headerlink" title="语音服务"></a>语音服务</h4><ol>
-<li>语音识别（离在线融合SDK+RESTful API ）</li>
-</ol>
-<ol>
-<li>语音合成（离在线融合SDK+RESTful API ）</li>
-<li>语音理解与交互技术UNIT（快速、灵活的按自身业务需求定制对话系统，详细操作请参考<a href="https://ai.baidu.com/unit#/helpcenter" target="_blank" rel="external">后台</a>）</li>
-<li>语音唤醒</li>
-</ol>
-<h4 id="集成-7"><a href="#集成-7" class="headerlink" title="集成"></a>集成</h4><p>集成文档详细，比较方便，详细参考：</p>
-<ol>
-<li><a href="https://ai.baidu.com/sdk" target="_blank" rel="external">官方demo</a></li>
-</ol>
-<ol>
-<li><a href="https://ai.baidu.com/sdk" target="_blank" rel="external">官方文档</a></li>
-</ol>
-<h4 id="小结-7"><a href="#小结-7" class="headerlink" title="小结"></a>小结</h4><ol>
-<li>不支持英文离线识别、以及英文关键词</li>
-<li>英文识别效果不是特别准，相对上述其他方案</li>
-<li>集成方便</li>
-<li>价格免费</li>
-<li>海外需要搭建反向代理服务器</li>
-</ol>
-<h3 id="科大讯飞"><a href="#科大讯飞" class="headerlink" title="科大讯飞"></a>科大讯飞</h3><p>科大讯飞，专注语音技术近20年，行业先锋。专业从事智能语音及语言技术研究、软件及芯片产品开发、语音信息服务及<a href="https://baike.baidu.com/item/%E7%94%B5%E5%AD%90%E6%94%BF%E5%8A%A1%E7%B3%BB%E7%BB%9F" target="_blank" rel="external">电子政务系统</a>集成。拥有灵犀语音助手，讯飞输入法等优秀产品。详细请查看<a href="http://www.xfyun.cn/" target="_blank" rel="external">官网</a>。</p>
-<h4 id="demo-6"><a href="#demo-6" class="headerlink" title="demo"></a>demo</h4><p>demo地址：<a href="http://www.xfyun.cn/sdk/dispatcher" target="_blank" rel="external">http://www.xfyun.cn/sdk/dispatcher</a></p>
-<h4 id="语音服务-8"><a href="#语音服务-8" class="headerlink" title="语音服务"></a>语音服务</h4><ol>
-<li>语音合成</li>
-<li>语音识别</li>
-<li>语音唤醒</li>
-<li>声纹识别</li>
-<li>语音硬件</li>
-</ol>
-<p><img src="http://ww2.sinaimg.cn/large/0060lm7Tly1fnakhg4zbrj311e39o4qp.jpg" alt="xunfei1"></p>
-<p><img src="https://git.aiiage.com:9999/STEAM/TaskMarket/uploads/02b2e3564f7c0c6ff0bc3991e368f7eb/QQ20171219-110017_2x.jpg" alt="xunfei2"></p>
-<h4 id="集成-8"><a href="#集成-8" class="headerlink" title="集成"></a>集成</h4><p>集成文档详细，比较方便，详细参考：<a href="http://doc.xfyun.cn/msc_android/299547" target="_blank" rel="external">科大讯飞MSC开发指南-Android</a></p>
-<h4 id="小结-8"><a href="#小结-8" class="headerlink" title="小结"></a>小结</h4><ol>
-<li>集成方便。</li>
-<li>不支持英文离线识别。</li>
-<li>语音服务全，支持音色定制、硬件方案。</li>
-<li>价格稍贵，如果价格可接受，优先讯飞。</li>
-</ol>
-<h3 id="大象声科"><a href="#大象声科" class="headerlink" title="大象声科"></a>大象声科</h3><p>大象声科基于多年对计算听觉场景分析的研究和积累，利用深度学习技术，实现降噪和语音增强方案，首先实现了单通道实时语音和噪声分离。</p>
-<h4 id="小结-9"><a href="#小结-9" class="headerlink" title="小结"></a>小结</h4><p>主要提供语音降噪方案，详细参考<a href="http://www.elevoc.com/" target="_blank" rel="external">官网</a>。</p>
-<h3 id="声智科技"><a href="#声智科技" class="headerlink" title="声智科技"></a>声智科技</h3><p>声智科技，专注声学前沿技术和人工智能交互，提供从端到云的远场语音交互技术方案，从芯片、模组、OS到云服务（部分功能需定制），相关<a href="http://www.soundai.com/docs/soundai-products.pdf" target="_blank" rel="external">产品介绍文档</a>，详细参考<a href="http://www.soundai.com/" target="_blank" rel="external">官网</a>。</p>
-<h4 id="语音服务-9"><a href="#语音服务-9" class="headerlink" title="语音服务"></a>语音服务</h4><p><img src="https://s1.ax1x.com/2018/01/09/pK8ZPf.png" alt="shengzhi"></p>
-<h4 id="小结-10"><a href="#小结-10" class="headerlink" title="小结"></a>小结</h4><p>未找到 demo 以及相关集成文档，需要商务联系。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li><p>上述国外语音方案几乎都不支持离线。</p>
-</li>
-<li><p>海外对于录音隐私数据搜集，需要对应的许可，否则可能有相应风险。</p>
-</li>
-<li><p>上述国内语音方案都不支持离线英文识别、英文关键词。</p>
-</li>
-<li><p>alexa 与 google assistant 对比：</p>
-<p>| 问题         | Alexa                          | google assistant                       |<br>| ———— | —————————— | ————————————– |<br>| 隐私问题     | amazon 账号授权                | google 账号授权                        |<br>| 认证问题     | 5周                            | 未知                                   |<br>| 唤醒问题     | alexa、echo、amazon            | ok google、hey google                  |<br>| 语音识别     | 在线                           | 在线（有离线包，但未明确提供接入方式） |<br>| 自然语义     | -(aws 可配置，收费)            | actions on google                      |<br>| 语音合成     | √                              | √                                      |<br>| 接入问题     | 自行接入                       | 商务接入                               |<br>| 语音识别结果 | 不返回识别结果，用户账号后台有 | 有返回识别结果                         |<br>| 集成难易     | 需要基于 C++自封装一层         | 熟悉跨平台GRPC传输协议                 |<br>| 价格         | 免费                           | 每天每台设备500个请求限制              |<br>| 调试环境     | 无限制                         | 被墙(需翻墙)                           |<br>| 语言         | 英语                           | 无限制                                 |<br>| 地区         | 美、英、德                     | 全球大部分地区（限中国）               |<br>| 年龄限制     | 13+                            | 未知                                   |</p>
-<p>推荐用 alexa，理由：</p>
-<ol>
-<li>二者提供的语音服务都能满足产品需求</li>
-<li>alexa 相对信息明确 ，如果一定要1-2月的产品认证，可以提前动手准备，开发者信息更详细，主要问题在于需要 C++封装一层 jni 供上层调用，目前公司技术栈没有相对熟练人员。</li>
-<li>google 信息很多未知坑，如果能联系上对应的技术支持，可再酌情考虑。</li>
-<li>就目前项目时间形式来讲，推荐用 alexa</li>
-</ol>
-</li>
-</ol>
-<p>综上所述，<strong>国内用百度（如果价格允许，优先讯飞。也可以2者结合方案），国外选google assistant或Alexa</strong>。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/10/语音方案预研/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -909,7 +593,7 @@
 </ul>
 </blockquote>
 <p>测试在软件工程的重要地位，超过编码。这后来工作后，慢慢深有体会、认同。二者虽隔衣带水，但市场上职责还是很明确，绝大部分测试的只会测试，编码的只会编码。现实也的确如此，真正敲代码的时间占极少部分，其他都在解决 bug。码界最让人羞愧的就是被人说：在干嘛，这么晚是不是又在加班写 bug ？<br>为了尽量避免这种无地自容，多了解点点自测技巧，防范于未然嘛。</p>
-<p>言归正传，这篇文章主要了解android应用自动化测试。<br>
+<p>言归正传，这篇文章主要了解android应用自动化测试。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/09/27/android应用自动化测试/#more" rel="contents">
@@ -2244,7 +1928,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
