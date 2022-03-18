@@ -1,0 +1,505 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.adb常用命令学习记录 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2015-08-15-Android自定义dialog显示问题.html" />
+    
+    
+    <link rel="prev" href="2015-01-02-为何写博客.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+
+    
+        
+        <li class="header">2017</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../2017/2017-12-10-语音方案预研.html">
+            
+                <a href="../2017/2017-12-10-语音方案预研.html">
+            
+                    
+                    1.语音方案预研
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">2016</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../2016/2016-04-16-Android编码实用小技巧整理.html">
+            
+                <a href="../2016/2016-04-16-Android编码实用小技巧整理.html">
+            
+                    
+                    1.Android编码实用小技巧整理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="22016-08-05-QQ6.5.0逆向笔记.md">
+            
+                <span>
+            
+                    
+                    2.QQ6.5.0逆向笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="2016-09-27-android应用自动化测试.md">
+            
+                <span>
+            
+                    
+                    3.android应用自动化测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">2015</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="2015-01-02-为何写博客.html">
+            
+                <a href="2015-01-02-为何写博客.html">
+            
+                    
+                    1.为何写博客
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.2" data-path="2015-03-17-adb常用命令学习记录.html">
+            
+                <a href="2015-03-17-adb常用命令学习记录.html">
+            
+                    
+                    2.adb常用命令学习记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="2015-08-15-Android自定义dialog显示问题.html">
+            
+                <a href="2015-08-15-Android自定义dialog显示问题.html">
+            
+                    
+                    3.Android自定义dialog显示问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="2015-10-21-git常用命令学习记录.html">
+            
+                <a href="2015-10-21-git常用命令学习记录.html">
+            
+                    
+                    4.git常用命令学习记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">网站信息</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" >
+            
+                <a target="_blank" href="https://beian.miit.gov.cn">
+            
+                    
+                    粤ICP备16077052号
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.adb常用命令学习记录</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>adb &#x662F; android &#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;&#x4E8C;&#x8FDB;&#x5236;&#x53EF;&#x8FD0;&#x884C;&#x7684;&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#xFF0C;&#x4F4D;&#x4E8E; SDK &#x7684; platform-tools &#x76EE;&#x5F55;&#x3002; android &#x5F00;&#x53D1;&#x8005;&#x4E0D;&#x53EF;&#x6216;&#x7F3A;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5C11;&#x4E86;&#x5979;&#xFF0C;&#x597D;&#x6BD4;&#x6CA1;&#x6709;&#x4E86;&#x756A;&#x53F7;&#x3002;&#x719F;&#x7EC3;&#x4F7F;&#x7528;&#xFF0C;&#x5DE5;&#x4F5C;&#x751F;&#x6D3B;&#x4E8B;&#x534A;&#x529F;&#x500D;&#x3002;&#x4E0B;&#x9762;&#x603B;&#x7ED3;&#x90E8;&#x5206;&#x5E38;&#x7528;&#x547D;&#x4EE4;&#xFF0C;&#x8BE6;&#x7EC6;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7EC8;&#x7AEF; adb help&#x3002;</p>
+<!-- more -->
+<h1 id="adb-&#x5E38;&#x7528;&#x547D;&#x4EE4;">adb &#x5E38;&#x7528;&#x547D;&#x4EE4;</h1>
+<p>&#x719F;&#x7EC3;&#x638C;&#x63E1;&#x4E0B;&#x9762;&#x9762;11&#x4E2A;&#x547D;&#x4EE4;&#xFF0C;&#x653E;&#x5FC3;&#x5927;&#x80C6;&#x7684;&#x884C;&#x8D70; Android &#x6C5F;&#x6E56;&#xFF0C;&#x4E0D; care &#x4EFB;&#x4F55;&#x5201;&#x94BB;&#x7591;&#x96BE;&#x6742;&#x75C7;&#x3002;</p>
+<h2 id="1-adb-shell">1. adb shell</h2>
+<p>&#x8FDB;&#x5165; android &#x8BBE;&#x5907; &#x7684; shell&#xFF0C;adnroid &#x662F;&#x7C7B; linux &#x7CFB;&#x7EDF;&#xFF0C;&#x6B64;&#x6A21;&#x5F0F;&#x4E0B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; &#x5927;&#x90E8;&#x5206; linux &#x547D;&#x4EE4;&#xFF0C;&#x5F53;&#x7136;&#x6709;&#x4E9B;&#x547D;&#x4EE4;&#x53EF;&#x80FD;&#x88AB;&#x9609;&#x5272;&#x3002;</p>
+<h2 id="2-adb-devices">2. adb devices</h2>
+<p>&#x67E5;&#x770B;&#x5F53;&#x524D;&#x7535;&#x8111;&#x8FDE;&#x63A5;&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x8BBE;&#x5907;&#x94FE;&#x63A5;&#xFF0C;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x6307;&#x5B9A;&#x7684;&#x8BBE;&#x5907;&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF0C;&#x9700;&#x8981;&#x52A0;&#x53C2;&#x6570; &quot;-s &#x8BBE;&#x5907;&#x540D;&quot;&#x3002;</p>
+<p><strong>&#x6B63;&#x786E;&#x59FF;&#x52BF;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">adb -s F3D7N15B09012602 shell
+</code></pre>
+<h2 id="3-adb-kill-server">3. adb kill-server</h2>
+<p>&#x5173;&#x95ED; adb &#x8FDE;&#x63A5;&#x3002;</p>
+<p>windows &#x4E0B;&#x7ECF;&#x5E38;&#x4F1A;&#x9047;&#x5230; adb &#x51B2;&#x7A81;&#xFF0C;&#x5404;&#x79CD;&#x7BA1;&#x5BB6;&#x3001;&#x5B89;&#x5168;&#x52A9;&#x624B;&#x81EA;&#x5E26; adb &#x5149;&#x73AF;&#xFF0C;adb kill-server &#x591A;&#x8BD5;&#x51E0;&#x6B21;&#x6216;&#x8BB8;&#x53EF;&#x4EE5;&#x89E3;&#x6551;&#xFF0C;&#x4F46;&#x4E0D;&#x4E00;&#x5B9A;&#x54C8;&#x3002;</p>
+<p>&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x547D;&#x4EE4;&#x884C;&#x8F93;&#x5165; adb shell &#x65F6;&#xFF0C;&#x4F1A;&#x6709;&#x63D0;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-shell">List of devices attached
+* daemon not running. starting it now at tcp:5037 *
+* daemon started successfully *
+F3D7N15B09012602    device
+</code></pre>
+<p>&#x5B83;&#x7684;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<ul>
+<li>PC &#x7AEF;&#x542F;&#x52A8; adb &#x670D;&#x52A1;&#x8FDB;&#x7A0B;&#xFF0C;&#x5F00;&#x542F; socket &#xFF0C;&#x7AEF;&#x53E3;&#xFF1A;5037</li>
+<li>&#x4E0E;&#x8BBE;&#x5907;&#x4E2D; adbd &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#xFF0C;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</li>
+<li>adb kill-server &#x5373; &#x5173;&#x95ED;&#x6539; socket &#x8FDE;&#x63A5;</li>
+</ul>
+<p>&#x8BE6;&#x7EC6;&#x6D41;&#x7A0B;&#x8BF7;&#x53C2;&#x8003;&#x4E0B;&#x9762;<a href="#&#x539F;&#x7406;">&#x539F;&#x7406;</a>&#x3002;</p>
+<h2 id="4-adb-connect">4. adb connect</h2>
+<p>&#x6307;&#x5B9A;&#x8BBE;&#x5907;&#x8FDE;&#x63A5;&#x3002;</p>
+<p><strong>&#x6B63;&#x786E;&#x59FF;&#x52BF;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">adb connect 192.168.1.100
+</code></pre>
+<h2 id="5--adb-disconnect">5.  adb disconnect</h2>
+<p>&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x3002;</p>
+<p><strong>&#x6B63;&#x786E;&#x59FF;&#x52BF;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">adb disconnect 192.168.1.100
+</code></pre>
+<h2 id="6-adb-install">6. adb install</h2>
+<p>&#x5B89;&#x88C5; app,&#x540E;&#x9762;&#x8DDF;&#x4E0A; apk &#x8DEF;&#x5F84;&#x3002;</p>
+<p><strong>&#x6B63;&#x786E;&#x59FF;&#x52BF;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">adb install 1.apk
+</code></pre>
+<h2 id="7-adb--uninstall">7. adb  uninstall</h2>
+<p>&#x5378;&#x8F7D; app,&#x540E;&#x9762;&#x53C2;&#x6570;  app &#x5305;&#x540D;&#x3002;</p>
+<p><strong>&#x6B63;&#x786E;&#x59FF;&#x52BF;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">adb uninstall com.thearyong.test
+</code></pre>
+<h2 id="8-adb-push">8. adb push</h2>
+<p>&#x53D1;&#x9001; PC &#x6587;&#x4EF6;&#x5230; android &#x8BBE;&#x5907;&#x4E0A;,&#x6CE8;&#x610F;&#x90E8;&#x5206;&#x76EE;&#x5F55;&#x6743;&#x9650;&#x95EE;&#x9898;&#x3002;&#x8BBE;&#x5907;&#x4E0A;&#x7684; /data/local/ &#x6240;&#x6709;&#x7528;&#x6237;&#x90FD;&#x53EF;&#x4EE5;&#x5199;&#x5165;&#x3002;</p>
+<p><strong>&#x6B63;&#x786E;&#x59FF;&#x52BF;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">adb push 1.apk /system/app
+</code></pre>
+<p>&#x4E0A;&#x9762; /system/app &#x9700;&#x8981; root &#x6743;&#x9650;&#xFF0C;&#x5F88;&#x591A;&#x5382;&#x5546;&#x51FA;&#x5382; &#x6253;&#x5305; apk &#x90FD;&#x653E;&#x6B64;&#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+<h2 id="9-adb-pull">9. adb pull</h2>
+<p>&#x4ECE; android  &#x8BBE;&#x5907;&#x4E0A;&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x5230; PC &#x4E0A;&#xFF0C;&#x6BD4;&#x5982;&#x62F7;&#x8D1D; apk&#x3001;log &#x7B49;&#x3002;&#x4E5F;&#x5F97;&#x6CE8;&#x610F;&#x6743;&#x9650;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x5230; /data/local/tmp &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x5728; adb pull&#x3002;</p>
+<p><strong>&#x6B63;&#x786E;&#x59FF;&#x52BF;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">adb pull /data/local/tmp/1.apk ./apk
+</code></pre>
+<p>&#x540E;&#x9762;&#x53EF;&#x8DDF;&#x4E0A;&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;&#x4E3A;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x3002;</p>
+<h2 id="10-adb-logcat">10. adb logcat</h2>
+<p>&#x6253;&#x5370; log&#xFF0C;&#x73B0;&#x573A;&#x652F;&#x6301;&#x4EBA;&#x5458;&#x7ECF;&#x5E38;&#x9700;&#x8981;&#x7528;&#x5230;&#x3002;</p>
+<p><strong>&#x6B63;&#x786E;&#x59FF;&#x52BF;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">adb logcat &gt; 1.log
+</code></pre>
+<p>logcat &#x5176;&#x5B9E;&#x6267;&#x884C;&#x7684;&#x662F; android &#x8BBE;&#x5907;&#x4E0B;&#x7684; logcat&#x3002;</p>
+<h3 id="&#x6E05;&#x7406;&#x7F13;&#x5B58;&#x533A;-log">&#x6E05;&#x7406;&#x7F13;&#x5B58;&#x533A; log</h3>
+<pre><code class="lang-shell">adb logcat -c
+</code></pre>
+<h3 id="&#x5305;&#x542B;&#x65F6;&#x95F4;&#x7684;-log">&#x5305;&#x542B;&#x65F6;&#x95F4;&#x7684; log</h3>
+<p>&#x8D85;&#x7EA7;&#x6709;&#x7528;&#xFF0C;&#x4F18;&#x5316; app &#x6D41;&#x7545;&#x5EA6;&#x5FC5;&#x5907;&#x3002;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x8BF7;&#x770B;<a href="#3.%20&#x5305;&#x542B;&#x65F6;&#x95F4;&#x7684;%20log">&#x573A;&#x666F;3</a>&#x3002;</p>
+<h3 id="&#x8FC7;&#x6EE4;&#x8F93;&#x51FA;">&#x8FC7;&#x6EE4;&#x8F93;&#x51FA;</h3>
+<p><a href="https://developer.android.com/studio/command-line/logcat.html?hl=zh-cn" target="_blank">&#x5176;&#x4ED6;&#x8BE6;&#x7EC6;&#x4F7F;&#x7528;&#x8BF7;&#x67E5;&#x770B; android &#x5B98;&#x7F51;&#x8BF4;&#x660E;</a>.</p>
+<h2 id="11-adb-forward">11. adb forward</h2>
+<p>&#x8BBE;&#x7F6E;&#x4EFB;&#x610F;&#x7AEF;&#x53E3;&#x8F6C;&#x53D1;&#xFF1A;&#x5C06;&#x5BF9;&#x7279;&#x5B9A;&#x4E3B;&#x673A;&#x7AEF;&#x53E3;&#x7684;&#x8BF7;&#x6C42;&#x8F6C;&#x53D1;&#x5230;&#x6A21;&#x62DF;&#x5668;/&#x8BBE;&#x5907;&#x5B9E;&#x4F8B;&#x4E0A;&#x7684;&#x5176;&#x4ED6;&#x7AEF;&#x53E3;&#x3002;</p>
+<p><strong>&#x6B63;&#x786E;&#x59FF;&#x52BF;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">adb forward tcp:6100 tcp:7100
+</code></pre>
+<p>6100 PC &#x4E3B;&#x673A;&#x7AEF;&#x53E3;&#xFF0C;7100 &#x8BBE;&#x5907;&#x7AEF;&#x53E3;</p>
+<p>&#x8C03;&#x8BD5;&#x9006;&#x5411;&#x5F88;&#x5E38;&#x7528;&#x3002;</p>
+<h1 id="&#x539F;&#x7406;">&#x539F;&#x7406;</h1>
+<p>&#x6E90;&#x7801; system/core/adb &#x76EE;&#x5F55;&#xFF0C;&#x5F85;&#x8865;&#x5145;&#x3002;</p>
+<h2 id="todo">TODO</h2>
+<h1 id="&#x573A;&#x666F;">&#x573A;&#x666F;</h1>
+<h3 id="1-&#x67E5;&#x770B;&#x5DF2;&#x5B89;&#x88C5;&#x7684;-apk-&#x5305;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x5305;&#x540D;&#x3001;&#x7248;&#x672C;&#x53F7;&#x3001;&#x6743;&#x9650;&#x7B49;">1. &#x67E5;&#x770B;&#x5DF2;&#x5B89;&#x88C5;&#x7684; apk &#x5305;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x5305;&#x540D;&#x3001;&#x7248;&#x672C;&#x53F7;&#x3001;&#x6743;&#x9650;&#x7B49;</h3>
+<pre><code class="lang-shell">adb shell dumpsys package com.
+</code></pre>
+<h3 id="2-&#x67E5;&#x770B;&#x5F53;&#x524D;&#x8BBE;&#x5907;&#x663E;&#x793A;&#x7684;-activity">2. &#x67E5;&#x770B;&#x5F53;&#x524D;&#x8BBE;&#x5907;&#x663E;&#x793A;&#x7684; activity</h3>
+<pre><code class="lang-shell">adb shell dumpsys activity top
+</code></pre>
+<h3 id="3-&#x5305;&#x542B;&#x65F6;&#x95F4;&#x7684;-log">3. &#x5305;&#x542B;&#x65F6;&#x95F4;&#x7684; log</h3>
+<pre><code class="lang-shell">adb logcat -v time &gt; 1.log
+</code></pre>
+<h3 id="4-&#x6293;&#x8BBE;&#x5907;&#x7F51;&#x7EDC;&#x6570;&#x636E;&#x5305;">4. &#x6293;&#x8BBE;&#x5907;&#x7F51;&#x7EDC;&#x6570;&#x636E;&#x5305;</h3>
+<pre><code class="lang-shell">adb shell
+cd data/local/tmp
+tcpdump -w 1.pcap
+</code></pre>
+<p>&#x6293;&#x597D;&#x540E;&#xFF0C;ctrl+c&#x4E2D;&#x65AD;&#x3002;adb pull &#x5230; PC&#x4E0A;&#xFF0C;&#x4F7F;&#x7528; <strong>WireShark</strong> &#x5206;&#x6790;&#x3002;</p>
+<p><strong>PS&#xFF1A;&#x5982;&#x679C;&#x53EA;&#x662F;&#x6293; http &#x5305;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Charles &#x6216; fiddler&#x3002;&#x624B;&#x673A;&#x8BBE;&#x7F6E;&#x4EE3;&#x7406;&#xFF0C;&#x5373;&#x53EF;&#x5B9E;&#x65F6;&#x76D1;&#x6D4B;&#x63A5;&#x53E3;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x3002;</strong></p>
+<h3 id="5-&#x5382;&#x5BB6;&#x4FEE;&#x6539;-adb&#xFF0C;&#x8C03;&#x8BD5;&#x4E13;&#x7528;">5. &#x5382;&#x5BB6;&#x4FEE;&#x6539; adb&#xFF0C;&#x8C03;&#x8BD5;&#x4E13;&#x7528;</h3>
+<p>&#x7ECF;&#x5E38;&#x6709;&#x5382;&#x5BB6;&#x4FEE;&#x6539; adb&#xFF0C;&#x4F5C;&#x4E3A;&#x5F00;&#x53D1;&#x8005;&#x5C31;&#x5728;&#x90A3;&#x54ED;&#x7239;&#x558A;&#x5A18;&#xFF0C;&#x975E;&#x5F97;&#x7528;&#x4ED6;&#x4EEC;&#x63D0;&#x4F9B;&#x7684; adb &#x5DE5;&#x5177;&#x624D;&#x884C;&#xFF0C;&#x5728;&#x7535;&#x89C6;&#x884C;&#x4E1A;&#x5C24;&#x751A;&#x3002;&#x6839;&#x636E;&#x4E0A;&#x9762;&#x539F;&#x7406;&#x5206;&#x6790;&#xFF0C;&#x53EA;&#x8981;&#x4FEE;&#x6539;&#x5BF9;&#x5E94;&#x6E90;&#x7801;&#x5373;&#x53EF;&#x3002;</p>
+<h3 id="6-&#x8BBE;&#x5907;&#x5C4F;&#x5E55;&#x622A;&#x56FE;">6. &#x8BBE;&#x5907;&#x5C4F;&#x5E55;&#x622A;&#x56FE;</h3>
+<p><strong>&#x6B63;&#x786E;&#x59FF;&#x52BF;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">adb shell screencap -p /data/local/tmp/1.png
+adb pull /data/local/tmp/1.png
+</code></pre>
+<p>&#x7F51;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x4F7F;&#x7528;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x672C;&#x673A;&#x4E0A;&#xFF0C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<blockquote>
+<p>$adb shell screencap -p | sed &apos;s/\r$//&apos; &gt; screen.png</p>
+</blockquote>
+<p>&#x4F46;&#x662F;&#x5B9E;&#x8DF5;&#x540E;&#xFF0C;&#x5E76;&#x672A;&#x6210;&#x529F;&#x8FC7;&#xFF0C;&#x5927;&#x5C0F;0KB&#x3002;&#x4E0D;&#x52A0; sed &#x53BB;&#x8F6C;&#x6362;&#x6362;&#x884C;&#x7B26;&#xFF0C;&#x5927;&#x5C0F;&#x6709;1.5MB&#xFF0C;&#x56FE;&#x7247;&#x6253;&#x4E0D;&#x5F00;&#x3002;</p>
+<h3 id="7-adb-&#x8FDE;&#x63A5;&#x4E0D;&#x4E0A;">7. adb &#x8FDE;&#x63A5;&#x4E0D;&#x4E0A;</h3>
+<p>&#x6709;&#x65F6; adb connect ip &#x8FDE;&#x4E0D;&#x4E0A;&#xFF0C;&#x63D0;&#x793A;&#xFF1A;</p>
+<blockquote>
+<p>Connection refused</p>
+</blockquote>
+<p>&#x6709;&#x53EF;&#x80FD;&#x662F;&#x7AEF;&#x53E3;&#x53F7;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x5C1D;&#x8BD5;&#x5148;&#x7528; usb &#x7EBF;&#x8FDE;&#x4E0A;&#xFF1A;</p>
+<pre><code class="lang-shell">adb tcpip 5555
+</code></pre>
+<p>&#x518D; adb connect ip&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2015-01-02-为何写博客.html" class="navigation navigation-prev " aria-label="Previous page: 1.为何写博客">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="2015-08-15-Android自定义dialog显示问题.html" class="navigation navigation-next " aria-label="Next page: 3.Android自定义dialog显示问题">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.adb常用命令学习记录","date":"2015-03-17T17:10:29.000Z","tags":["adb"],"categories":"android","level":"5.2","depth":1,"next":{"title":"3.Android自定义dialog显示问题","level":"5.3","depth":1,"path":"2015/2015-08-15-Android自定义dialog显示问题.md","ref":"2015/2015-08-15-Android自定义dialog显示问题.md","articles":[]},"previous":{"title":"1.为何写博客","level":"5.1","depth":1,"path":"2015/2015-01-02-为何写博客.md","ref":"2015/2015-01-02-为何写博客.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"2015/2015-03-17-adb常用命令学习记录.md","mtime":"2022-03-18T16:19:05.342Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-18T16:38:02.500Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
